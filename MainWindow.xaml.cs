@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace GUI_20212202_CM7A68
 {
@@ -31,7 +32,16 @@ namespace GUI_20212202_CM7A68
             logic = new GameLogic();
             display.SetupModel(logic);
             controller = new GameController(logic);
+            DispatcherTimer gametimer=new DispatcherTimer();
+            gametimer.Interval = TimeSpan.FromMilliseconds(17);
+            gametimer.Tick += Gametimer_Tick;
+            gametimer.Start();
+        }
 
+        private void Gametimer_Tick(object? sender, EventArgs e)
+        {
+            logic.TimeStep();
+            display.InvalidateVisual();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

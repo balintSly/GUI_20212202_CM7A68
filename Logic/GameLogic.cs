@@ -14,6 +14,10 @@ namespace GUI_20212202_CM7A68.Logic
         {
             this.area = area;
         }
+        public void TimeStep()
+        { 
+        //TODO: minden mozgatást, állapotváltozást, ütközést itt állítani, ez 20ms-ként le fog futni
+        }
 
     }
 }
