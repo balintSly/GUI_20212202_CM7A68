@@ -10,7 +10,6 @@ namespace GUI_20212202_CM7A68.Models
 {
     public class Robot
     {
-        Size mapsize;
         public bool IsControllable { get; set; }
         public int Health { get; set; }
         public int Shield { get; set; }
@@ -20,10 +19,6 @@ namespace GUI_20212202_CM7A68.Models
             this.Health = 100;
             this.Shield = 100;
             this.Center = spawnpoint;
-        }
-        public void SetupSize(Size mapsize)
-        {
-            this.mapsize = mapsize;
         }
     }
 }

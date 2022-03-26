@@ -13,6 +13,8 @@ namespace GUI_20212202_CM7A68.Logic
         Size area;
         public Robot Robot1 { get; set; }
         public Robot Robot2 { get; set; }
+        public bool Robot1IsMoving { get; set; }
+        public bool Robot2IsMoving { get; set; }
         int robotspeed;
         bool spawned;
         public enum Directions
@@ -21,16 +23,16 @@ namespace GUI_20212202_CM7A68.Logic
         }
         public void SetupSize(Size area)
         {
+            this.area = area;
             if (!spawned)
             {
-                this.Robot1 = new Robot(new Point(area.Width / 10, (int)(area.Height*0.63)));
-                this.Robot2 = new Robot(new Point((int)(area.Width*0.8), (int)(area.Height*0.63)));
+                this.Robot1 = new Robot(new Point(area.Width / 10, (int)(area.Height*0.8)));
+                this.Robot2 = new Robot(new Point((int)(area.Width*0.9), (int)(area.Height*0.8)));
                 spawned = true;
             }
-            Robot1.Center = new Point(area.Width / 10, (int)(area.Height * 0.63));
-            Robot2.Center = new Point((int)(area.Width*0.8), (int)(area.Height * 0.63));
-            this.area = area;
-            robotspeed = area.Width / 100;
+            Robot1.Center = new Point(area.Width / 10, (int)(area.Height * 0.8));
+            Robot2.Center = new Point((int)(area.Width*0.9), (int)(area.Height * 0.8));  
+            robotspeed = area.Width / 50;
         }
         public void TimeStep()
         { 
@@ -49,13 +51,13 @@ namespace GUI_20212202_CM7A68.Logic
                     //todo uggolás
                     break;
                 case Directions.left:
-                    if (oldpos.X - robotspeed >= 0)
+                    if (oldpos.X - 2*robotspeed >= 0)
                     {
                         Robot1.Center = new Point(oldpos.X-robotspeed, oldpos.Y);
                     }
                     break;
                 case Directions.right:
-                    if (oldpos.X + robotspeed <=area.Width)
+                    if (oldpos.X + 2*robotspeed <=area.Width)
                     {
                         Robot1.Center = new Point(oldpos.X+robotspeed, oldpos.Y);
                     }
@@ -77,13 +79,13 @@ namespace GUI_20212202_CM7A68.Logic
                     //todo uggolás
                     break;
                 case Directions.left:
-                    if (oldpos.X - robotspeed >= 0)
+                    if (oldpos.X - 2*robotspeed >= 0)
                     {
-                        Robot2.Center = new Point(oldpos.X - robotspeed, oldpos.Y);
+                       Robot2.Center = new Point(oldpos.X - robotspeed, oldpos.Y);
                     }
                     break;
                 case Directions.right:
-                    if (oldpos.X + robotspeed <= area.Width)
+                    if (oldpos.X + 2*robotspeed <= area.Width)
                     {
                         Robot2.Center = new Point(oldpos.X + robotspeed, oldpos.Y);
                     }

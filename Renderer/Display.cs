@@ -11,7 +11,7 @@ using System.Windows.Media.Imaging;
 
 namespace GUI_20212202_CM7A68.Renderer
 {
-    public class Display:FrameworkElement
+    public class Display : FrameworkElement
     {
         Size area;
         IGameModel model;
@@ -25,21 +25,44 @@ namespace GUI_20212202_CM7A68.Renderer
         {
             this.model = model;
         }
+        bool swapped;
         protected override void OnRender(DrawingContext drawingContext)
         {
-            if (area.Width>0 && area.Height>0)
+            if (area.Width > 0 && area.Height > 0)
             {
                 base.OnRender(drawingContext);
                 drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "Backgrounds", "mkmap1.jpg"),
                     UriKind.RelativeOrAbsolute))), null, new Rect(0, 0, area.Width, area.Height));
 
-                drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "Robots", "robotpic_stand.png"),
-                   UriKind.RelativeOrAbsolute))), null, new Rect(model.Robot1.Center.X, model.Robot1.Center.Y, area.Width / 6, area.Height / 3));
 
-                drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "Robots", "robotpic_stand.png"),
-                   UriKind.RelativeOrAbsolute))), null, new Rect(model.Robot2.Center.X, model.Robot2.Center.Y, area.Width / 6, area.Height / 3));
+                if (model.Robot1.Center.X < model.Robot2.Center.X)
+                {
+                    drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "Robots", "robotpic_stand.png"),
+                 UriKind.RelativeOrAbsolute))), null, new Rect(model.Robot1.Center.X - area.Width / 12, model.Robot1.Center.Y - area.Height / 6, area.Width / 6, area.Height / 3));
+
+                    drawingContext.PushTransform(new ScaleTransform(-1, 1, model.Robot2.Center.X, model.Robot2.Center.Y));
+                    drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "Robots", "robotpic_stand.png"),
+                  UriKind.RelativeOrAbsolute))), null, new Rect(model.Robot2.Center.X - area.Width / 12, model.Robot2.Center.Y - area.Height / 6, area.Width / 6, area.Height / 3));
+                    drawingContext.Pop();
+                }
+                else
+                {
+                    drawingContext.PushTransform(new ScaleTransform(-1, 1, model.Robot1.Center.X, model.Robot1.Center.Y));
+                    drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "Robots", "robotpic_stand.png"),
+               UriKind.RelativeOrAbsolute))), null, new Rect(model.Robot1.Center.X - area.Width / 12, model.Robot1.Center.Y - area.Height / 6, area.Width / 6, area.Height / 3));
+                    drawingContext.Pop();
+
+                    drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "Robots", "robotpic_stand.png"),
+                  UriKind.RelativeOrAbsolute))), null, new Rect(model.Robot2.Center.X - area.Width / 12, model.Robot2.Center.Y - area.Height / 6, area.Width / 6, area.Height / 3));
+                }
+
+
+
+
+
+
             }
-           
+
         }
     }
 }
