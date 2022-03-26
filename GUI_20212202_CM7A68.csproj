@@ -9,14 +9,14 @@
 
   <ItemGroup>
     <None Remove="Renderer\Images\Backgrounds\mkmap1.jpg" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Models\" />
+    <None Remove="Renderer\Images\Robots\robotpic_stand.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="Renderer\Images\Backgrounds\mkmap1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_stand.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

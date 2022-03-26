@@ -31,6 +31,7 @@ namespace GUI_20212202_CM7A68
             InitializeComponent();
             logic = new GameLogic();
             display.SetupModel(logic);
+            var asd = mainGrid;
             controller = new GameController(logic);
             DispatcherTimer gametimer=new DispatcherTimer();
             gametimer.Interval = TimeSpan.FromMilliseconds(17);
@@ -54,6 +55,17 @@ namespace GUI_20212202_CM7A68
         {
             display.SetupSize(new Size(mainGrid.ActualWidth, mainGrid.ActualHeight));
             logic.SetupSize(new System.Drawing.Size((int)mainGrid.ActualWidth, (int)mainGrid.ActualHeight));
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            controller.KeyPressed(e.Key);
+            display.InvalidateVisual();
+        }
+
+        private void Window_KeyUp(object sender, KeyEventArgs e)
+        {
+            //TODO átgondolni a asnycet
         }
     }
 }

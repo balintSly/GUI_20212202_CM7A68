@@ -18,6 +18,7 @@ namespace GUI_20212202_CM7A68.Renderer
         public void SetupSize(Size area)
         {
             this.area = area;
+            model.SetupSize(new System.Drawing.Size((int)area.Width, (int)area.Height));
             InvalidateVisual();
         }
         public void SetupModel(IGameModel model)
@@ -26,9 +27,19 @@ namespace GUI_20212202_CM7A68.Renderer
         }
         protected override void OnRender(DrawingContext drawingContext)
         {
-            base.OnRender(drawingContext);
-            drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "Backgrounds", "mkmap1.jpg"), 
-                UriKind.RelativeOrAbsolute))), null, new Rect(0,0,area.Width, area.Height));
+            if (area.Width>0 && area.Height>0)
+            {
+                base.OnRender(drawingContext);
+                drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "Backgrounds", "mkmap1.jpg"),
+                    UriKind.RelativeOrAbsolute))), null, new Rect(0, 0, area.Width, area.Height));
+
+                drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "Robots", "robotpic_stand.png"),
+                   UriKind.RelativeOrAbsolute))), null, new Rect(model.Robot1.Center.X, model.Robot1.Center.Y, area.Width / 6, area.Height / 3));
+
+                drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "Robots", "robotpic_stand.png"),
+                   UriKind.RelativeOrAbsolute))), null, new Rect(model.Robot2.Center.X, model.Robot2.Center.Y, area.Width / 6, area.Height / 3));
+            }
+           
         }
     }
 }
