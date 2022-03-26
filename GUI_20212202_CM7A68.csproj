@@ -9,14 +9,30 @@
 
   <ItemGroup>
     <None Remove="Renderer\Images\Backgrounds\mkmap1.jpg" />
+    <None Remove="Renderer\Images\Robots\robotpic_jump.png" />
     <None Remove="Renderer\Images\Robots\robotpic_stand.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_stand2.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_step.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_step2.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="Renderer\Images\Backgrounds\mkmap1.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_jump.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Renderer\Images\Robots\robotpic_stand.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_stand2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_step.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_step2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

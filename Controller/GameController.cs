@@ -68,7 +68,7 @@ namespace GUI_20212202_CM7A68.Controller
 
 
                 case Key.W:
-                    if (logic.Robot1IsJumping==false)
+                    if (logic.Robot1IsJumping==false && robot1IsInAir==false)
                     {
                         robot1IsInAir=true;
                         logic.Robot1IsJumping = true;
