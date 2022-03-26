@@ -65,7 +65,8 @@ namespace GUI_20212202_CM7A68
 
         private void Window_KeyUp(object sender, KeyEventArgs e)
         {
-            //TODO átgondolni a asnycet
+            controller.KeyReleased(e.Key);
+            display.InvalidateVisual();
         }
     }
 }

@@ -25,7 +25,6 @@ namespace GUI_20212202_CM7A68.Renderer
         {
             this.model = model;
         }
-        bool swapped;
         protected override void OnRender(DrawingContext drawingContext)
         {
             if (area.Width > 0 && area.Height > 0)
