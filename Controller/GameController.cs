@@ -16,12 +16,29 @@ namespace GUI_20212202_CM7A68.Controller
         {
             this.logic = gameControl;
         }
+        bool robot1IsInAir;
+        bool robot2IsInAir;
         public async void KeyPressed(Key key)
         {
             switch (key)
             {
                 case Key.Up:
-                    logic.MoveRobot2(Directions.up);
+                    if (logic.Robot2IsJumping == false && robot2IsInAir==false)
+                    {
+                        robot2IsInAir = true;
+                        logic.Robot2IsJumping = true;
+                        for (int i = 0; i < 30; i++)
+                        {
+                            await Task.Delay(1);
+                            logic.MoveRobot2(Directions.up);
+                        }
+                        for (int i = 0; i < 30; i++)
+                        {
+                            await Task.Delay(1);
+                            logic.Robot2Descend();
+                        }
+                        robot2IsInAir=false;
+                    }
                     break;
                 case Key.Down:
                     logic.MoveRobot2(Directions.down);
@@ -51,7 +68,23 @@ namespace GUI_20212202_CM7A68.Controller
 
 
                 case Key.W:
-                    logic.MoveRobot1(Directions.up);
+                    if (logic.Robot1IsJumping==false)
+                    {
+                        robot1IsInAir=true;
+                        logic.Robot1IsJumping = true;
+                        for (int i = 0; i < 30; i++)
+                        {
+                            await Task.Delay(1);
+                            logic.MoveRobot1(Directions.up);
+                        }
+                        for (int i = 0; i < 30; i++)
+                        {
+                            await Task.Delay(1);
+                            logic.Robot1Descend();
+                        }
+                        robot1IsInAir = false;
+                    }
+                    
                     break;
                 case Key.S:
                     logic.MoveRobot1(Directions.down);
@@ -85,13 +118,21 @@ namespace GUI_20212202_CM7A68.Controller
         }
         public void KeyReleased(Key key)
         {
-            if (key == Key.Up || key == Key.Down || key == Key.Left || key == Key.Right)
+            if (key == Key.Down || key == Key.Left || key == Key.Right)
             {
                 logic.Robot2IsMoving = false;
             }
-            else if (key == Key.A || key == Key.S || key == Key.D || key == Key.W)
+            else if (key == Key.S || key == Key.D || key == Key.W)
             {
                 logic.Robot1IsMoving = false;
+            }
+            if (key == Key.A)
+            {
+                logic.Robot1IsJumping = false;
+            }
+            if (key == Key.Up)
+            {
+                logic.Robot2IsJumping = false;
             }
         }
     }
