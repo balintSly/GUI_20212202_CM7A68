@@ -116,13 +116,37 @@ namespace GUI_20212202_CM7A68.Renderer
                 //robot1
                 string hp1 = $"Helath_{model.Robot1.Health}_pecent.png";
                 drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "HUD", "Health", hp1),
-                   UriKind.RelativeOrAbsolute))), null, new Rect(area.Width * 0.02, area.Height * 0.02, area.Width * 0.4, area.Height * 0.05));
+                   UriKind.RelativeOrAbsolute))), null, new Rect(area.Width * 0.048, area.Height * 0.02, area.Width * 0.4, area.Height * 0.05));
+
+                string armor1 = $"Armor_{model.Robot1.Shield}_pecent.png";
+                drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "HUD", "Armor", armor1),
+                  UriKind.RelativeOrAbsolute))), null, new Rect(area.Width * 0.048, area.Height * 0.07, area.Width * 0.4, area.Height * 0.05));
+
                 //robot2
                 string hp2 = $"Helath_{model.Robot2.Health}_pecent.png";
                 drawingContext.PushTransform(new ScaleTransform(-1, 1, area.Width * 0.78, area.Height * 0.02));
                 drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "HUD", "Health", hp2),
-                   UriKind.RelativeOrAbsolute))), null, new Rect(area.Width * 0.58, area.Height * 0.02, area.Width * 0.4, area.Height * 0.05));
+                   UriKind.RelativeOrAbsolute))), null, new Rect(area.Width * 0.608, area.Height * 0.02, area.Width * 0.4, area.Height * 0.05));
                 drawingContext.Pop();
+
+                string armor2 = $"Armor_{model.Robot2.Shield}_pecent.png";
+                drawingContext.PushTransform(new ScaleTransform(-1, 1, area.Width * 0.78, area.Height * 0.07));
+                drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "HUD", "Armor", armor1),
+                  UriKind.RelativeOrAbsolute))), null, new Rect(area.Width * 0.608, area.Height * 0.07, area.Width * 0.4, area.Height * 0.05));
+                drawingContext.Pop();
+
+                //ikonok
+                drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "HUD","Icons", "health_icon.png"),
+                    UriKind.RelativeOrAbsolute))), null, new Rect(area.Width*0.002, area.Height*0.015, area.Width*0.05, area.Height*0.065));
+                drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "HUD", "Icons", "armor_icon.png"),
+                    UriKind.RelativeOrAbsolute))), null, new Rect(area.Width * 0.002, area.Height * 0.065, area.Width * 0.05, area.Height * 0.065));
+
+                drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "HUD", "Icons", "health_icon.png"),
+                   UriKind.RelativeOrAbsolute))), null, new Rect(area.Width * 0.95, area.Height * 0.015, area.Width * 0.05, area.Height * 0.065));
+                drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "HUD", "Icons", "armor_icon.png"),
+                    UriKind.RelativeOrAbsolute))), null, new Rect(area.Width * 0.95, area.Height * 0.065, area.Width * 0.05, area.Height * 0.065));
+
+
                 #endregion
             }
 

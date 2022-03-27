@@ -9,6 +9,27 @@
 
   <ItemGroup>
     <None Remove="Renderer\Images\Backgrounds\mkmap1.jpg" />
+    <None Remove="Renderer\Images\HUD\Armor\Armor_0_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Armor\Armor_100_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Armor\Armor_10_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Armor\Armor_15_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Armor\Armor_20_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Armor\Armor_25_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Armor\Armor_30_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Armor\Armor_35_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Armor\Armor_40_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Armor\Armor_45_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Armor\Armor_50_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Armor\Armor_55_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Armor\Armor_5_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Armor\Armor_60_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Armor\Armor_65_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Armor\Armor_70_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Armor\Armor_75_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Armor\Armor_80_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Armor\Armor_85_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Armor\Armor_90_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Armor\Armor_95_pecent.png" />
     <None Remove="Renderer\Images\HUD\Health\Helath_0_pecent.png" />
     <None Remove="Renderer\Images\HUD\Health\Helath_100_pecent.png" />
     <None Remove="Renderer\Images\HUD\Health\Helath_10_pecent.png" />
@@ -30,6 +51,8 @@
     <None Remove="Renderer\Images\HUD\Health\Helath_85_pecent.png" />
     <None Remove="Renderer\Images\HUD\Health\Helath_90_pecent.png" />
     <None Remove="Renderer\Images\HUD\Health\Helath_95_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Icons\armor_icon.png" />
+    <None Remove="Renderer\Images\HUD\Icons\health_icon.png" />
     <None Remove="Renderer\Images\Robots\robotpic_jump.png" />
     <None Remove="Renderer\Images\Robots\robotpic_stand.png" />
     <None Remove="Renderer\Images\Robots\robotpic_stand2.png" />
@@ -39,6 +62,69 @@
 
   <ItemGroup>
     <Content Include="Renderer\Images\Backgrounds\mkmap1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Armor\Armor_0_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Armor\Armor_100_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Armor\Armor_10_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Armor\Armor_15_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Armor\Armor_20_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Armor\Armor_25_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Armor\Armor_30_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Armor\Armor_35_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Armor\Armor_40_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Armor\Armor_45_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Armor\Armor_50_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Armor\Armor_55_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Armor\Armor_5_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Armor\Armor_60_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Armor\Armor_65_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Armor\Armor_70_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Armor\Armor_75_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Armor\Armor_80_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Armor\Armor_85_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Armor\Armor_90_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Armor\Armor_95_pecent.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Renderer\Images\HUD\Health\Helath_0_pecent.png">
@@ -102,6 +188,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Renderer\Images\HUD\Health\Helath_95_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Icons\armor_icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Icons\health_icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Renderer\Images\Robots\robotpic_jump.png">
