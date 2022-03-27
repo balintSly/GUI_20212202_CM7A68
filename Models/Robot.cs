@@ -16,7 +16,7 @@ namespace GUI_20212202_CM7A68.Models
         public Point Center { get; set; }
         public Robot(Point spawnpoint)
         {
-            this.Health = 100;
+            this.Health = 65;
             this.Shield = 100;
             this.Center = spawnpoint;
         }

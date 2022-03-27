@@ -36,9 +36,9 @@ namespace GUI_20212202_CM7A68.Renderer
                 drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "Backgrounds", "mkmap1.jpg"),
                     UriKind.RelativeOrAbsolute))), null, new Rect(0, 0, area.Width, area.Height));
 
+                #region Képvátogatás
                 //állaptok szerint kép kiválsztása: áll, mozog, ugrik, gugol, dob
                 //ugrás: robot.center.y < (int)(area.Height * 0.8) 
-
                 if (model.Robot1.Center.Y < (int)(area.Height * 0.8))
                 {
                     robot1skin = "robotpic_jump.png";
@@ -50,18 +50,18 @@ namespace GUI_20212202_CM7A68.Renderer
                 else
                 {
                     piccount++;
-                    if (piccount % 7 == 0)
+                    if (piccount % 9 == 0 || piccount % 9 == 1 || piccount % 9 == 2)
                     {
                         robot1skin = "robotpic_stand.png";
                     }
-                    else if (piccount % 3 == 3)
+                    else if (piccount % 9 == 3 || piccount % 9 == 4 || piccount % 9 == 5)
                     {
                         robot1skin = "robotpic_step.png";
                     }
-                    else if (piccount%7==6)
+                    else if (piccount % 9 == 6 || piccount % 9 == 7 || piccount % 9 == 8)
                     {
                         robot1skin = "robotpic_step2.png";
-                        piccount %= 7;
+                        piccount %= 9;
                     }
                 }
                 if (model.Robot2.Center.Y < (int)(area.Height * 0.8))
@@ -75,25 +75,23 @@ namespace GUI_20212202_CM7A68.Renderer
                 else
                 {
                     piccount++;
-                    if (piccount % 7 == 0)
+                    if (piccount % 9 == 0 || piccount % 9 == 1 || piccount % 9 == 2)
                     {
                         robot2skin = "robotpic_stand.png";
                     }
-                    else if (piccount % 3 == 3)
+                    else if (piccount % 9 == 3 || piccount % 9 == 4 || piccount % 9 == 5)
                     {
                         robot2skin = "robotpic_step.png";
                     }
-                    else if (piccount % 7 == 6)
+                    else if (piccount % 9 == 6 || piccount % 9 == 7 || piccount % 9 == 8)
                     {
                         robot2skin = "robotpic_step2.png";
-                        piccount %= 7;
+                        piccount %= 9;
                     }
                 }
-               
-                
-
-
-                if (model.Robot1.Center.X < model.Robot2.Center.X)//merre nézzenek a robotok
+                #endregion
+                #region RobotKirajzolás
+                if (model.Robot1.Center.X < model.Robot2.Center.X)//merre nézzenek a robotok, kirajzolásuk
                 {
                     drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "Robots", robot1skin),
                  UriKind.RelativeOrAbsolute))), null, new Rect(model.Robot1.Center.X - area.Width / 12, model.Robot1.Center.Y - area.Height / 6, area.Width / 6, area.Height / 3));
@@ -113,12 +111,19 @@ namespace GUI_20212202_CM7A68.Renderer
                     drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "Robots", robot2skin),
                   UriKind.RelativeOrAbsolute))), null, new Rect(model.Robot2.Center.X - area.Width / 12, model.Robot2.Center.Y - area.Height / 6, area.Width / 6, area.Height / 3));
                 }
-
-
-
-
-
-
+                #endregion
+                #region HUD kirajzolás
+                //robot1
+                string hp1 = $"Helath_{model.Robot1.Health}_pecent.png";
+                drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "HUD", "Health", hp1),
+                   UriKind.RelativeOrAbsolute))), null, new Rect(area.Width * 0.02, area.Height * 0.02, area.Width * 0.4, area.Height * 0.05));
+                //robot2
+                string hp2 = $"Helath_{model.Robot2.Health}_pecent.png";
+                drawingContext.PushTransform(new ScaleTransform(-1, 1, area.Width * 0.78, area.Height * 0.02));
+                drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "HUD", "Health", hp2),
+                   UriKind.RelativeOrAbsolute))), null, new Rect(area.Width * 0.58, area.Height * 0.02, area.Width * 0.4, area.Height * 0.05));
+                drawingContext.Pop();
+                #endregion
             }
 
         }
