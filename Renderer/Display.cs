@@ -115,6 +115,9 @@ namespace GUI_20212202_CM7A68.Renderer
                 }
                 #endregion
                 #region HUD kirajzolás
+                //áttetsző fekete háttér
+                drawingContext.DrawRectangle(new SolidColorBrush(Color.FromArgb(150, 0, 0, 0))
+                    , null, new Rect(0, area.Height * 0.02, area.Width, area.Height * 0.1));
                 //robot1
                 string hp1 = $"Helath_{model.Robot1.Health}_pecent.png";
                 drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "HUD", "Health", hp1),
