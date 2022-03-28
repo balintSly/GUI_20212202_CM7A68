@@ -31,17 +31,25 @@ namespace GUI_20212202_CM7A68
             InitializeComponent();
             logic = new GameLogic();
             display.SetupModel(logic);
-            var asd = mainGrid;
             controller = new GameController(logic);
             DispatcherTimer gametimer=new DispatcherTimer();
+            timeToDecrease = TimeSpan.FromMinutes(3);
+            display.Time = "03:00";
             gametimer.Interval = TimeSpan.FromMilliseconds(17);
             gametimer.Tick += Gametimer_Tick;
             gametimer.Start();
         }
-
+        int totalms;
+        TimeSpan timeToDecrease;
         private void Gametimer_Tick(object? sender, EventArgs e)
         {
             logic.TimeStep();
+            totalms += 17;
+            if (totalms%680==0 && timeToDecrease.TotalSeconds!=0)
+            {
+                timeToDecrease -= TimeSpan.FromSeconds(1);
+                display.Time=timeToDecrease.ToString(@"mm\:ss");
+            }
             display.InvalidateVisual();
         }
 

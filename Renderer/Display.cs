@@ -15,6 +15,7 @@ namespace GUI_20212202_CM7A68.Renderer
     {
         Size area;
         IGameModel model;
+        public string Time { get; set; }
         public void SetupSize(Size area)
         {
             this.area = area;
@@ -33,10 +34,11 @@ namespace GUI_20212202_CM7A68.Renderer
             if (area.Width > 0 && area.Height > 0)
             {
                 base.OnRender(drawingContext);
+                //map kirajzolás
                 drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "Backgrounds", "mkmap1.jpg"),
                     UriKind.RelativeOrAbsolute))), null, new Rect(0, 0, area.Width, area.Height));
 
-                #region Képvátogatás
+                #region Skinváltogatás
                 //állaptok szerint kép kiválsztása: áll, mozog, ugrik, gugol, dob
                 //ugrás: robot.center.y < (int)(area.Height * 0.8) 
                 if (model.Robot1.Center.Y < (int)(area.Height * 0.8))
@@ -136,8 +138,8 @@ namespace GUI_20212202_CM7A68.Renderer
                 drawingContext.Pop();
 
                 //ikonok
-                drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "HUD","Icons", "health_icon.png"),
-                    UriKind.RelativeOrAbsolute))), null, new Rect(area.Width*0.002, area.Height*0.015, area.Width*0.05, area.Height*0.065));
+                drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "HUD", "Icons", "health_icon.png"),
+                    UriKind.RelativeOrAbsolute))), null, new Rect(area.Width * 0.002, area.Height * 0.015, area.Width * 0.05, area.Height * 0.065));
                 drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "HUD", "Icons", "armor_icon.png"),
                     UriKind.RelativeOrAbsolute))), null, new Rect(area.Width * 0.002, area.Height * 0.065, area.Width * 0.05, area.Height * 0.065));
 
@@ -145,6 +147,11 @@ namespace GUI_20212202_CM7A68.Renderer
                    UriKind.RelativeOrAbsolute))), null, new Rect(area.Width * 0.95, area.Height * 0.015, area.Width * 0.05, area.Height * 0.065));
                 drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "HUD", "Icons", "armor_icon.png"),
                     UriKind.RelativeOrAbsolute))), null, new Rect(area.Width * 0.95, area.Height * 0.065, area.Width * 0.05, area.Height * 0.065));
+
+                //óra
+                drawingContext.DrawText(new FormattedText(Time, System.Globalization.CultureInfo.CurrentCulture, 
+                    FlowDirection.LeftToRight, new Typeface(new FontFamily("Consolas"), FontStyles.Normal, FontWeights.Bold, 
+                    FontStretches.Normal), area.Height*0.05, Brushes.Red), new Point(area.Width * 0.465, area.Height * 0.05));
 
 
                 #endregion
