@@ -29,7 +29,7 @@ namespace GUI_20212202_CM7A68.Renderer
         {
             get
             {
-                return new ImageBrush(new BitmapImage(new Uri(Path.Combine("Images","Bomb", "bomb1.png"), UriKind.RelativeOrAbsolute)));
+                return new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images","Bomb", "bomb1.png"), UriKind.RelativeOrAbsolute)));
             }
         }
         protected override void OnRender(DrawingContext drawingContext)
@@ -46,14 +46,13 @@ namespace GUI_20212202_CM7A68.Renderer
                     drawingContext.DrawRectangle(BombBrush, null, new Rect(bomb.Center.X - area.Width / 24, bomb.Center.Y - area.Width / 24, area.Width / 12, area.Height / 12));
                     string bomb_hp = BombHp(bomb);
 
-                    drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Images","BombHp", "Heath", bomb_hp),
+                    drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images","BombHp", "Heath", bomb_hp),
                     UriKind.RelativeOrAbsolute))), null, new Rect(bomb.Center.X - area.Width / 24, bomb.Center.Y + area.Height / 35, area.Width / 22, area.Height / 30));
                     ;
 
                 }
             }
         }
-
         //(ezt a metódust le se nyissátok xd)
         private string BombHp(Bomb b)
         {

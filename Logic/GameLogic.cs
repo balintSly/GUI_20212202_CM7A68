@@ -17,13 +17,6 @@ namespace GUI_20212202_CM7A68.Logic
             Bombs = new List<Bomb>();
             this.area = area;
         }
-        public void NewBomb()
-        {
-            Bombs.Add(new FallingBomb(new System.Drawing.Point(200, 550)));
-            Bombs.Add(new ThrowingBomb(new System.Drawing.Point(1000, 550), -1));
-            Bombs.Add(new ThrowingBomb(new System.Drawing.Point(400, 550), 1));
-
-        }
         public void TimeStep()
         {
             //TODO: minden mozgatást, állapotváltozást, ütközést itt állítani, ez 20ms-ként le fog futni
@@ -39,5 +32,16 @@ namespace GUI_20212202_CM7A68.Logic
             }
         }
 
+        //zuhanó bomba létrehozása
+        public void NewFallingBomb(System.Windows.Point robotPos)
+        {
+            Bombs.Add(new FallingBomb(new System.Drawing.Point((int)robotPos.X, (int)robotPos.Y)));
+        }
+
+        //dobálós bomba létrehozása
+        public void NewThrowingBomb(System.Windows.Point robotPos, int direction)
+        {
+            Bombs.Add(new ThrowingBomb(new System.Drawing.Point((int)robotPos.X, (int)robotPos.Y), direction));
+        }
     }
 }
