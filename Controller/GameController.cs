@@ -25,7 +25,7 @@ namespace GUI_20212202_CM7A68.Controller
                 case Key.Up:
                     if (logic.Robot2IsJumping == false && robot2IsInAir==false)
                     {
-                        robot2IsInAir = true;
+                        robot2IsInAir = true; //letiltja, hogy ne lehessen double jumpolni lényegében
                         logic.Robot2IsJumping = true;
                         for (int i = 0; i < 30; i++)
                         {

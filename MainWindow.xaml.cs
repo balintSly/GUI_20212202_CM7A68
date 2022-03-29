@@ -34,7 +34,7 @@ namespace GUI_20212202_CM7A68
             controller = new GameController(logic);
             DispatcherTimer gametimer=new DispatcherTimer();
             timeToDecrease = TimeSpan.FromMinutes(3);
-            display.Time = "03:00";
+            display.Time = "03:00"; //az visszaszámláló alaphelyzete
             gametimer.Interval = TimeSpan.FromMilliseconds(17);
             gametimer.Tick += Gametimer_Tick;
             gametimer.Start();
@@ -44,11 +44,11 @@ namespace GUI_20212202_CM7A68
         private void Gametimer_Tick(object? sender, EventArgs e)
         {
             logic.TimeStep();
-            totalms += 17;
+            totalms += 17; // egy időztő van, kb. összeadjuk a delayeket, és durván másodpercenként kivonunk 1 secet az alap 3 percből
             if (totalms%680==0 && timeToDecrease.TotalSeconds!=0)
             {
                 timeToDecrease -= TimeSpan.FromSeconds(1);
-                display.Time=timeToDecrease.ToString(@"mm\:ss");
+                display.Time=timeToDecrease.ToString(@"mm\:ss"); //átadjuk a visszamaradó időt a displaynek mint string
             }
             display.InvalidateVisual();
         }

@@ -18,9 +18,9 @@ namespace GUI_20212202_CM7A68.Logic
         public bool Robot1IsJumping { get; set; }
         public bool Robot2IsJumping { get; set; }
 
-        int robotspeedX;
-        int robotspeedY;
-        bool spawned;
+        int robotspeedX; //mozgás sebessége
+        int robotspeedY; //ugrás sebessége
+        bool spawned; //true, ha már létrehoztuk a robotokat
         public enum Directions
         {
             up, down, left, right
@@ -34,7 +34,7 @@ namespace GUI_20212202_CM7A68.Logic
                 this.Robot2 = new Robot(new Point((int)(area.Width * 0.9), (int)(area.Height * 0.8)));
                 spawned = true;
             }
-            Robot1.Center = new Point(area.Width / 10, (int)(area.Height * 0.8));
+            Robot1.Center = new Point(area.Width / 10, (int)(area.Height * 0.8));//robotok spawnpointja
             Robot2.Center = new Point((int)(area.Width * 0.9), (int)(area.Height * 0.8));
             robotspeedX = area.Width / 50;
             robotspeedY = area.Height / 50;
@@ -74,7 +74,7 @@ namespace GUI_20212202_CM7A68.Logic
                     break;
             }
         }
-        public void Robot1Descend()
+        public void Robot1Descend() //segédmetódus az ugráshoz
         {
             var oldpos = Robot1.Center;
             if (oldpos.Y + robotspeedY <=area.Height*0.8)
