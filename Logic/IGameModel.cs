@@ -1,5 +1,6 @@
 ﻿using GUI_20212202_CM7A68.Models;
-using System.Drawing;
+using System.Collections.Generic;
+using System.Windows;
 
 namespace GUI_20212202_CM7A68.Logic
 {
@@ -11,5 +12,8 @@ namespace GUI_20212202_CM7A68.Logic
         bool Robot1IsMoving { get; set; } //ezen keresztül tudja a renderer, hogy mozog a robot
         bool Robot2IsMoving { get; set; }
 
+        List<Bomb> Bombs { get; set; }
+        void NewFallingBomb(Point robotPos);
+        void NewThrowingBomb(Point robotPos, int direction);
     }
 }

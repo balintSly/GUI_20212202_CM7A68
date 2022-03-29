@@ -25,8 +25,10 @@ namespace GUI_20212202_CM7A68.Logic
         {
             up, down, left, right
         }
+        public List<Bomb> Bombs { get; set; }
         public void SetupSize(Size area)
         {
+            Bombs = new List<Bomb>();
             this.area = area;
             if (!spawned)
             {
@@ -42,6 +44,16 @@ namespace GUI_20212202_CM7A68.Logic
         public void TimeStep()
         {
             //TODO: minden mozgatást, állapotváltozást, ütközést itt állítani, ez 20ms-ként le fog futni
+            for (int i = 0; i < Bombs.Count; i++)
+            {
+                Bombs[i].Move(600, new System.Drawing.Size((int)area.Width, (int)area.Height));
+                Bombs[i].Heal -= 1;
+                if (Bombs[i].Heal <= 0)
+                {
+                    Bombs.RemoveAt(i);
+                    //robbanás meghívása itt lehetséges lenne
+                }
+            }
         }
 
         public void MoveRobot1(Directions direction)
@@ -82,6 +94,11 @@ namespace GUI_20212202_CM7A68.Logic
                 Robot1.Center = new Point(oldpos.X, oldpos.Y + robotspeedY);
             }
         }
+        //zuhanó bomba létrehozása
+        public void NewFallingBomb(System.Windows.Point robotPos)
+        {
+            Bombs.Add(new FallingBomb(new System.Drawing.Point((int)robotPos.X, (int)robotPos.Y)));
+        }
 
         public void MoveRobot2(Directions direction)
         {
@@ -120,6 +137,11 @@ namespace GUI_20212202_CM7A68.Logic
             {
                 Robot2.Center = new Point(oldpos.X, oldpos.Y + robotspeedY);
             }
+        }
+        //dobálós bomba létrehozása
+        public void NewThrowingBomb(System.Windows.Point robotPos, int direction)
+        {
+            Bombs.Add(new ThrowingBomb(new System.Drawing.Point((int)robotPos.X, (int)robotPos.Y), direction));
         }
     }
 }
