@@ -9,11 +9,95 @@
 
   <ItemGroup>
     <None Remove="Renderer\Images\Backgrounds\mkmap1.jpg" />
+    <None Remove="Renderer\Images\BombHp\Heath\Helath_0_pecent.png" />
+    <None Remove="Renderer\Images\BombHp\Heath\Helath_100_pecent.png" />
+    <None Remove="Renderer\Images\BombHp\Heath\Helath_10_pecent.png" />
+    <None Remove="Renderer\Images\BombHp\Heath\Helath_15_pecent.png" />
+    <None Remove="Renderer\Images\BombHp\Heath\Helath_20_pecent.png" />
+    <None Remove="Renderer\Images\BombHp\Heath\Helath_25_pecent.png" />
+    <None Remove="Renderer\Images\BombHp\Heath\Helath_30_pecent.png" />
+    <None Remove="Renderer\Images\BombHp\Heath\Helath_35_pecent.png" />
+    <None Remove="Renderer\Images\BombHp\Heath\Helath_40_pecent.png" />
+    <None Remove="Renderer\Images\BombHp\Heath\Helath_45_pecent.png" />
+    <None Remove="Renderer\Images\BombHp\Heath\Helath_50_pecent.png" />
+    <None Remove="Renderer\Images\BombHp\Heath\Helath_55_pecent.png" />
+    <None Remove="Renderer\Images\BombHp\Heath\Helath_5_pecent.png" />
+    <None Remove="Renderer\Images\BombHp\Heath\Helath_60_pecent.png" />
+    <None Remove="Renderer\Images\BombHp\Heath\Helath_65_pecent.png" />
+    <None Remove="Renderer\Images\BombHp\Heath\Helath_70_pecent.png" />
+    <None Remove="Renderer\Images\BombHp\Heath\Helath_75_pecent.png" />
+    <None Remove="Renderer\Images\BombHp\Heath\Helath_80_pecent.png" />
+    <None Remove="Renderer\Images\BombHp\Heath\Helath_85_pecent.png" />
+    <None Remove="Renderer\Images\BombHp\Heath\Helath_90_pecent.png" />
+    <None Remove="Renderer\Images\BombHp\Heath\Helath_95_pecent.png" />
     <None Remove="Renderer\Images\Bomb\bomb1.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="Renderer\Images\Backgrounds\mkmap1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\BombHp\Heath\Helath_0_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\BombHp\Heath\Helath_100_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\BombHp\Heath\Helath_10_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\BombHp\Heath\Helath_15_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\BombHp\Heath\Helath_20_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\BombHp\Heath\Helath_25_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\BombHp\Heath\Helath_30_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\BombHp\Heath\Helath_35_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\BombHp\Heath\Helath_40_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\BombHp\Heath\Helath_45_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\BombHp\Heath\Helath_50_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\BombHp\Heath\Helath_55_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\BombHp\Heath\Helath_5_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\BombHp\Heath\Helath_60_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\BombHp\Heath\Helath_65_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\BombHp\Heath\Helath_70_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\BombHp\Heath\Helath_75_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\BombHp\Heath\Helath_80_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\BombHp\Heath\Helath_85_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\BombHp\Heath\Helath_90_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\BombHp\Heath\Helath_95_pecent.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Renderer\Images\Bomb\bomb1.png">
