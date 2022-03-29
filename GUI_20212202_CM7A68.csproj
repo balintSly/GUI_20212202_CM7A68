@@ -8,11 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Renderer\Images\Backgrounds\BomberManEffect.png" />
     <None Remove="Renderer\Images\Backgrounds\mkmap1.jpg" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Models\" />
   </ItemGroup>
 
   <ItemGroup>
