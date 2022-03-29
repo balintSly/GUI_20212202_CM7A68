@@ -18,16 +18,17 @@ namespace GUI_20212202_CM7A68.Models
         public int Damage { get; set; }     
         public int ExplosionHeight { get; set; }
         public int ExplosionWidth { get; set; }                 
-        List<string> CenterAnim { get; set; }        // contains the paths for the required animations
-        List<string> LeftAnim { get; set; }        
-        List<string> TopAnim { get; set; }        
-        List<string> RightAnim { get; set; }        
-        List<string> BottomAnim { get; set; }
-        List<string> SideContAnim { get; set; }
-        List<string> VertContAnim { get; set; }
+        public List<string> CenterAnim { get; set; }        // contains the paths for the required animations   //MAYBE: change lists to queue to make animating easier
+        public List<string> LeftAnim { get; set; }
+        public List<string> TopAnim { get; set; }
+        public List<string> RightAnim { get; set; }
+        public List<string> BottomAnim { get; set; }
+        public List<string> SideContAnim { get; set; }
+        public List<string> VertContAnim { get; set; }
 
         Robot friendly;
         Size area;
+
         void InitLists()
         {
             CenterAnim = new List<string>();
@@ -49,21 +50,18 @@ namespace GUI_20212202_CM7A68.Models
                 {
                     partLists[i].Add(Path.Combine("Renderer", "Images", "Explosions", "Bomberman", $"{fileNames[i]}{j}.png"));
                 }
-            }
-            ;
-                          
-               
+            }              
         }
 
-        public Explosion(Robot friendly, Size area ,Point Center)    // maybe expect dmg, width and height as parameters
+        public Explosion(/*Robot friendly,*/ Size area ,Point Center)    // maybe expect dmg, width and height as parameters    //area is needed to check for surroundings in Detonate()
         {
             InitLists();
             SetupAnims();
-            this.friendly = friendly;
+            //this.friendly = friendly;
             this.Center = Center;
             this.area = area;
             
-            //temporary hardcode
+            //temporary hardcode 
             ExplosionHeight = 2;
             ExplosionWidth = 4;
             //

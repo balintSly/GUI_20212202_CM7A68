@@ -1,4 +1,5 @@
 ﻿using GUI_20212202_CM7A68.Logic;
+using GUI_20212202_CM7A68.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -29,6 +30,11 @@ namespace GUI_20212202_CM7A68.Renderer
             base.OnRender(drawingContext);
             drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "Backgrounds", "mkmap1.jpg"), 
                 UriKind.RelativeOrAbsolute))), null, new Rect(0,0,area.Width, area.Height));
+        }
+
+        public void DrawExplosion(DrawingContext drawingContext, Explosion explosion, int animationPhase)
+        {
+            drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(explosion.CenterAnim[animationPhase], UriKind.RelativeOrAbsolute))), null, new Rect(area.Width, area.Height));
         }
     }
 }
