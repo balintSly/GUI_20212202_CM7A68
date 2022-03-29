@@ -27,12 +27,12 @@ namespace GUI_20212202_CM7A68.Controller
                     {
                         robot2IsInAir = true; //letiltja, hogy ne lehessen double jumpolni lényegében
                         logic.Robot2IsJumping = true;
-                        for (int i = 0; i < 30; i++)
+                        for (int i = 0; i < 20; i++)
                         {
                             await Task.Delay(1);
                             logic.MoveRobot2(Directions.up);
                         }
-                        for (int i = 0; i < 30; i++)
+                        for (int i = 0; i < 20; i++)
                         {
                             await Task.Delay(1);
                             logic.Robot2Descend();

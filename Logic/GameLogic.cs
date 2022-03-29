@@ -46,7 +46,7 @@ namespace GUI_20212202_CM7A68.Logic
             //TODO: minden mozgatást, állapotváltozást, ütközést itt állítani, ez 20ms-ként le fog futni
             for (int i = 0; i < Bombs.Count; i++)
             {
-                Bombs[i].Move(600, new System.Drawing.Size((int)area.Width, (int)area.Height));
+                Bombs[i].Move((int)(area.Height*0.8), new System.Drawing.Size((int)area.Width, (int)area.Height));
                 Bombs[i].Heal -= 1;
                 if (Bombs[i].Heal <= 0)
                 {
@@ -80,6 +80,7 @@ namespace GUI_20212202_CM7A68.Logic
                     if (oldpos.X + 2 * robotspeedX <= area.Width)
                     {
                         Robot1.Center = new Point(oldpos.X + robotspeedX, oldpos.Y);
+                        //NewThrowingBomb(Robot1.Center, Robot1.Center.X>Robot2.Center.X ? -1: 1);
                     }
                     break;
                 default:

@@ -62,7 +62,7 @@ namespace GUI_20212202_CM7A68.Models
                 if (Center.Y - Speed.Y <= Floor)
                 {
                     //ennyit megy felfelé
-                    if (x <= Speed.X * 5)
+                    if (x <= Speed.X * 4)
                     {
                         x++;
                         System.Drawing.Point newCenter_up =
@@ -71,7 +71,7 @@ namespace GUI_20212202_CM7A68.Models
                         Center = newCenter_up;
                     }
                     //vízszintes irány
-                    else if (x >= Speed.X * 5 && x <= Speed.X * 7)
+                    else if (x >= Speed.X * 4 && x <= Speed.X * 6)
                     {
                         x++;
                         System.Drawing.Point newCenter_cons =
@@ -94,7 +94,7 @@ namespace GUI_20212202_CM7A68.Models
                 if (Center.Y - Speed.Y <= Floor)
                 {
                     //felfelé
-                    if (x < Speed.X * 5)
+                    if (x < Speed.X * 4)
                     {
                         x++;
                         System.Drawing.Point newCenter_up =
@@ -103,7 +103,7 @@ namespace GUI_20212202_CM7A68.Models
                         Center = newCenter_up;
                     }
                     //vízszintes
-                    else if (x >= Speed.X * 5 && x <= Speed.X * 7)
+                    else if (x >= Speed.X * 4 && x <= Speed.X * 6)
                     {
                         x++;
                         System.Drawing.Point newCenter_cons =
