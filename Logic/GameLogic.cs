@@ -1,7 +1,7 @@
 ﻿using GUI_20212202_CM7A68.Models;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
+using System.Windows;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,8 +38,8 @@ namespace GUI_20212202_CM7A68.Logic
             }
             Robot1.Center = new Point(area.Width / 10, (int)(area.Height * 0.8));//robotok spawnpointja
             Robot2.Center = new Point((int)(area.Width * 0.9), (int)(area.Height * 0.8));
-            robotspeedX = area.Width / 50;
-            robotspeedY = area.Height / 50;
+            robotspeedX = (int)area.Width / 50;
+            robotspeedY = (int)area.Height / 50;
         }
         public void TimeStep()
         {

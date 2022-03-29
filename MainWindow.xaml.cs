@@ -56,13 +56,13 @@ namespace GUI_20212202_CM7A68
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             display.SetupSize(new Size(mainGrid.ActualWidth, mainGrid.ActualHeight));
-            logic.SetupSize(new System.Drawing.Size((int)mainGrid.ActualWidth, (int)mainGrid.ActualHeight));
+            logic.SetupSize(new Size((int)mainGrid.ActualWidth, (int)mainGrid.ActualHeight));
         }
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             display.SetupSize(new Size(mainGrid.ActualWidth, mainGrid.ActualHeight));
-            logic.SetupSize(new System.Drawing.Size((int)mainGrid.ActualWidth, (int)mainGrid.ActualHeight));
+            logic.SetupSize(new Size((int)mainGrid.ActualWidth, (int)mainGrid.ActualHeight));
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
