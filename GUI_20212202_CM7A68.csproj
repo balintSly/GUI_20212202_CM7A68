@@ -10,6 +10,55 @@
   <ItemGroup>
     <None Remove="Renderer\Images\Backgrounds\BomberManEffect.png" />
     <None Remove="Renderer\Images\Backgrounds\mkmap1.jpg" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\bottom0.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\bottom1.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\bottom2.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\bottom3.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\bottom4.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\bottom5.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\bottom6.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\center0.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\center1.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\center2.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\center3.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\center4.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\center5.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\center6.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\left0.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\left1.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\left2.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\left3.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\left4.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\left5.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\left6.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\right0.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\right1.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\right2.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\right3.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\right4.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\right5.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\right6.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\sidecont0.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\sidecont1.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\sidecont2.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\sidecont3.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\sidecont4.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\sidecont5.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\sidecont6.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\top0.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\top1.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\top2.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\top3.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\top4.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\top5.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\top6.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\vertcont0.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\vertcont1.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\vertcont2.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\vertcont3.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\vertcont4.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\vertcont5.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\vertcont6.png" />
     <None Remove="Renderer\Images\HUD\Armor\Armor_0_pecent.png" />
     <None Remove="Renderer\Images\HUD\Armor\Armor_100_pecent.png" />
     <None Remove="Renderer\Images\HUD\Armor\Armor_10_pecent.png" />
@@ -85,6 +134,153 @@
 
   <ItemGroup>
     <Content Include="Renderer\Images\Backgrounds\mkmap1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\bottom0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\bottom1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\bottom2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\bottom3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\bottom4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\bottom5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\bottom6.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\center0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\center1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\center2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\center3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\center4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\center5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\center6.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\left0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\left1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\left2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\left3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\left4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\left5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\left6.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\right0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\right1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\right2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\right3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\right4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\right5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\right6.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\sidecont0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\sidecont1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\sidecont2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\sidecont3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\sidecont4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\sidecont5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\sidecont6.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\top0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\top1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\top2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\top3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\top4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\top5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\top6.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\vertcont0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\vertcont1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\vertcont2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\vertcont3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\vertcont4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\vertcont5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\vertcont6.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Renderer\Images\HUD\Armor\Armor_0_pecent.png">
@@ -303,10 +499,6 @@
     <Content Include="Renderer\Images\Backgrounds\mkmap1.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Renderer\Images\Explosions\Bomberman\" />
   </ItemGroup>
 
 </Project>
