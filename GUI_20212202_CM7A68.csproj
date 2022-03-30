@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Renderer\Images\Backgrounds\BomberManEffect.png" />
     <None Remove="Renderer\Images\Backgrounds\mkmap1.jpg" />
     <None Remove="Renderer\Images\HUD\Armor\Armor_0_pecent.png" />
     <None Remove="Renderer\Images\HUD\Armor\Armor_100_pecent.png" />
@@ -299,6 +300,13 @@
     <Content Include="Renderer\Images\Bomb\bomb1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Renderer\Images\Backgrounds\mkmap1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Renderer\Images\Explosions\Bomberman\" />
   </ItemGroup>
 
 </Project>
