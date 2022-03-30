@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
+using System.Windows;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -16,8 +16,9 @@ namespace GUI_20212202_CM7A68.Models
     {
         public Point Center { get; set; }
         public int Damage { get; set; }     
-        public int ExplosionHeight { get; set; }
-        public int ExplosionWidth { get; set; }                 
+        public int Height { get; set; }
+        public int Width { get; set; }
+        public Size PartSize { get; set; }                  // required for rendering
         public List<string> CenterAnim { get; set; }        // contains the paths for the required animations   //MAYBE: change lists to queue to make animating easier
         public List<string> LeftAnim { get; set; }
         public List<string> TopAnim { get; set; }
@@ -26,8 +27,7 @@ namespace GUI_20212202_CM7A68.Models
         public List<string> SideContAnim { get; set; }
         public List<string> VertContAnim { get; set; }
 
-        Robot friendly;
-        Size area;
+        Size gameArea;
 
         void InitLists()
         {
@@ -53,25 +53,42 @@ namespace GUI_20212202_CM7A68.Models
             }              
         }
 
-        public Explosion(/*Robot friendly,*/ Size area ,Point Center)    // maybe expect dmg, width and height as parameters    //area is needed to check for surroundings in Detonate()
+        public Explosion(Size gameArea ,Point Center, int Height = 1, int Width = 1, int Damage = 10)
         {
             InitLists();
             SetupAnims();
-            //this.friendly = friendly;
+            PartSize = new Size(gameArea.Width / 18, gameArea.Height / 8);
+            this.Damage = Damage;
             this.Center = Center;
-            this.area = area;
-            
-            //temporary hardcode 
-            ExplosionHeight = 2;
-            ExplosionWidth = 4;
-            //
+            this.gameArea = gameArea;
+
+            this.Height = Height;
+            this.Width = Width;
+
 
         }
 
-        public void Detonate()
+
+        public void Detonate(Rect robot1, Rect robot2)  //hitbox.IntersectsWith(robotRect)
         {
+            Rect verticalHitBox = new Rect(
+                Center.X - (PartSize.Width / 2) - (Width * PartSize.Width),
+                Center.Y - (PartSize.Height / 2),
+                Width * PartSize.Width * 2 + PartSize.Width,
+                PartSize.Height
+                );
+
+            Rect HorizontalHitBox = new Rect(
+                Center.X - (PartSize.Width / 2),
+                Center.Y - (PartSize.Height / 2) - (Height * PartSize.Height),
+                PartSize.Width,
+                Height * 2 * PartSize.Height + PartSize.Height
+                );
+
+
             //TODO: Check surroundings for non-friendly robot
             //TODO: Call hit robot's GetDamaged(int damage) method
+
 
         }
 
