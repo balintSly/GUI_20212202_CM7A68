@@ -10,25 +10,25 @@ namespace GUI_20212202_CM7A68.Models
     public abstract class Bomb
     {
         public Vector Speed { get; set; }
-        public System.Drawing.Point Center { get; set; }
-        public abstract void Move(int Floor, System.Drawing.Size area);
+        public Point Center { get; set; }
+        public abstract void Move(int Floor, Size area);
         public double Heal { get; set; }
         public int Power { get; set; }
     }
 
     public class FallingBomb : Bomb
     {
-        public FallingBomb(System.Drawing.Point center)
+        public FallingBomb(Point center)
         {
             this.Center = center;
             Speed = new Vector(0, 2);
             Heal = 100;
             Power = 10;
         }
-        public override void Move(int Floor, System.Drawing.Size are)
+        public override void Move(int Floor, Size are)
         {
-            System.Drawing.Point newCenter =
-                new System.Drawing.Point(Center.X + (int)Speed.X,
+            Point newCenter =
+                new Point(Center.X + (int)Speed.X,
                 Center.Y + (int)Speed.Y);
             if (newCenter.Y <= Floor)
             {
@@ -39,7 +39,7 @@ namespace GUI_20212202_CM7A68.Models
     }
     internal class ThrowingBomb : Bomb
     {
-        public ThrowingBomb(System.Drawing.Point center, int directionX)
+        public ThrowingBomb(Point center, int directionX)
         {
             Center = center;
             this.direction = directionX;
@@ -54,7 +54,7 @@ namespace GUI_20212202_CM7A68.Models
 
 
         //TODO: pattogás a falról
-        public override void Move(int Floor, System.Drawing.Size area)
+        public override void Move(int Floor, Size area)
         {
             //jobbra
             if (direction == 1)
@@ -65,8 +65,8 @@ namespace GUI_20212202_CM7A68.Models
                     if (x <= Speed.X * 4)
                     {
                         x++;
-                        System.Drawing.Point newCenter_up =
-                                new System.Drawing.Point(Center.X + (int)Speed.X,
+                        Point newCenter_up =
+                                new Point(Center.X + (int)Speed.X,
                                 Center.Y - (int)Speed.Y);
                         Center = newCenter_up;
                     }
@@ -74,15 +74,15 @@ namespace GUI_20212202_CM7A68.Models
                     else if (x >= Speed.X * 4 && x <= Speed.X * 6)
                     {
                         x++;
-                        System.Drawing.Point newCenter_cons =
-                                new System.Drawing.Point(Center.X + (int)Speed.X,
+                        Point newCenter_cons =
+                                new Point(Center.X + (int)Speed.X,
                                 Center.Y);
                         Center = newCenter_cons;
                     }
                     //zuhanás
                     else
                     {
-                        System.Drawing.Point newCenter_down = new System.Drawing.Point(Center.X + (int)Speed.X,
+                        Point newCenter_down = new Point(Center.X + (int)Speed.X,
                                     Center.Y + (int)Speed.Y);
                         Center = newCenter_down;
                     }
@@ -97,8 +97,8 @@ namespace GUI_20212202_CM7A68.Models
                     if (x < Speed.X * 4)
                     {
                         x++;
-                        System.Drawing.Point newCenter_up =
-                                new System.Drawing.Point(Center.X - (int)Speed.X,
+                        Point newCenter_up =
+                                new Point(Center.X - (int)Speed.X,
                                 Center.Y - (int)Speed.Y);
                         Center = newCenter_up;
                     }
@@ -106,15 +106,15 @@ namespace GUI_20212202_CM7A68.Models
                     else if (x >= Speed.X * 4 && x <= Speed.X * 6)
                     {
                         x++;
-                        System.Drawing.Point newCenter_cons =
-                                new System.Drawing.Point(Center.X - (int)Speed.X,
+                        Point newCenter_cons =
+                                new Point(Center.X - (int)Speed.X,
                                 Center.Y);
                         Center = newCenter_cons;
                     }
                     //lefelé
                     else
                     {
-                        System.Drawing.Point newCenter_down = new System.Drawing.Point(Center.X - (int)Speed.X,
+                        Point newCenter_down = new Point(Center.X - (int)Speed.X,
                                     Center.Y + (int)Speed.Y);
                         Center = newCenter_down;
                     }

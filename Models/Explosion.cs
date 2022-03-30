@@ -19,14 +19,15 @@ namespace GUI_20212202_CM7A68.Models
         public int Height { get; set; }
         public int Width { get; set; }
         public Size PartSize { get; set; }                  // required for rendering
-        public List<string> CenterAnim { get; set; }        // contains the paths for the required animations   //MAYBE: change lists to queue to make animating easier
+        public int FrameCount { get; set; }
+        public bool LastFrameFlag { get; set; }
+        public List<string> CenterAnim { get; set; }        // contains the paths for the required animations  
         public List<string> LeftAnim { get; set; }
         public List<string> TopAnim { get; set; }
         public List<string> RightAnim { get; set; }
         public List<string> BottomAnim { get; set; }
         public List<string> SideContAnim { get; set; }
         public List<string> VertContAnim { get; set; }
-        public int FrameCount { get; set; }
 
         Size gameArea;
 
