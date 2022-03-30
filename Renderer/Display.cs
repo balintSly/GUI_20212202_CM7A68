@@ -33,9 +33,6 @@ namespace GUI_20212202_CM7A68.Renderer
                 UriKind.RelativeOrAbsolute))), null, new Rect(0,0,area.Width, area.Height));
             Explosion e = new Explosion(area, new Point(area.Width / 2, area.Height / 2));
             ExplosionFrame(drawingContext, e);
-
-            drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "Backgrounds", "mkmap1.jpg"),    //for testing purposes
-                UriKind.RelativeOrAbsolute))), null, e.Detonate());
         }
 
         public void ExplosionFrame(DrawingContext drawingContext, Explosion explosion, int animationPhase = 1)           //TODO: 0 range bomb
