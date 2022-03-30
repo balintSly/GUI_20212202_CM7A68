@@ -31,11 +31,15 @@ namespace GUI_20212202_CM7A68.Renderer
             base.OnRender(drawingContext);
             drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "Backgrounds", "mkmap1.jpg"), 
                 UriKind.RelativeOrAbsolute))), null, new Rect(0,0,area.Width, area.Height));
-            Explosion e = new Explosion(area, new Point(area.Width / 2, area.Height / 2));
-            ExplosionFrame(drawingContext, e);
+            Explosion e = new Explosion(area, new Point(area.Width / 2, area.Height / 2), 10, 2, 3);
+            Explosion e1 = new Explosion(area, new Point(area.Width / 3, area.Height / 2), 10, 1, 5);
+            Explosion e2 = new Explosion(area, new Point(area.Width / 4, area.Height / 3), 10, 3, 7);
+            DrawExplosion(drawingContext, e);
+            DrawExplosion(drawingContext, e1);
+            DrawExplosion(drawingContext, e2);
         }
 
-        public void ExplosionFrame(DrawingContext drawingContext, Explosion explosion)           //TODO: 0 range bomb
+        public void DrawExplosion(DrawingContext drawingContext, Explosion explosion)           //TODO: 0 range bomb
         {
             double cursorX;
             double cursorY;
@@ -44,7 +48,7 @@ namespace GUI_20212202_CM7A68.Renderer
             if (explosion.Height > 0)
             {
                 cursorX = explosion.Center.X - explosion.PartSize.Width / 2;    //set cursor to the bottom left corner of the center part
-                cursorY = explosion.Center.Y - explosion.PartSize.Height / 2;    //
+                cursorY = explosion.Center.Y - explosion.PartSize.Height / 2;   //
                 for (int i = 0; i < (explosion.Height * 2) + 2; i++)            //+2 to help place top and bottom parts
                 {
                     if (i < explosion.Height)                   //Upwards
@@ -166,14 +170,6 @@ namespace GUI_20212202_CM7A68.Renderer
                     explosion.PartSize.Height));
 
             ++explosion.FrameCount;
-        }
-        public void DrawExplosion(DrawingContext drawingContext, Explosion explosion)       //TODO: go through frames
-        {
-            //for (int i = 0; i < explosion.CenterAnim.Count; i++)
-            //{
-            //    Thread.Sleep(100);
-            //    ExplosionFrame(drawingContext, explosion, i);
-            //}
         }
     }
 }
