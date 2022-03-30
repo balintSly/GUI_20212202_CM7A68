@@ -23,7 +23,7 @@ namespace GUI_20212202_CM7A68.Logic
         bool spawned; //true, ha már létrehoztuk a robotokat
         public enum Directions
         {
-            up, down, left, right
+            up, down, left, right, bomb
         }
         public List<Bomb> Bombs { get; set; }
         public void SetupSize(Size area)
@@ -80,8 +80,10 @@ namespace GUI_20212202_CM7A68.Logic
                     if (oldpos.X + 2 * robotspeedX <= area.Width)
                     {
                         Robot1.Center = new Point(oldpos.X + robotspeedX, oldpos.Y);
-                        //NewThrowingBomb(Robot1.Center, Robot1.Center.X>Robot2.Center.X ? -1: 1);
                     }
+                    break;
+                case Directions.bomb:
+                    NewThrowingBomb(Robot1.Center, Robot1.Center.X > Robot2.Center.X ? -1 : 1);
                     break;
                 default:
                     break;
@@ -126,6 +128,9 @@ namespace GUI_20212202_CM7A68.Logic
                     {
                         Robot2.Center = new Point(oldpos.X + robotspeedX, oldpos.Y);
                     }
+                    break;
+                case Directions.bomb:
+                    NewThrowingBomb(Robot2.Center, Robot1.Center.X > Robot2.Center.X ? 1 : -1);
                     break;
                 default:
                     break;

@@ -65,7 +65,9 @@ namespace GUI_20212202_CM7A68.Controller
                         }
                     }
                     break;
-
+                case Key.RightShift:
+                    logic.MoveRobot2(Directions.bomb);
+                    break;
 
                 case Key.W:
                     if (logic.Robot1IsJumping==false && robot1IsInAir==false)
@@ -110,6 +112,9 @@ namespace GUI_20212202_CM7A68.Controller
                             logic.MoveRobot1(Directions.right);
                         }
                     }
+                    break;
+                case Key.Space:
+                    logic.MoveRobot1(Directions.bomb);
                     break;
                 default:
                     break;
