@@ -39,7 +39,7 @@ namespace GUI_20212202_CM7A68.Renderer
             DrawExplosion(drawingContext, e2);
         }
 
-        public void DrawExplosion(DrawingContext drawingContext, Explosion explosion)           //TODO: 0 range bomb
+        public void DrawExplosion(DrawingContext drawingContext, Explosion explosion)           //TODO: 0 range bomb    Call checkhitbox
         {
             double cursorX;
             double cursorY;
@@ -169,7 +169,15 @@ namespace GUI_20212202_CM7A68.Renderer
                     explosion.PartSize.Width,
                     explosion.PartSize.Height));
 
-            ++explosion.FrameCount;
+            
+            if (explosion.FrameCount == explosion.CenterAnim.Count())
+            {
+                explosion.FrameCount = 0;
+            }
+            else
+            {
+                ++explosion.FrameCount;
+            }
         }
     }
 }
