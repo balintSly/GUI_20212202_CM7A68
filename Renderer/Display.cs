@@ -35,7 +35,7 @@ namespace GUI_20212202_CM7A68.Renderer
             ExplosionFrame(drawingContext, e);
         }
 
-        public void ExplosionFrame(DrawingContext drawingContext, Explosion explosion, int animationPhase = 1)           //TODO: 0 range bomb
+        public void ExplosionFrame(DrawingContext drawingContext, Explosion explosion)           //TODO: 0 range bomb
         {
             double cursorX;
             double cursorY;
@@ -49,7 +49,7 @@ namespace GUI_20212202_CM7A68.Renderer
                 {
                     if (i < explosion.Height)                   //Upwards
                     {
-                        drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(explosion.VertContAnim[animationPhase], UriKind.RelativeOrAbsolute))), 
+                        drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(explosion.VertContAnim[explosion.FrameCount], UriKind.RelativeOrAbsolute))), 
                             null,
                             new Rect(
                             cursorX,
@@ -60,7 +60,7 @@ namespace GUI_20212202_CM7A68.Renderer
                     }
                     else if (i == explosion.Height)             //Top part
                     {
-                        drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(explosion.TopAnim[animationPhase], UriKind.RelativeOrAbsolute))),
+                        drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(explosion.TopAnim[explosion.FrameCount], UriKind.RelativeOrAbsolute))),
                             null,
                             new Rect(
                             cursorX,
@@ -74,7 +74,7 @@ namespace GUI_20212202_CM7A68.Renderer
                     else if(i < (explosion.Height * 2) + 1)                                        //Downwards
                     {
                         
-                        drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(explosion.VertContAnim[animationPhase], UriKind.RelativeOrAbsolute))),
+                        drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(explosion.VertContAnim[explosion.FrameCount], UriKind.RelativeOrAbsolute))),
                            null,
                            new Rect(
                            cursorX,
@@ -85,7 +85,7 @@ namespace GUI_20212202_CM7A68.Renderer
                     }
                     else
                     {
-                        drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(explosion.BottomAnim[animationPhase], UriKind.RelativeOrAbsolute))),
+                        drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(explosion.BottomAnim[explosion.FrameCount], UriKind.RelativeOrAbsolute))),
                             null,
                             new Rect(
                             cursorX,
@@ -107,7 +107,7 @@ namespace GUI_20212202_CM7A68.Renderer
                 {
                     if (i < explosion.Width)                   //LeftContinuation
                     {
-                        drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(explosion.SideContAnim[animationPhase], UriKind.RelativeOrAbsolute))),
+                        drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(explosion.SideContAnim[explosion.FrameCount], UriKind.RelativeOrAbsolute))),
                             null,
                             new Rect(
                             cursorX - explosion.PartSize.Width * i,
@@ -118,7 +118,7 @@ namespace GUI_20212202_CM7A68.Renderer
                     }
                     else if (i == explosion.Width)             //Leftmost
                     {
-                        drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(explosion.LeftAnim[animationPhase], UriKind.RelativeOrAbsolute))),
+                        drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(explosion.LeftAnim[explosion.FrameCount], UriKind.RelativeOrAbsolute))),
                             null,
                             new Rect(
                             cursorX - explosion.PartSize.Width * i,
@@ -132,7 +132,7 @@ namespace GUI_20212202_CM7A68.Renderer
                     else if (i < (explosion.Width * 2) + 1)                                        //RightContinuation
                     {
 
-                        drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(explosion.SideContAnim[animationPhase], UriKind.RelativeOrAbsolute))),
+                        drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(explosion.SideContAnim[explosion.FrameCount], UriKind.RelativeOrAbsolute))),
                            null,
                            new Rect(
                            cursorX + explosion.PartSize.Width * ((i - 1) % explosion.Width),
@@ -143,7 +143,7 @@ namespace GUI_20212202_CM7A68.Renderer
                     }
                     else                                                                           //RightMost
                     {
-                        drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(explosion.RightAnim[animationPhase], UriKind.RelativeOrAbsolute))),
+                        drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(explosion.RightAnim[explosion.FrameCount], UriKind.RelativeOrAbsolute))),
                             null,
                             new Rect(
                             cursorX + explosion.PartSize.Width * (explosion.Width),
@@ -157,13 +157,15 @@ namespace GUI_20212202_CM7A68.Renderer
             #endregion
 
             //Center piece
-            drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(explosion.CenterAnim[animationPhase], UriKind.RelativeOrAbsolute))),
+            drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(explosion.CenterAnim[explosion.FrameCount], UriKind.RelativeOrAbsolute))),
                 null,
                 new Rect(
                     explosion.Center.X - explosion.PartSize.Width / 2,
                     explosion.Center.Y - explosion.PartSize.Height / 2,
                     explosion.PartSize.Width,
                     explosion.PartSize.Height));
+
+            ++explosion.FrameCount;
         }
         public void DrawExplosion(DrawingContext drawingContext, Explosion explosion)       //TODO: go through frames
         {
