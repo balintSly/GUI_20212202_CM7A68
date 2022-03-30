@@ -26,6 +26,7 @@ namespace GUI_20212202_CM7A68.Models
         public List<string> BottomAnim { get; set; }
         public List<string> SideContAnim { get; set; }
         public List<string> VertContAnim { get; set; }
+        public int FrameCount { get; set; }
 
         Size gameArea;
 
@@ -61,6 +62,7 @@ namespace GUI_20212202_CM7A68.Models
             this.Damage = Damage;
             this.Center = Center;
             this.gameArea = gameArea;
+            FrameCount = 0;
 
             this.Height = Height;
             this.Width = Width;
