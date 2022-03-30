@@ -54,7 +54,7 @@ namespace GUI_20212202_CM7A68.Models
             }              
         }
 
-        public Explosion(Size gameArea ,Point Center, int Height = 1, int Width = 1, int Damage = 10)
+        public Explosion(Size gameArea ,Point Center, int Damage = 10, int Height = 1, int Width = 1)
         {
             InitLists();
             SetupAnims();
@@ -71,7 +71,7 @@ namespace GUI_20212202_CM7A68.Models
         }
 
 
-        public void Detonate(Rect robot1, Rect robot2)  //hitbox.IntersectsWith(robotRect)
+        public void CheckHitBox(Robot Robot1, Robot Robot2)  
         {
             Rect verticalHitBox = new Rect(
                 Center.X - (PartSize.Width / 2) - (Width * PartSize.Width),
@@ -87,9 +87,16 @@ namespace GUI_20212202_CM7A68.Models
                 Height * 2 * PartSize.Height + PartSize.Height
                 );
 
-
-            //TODO: Check surroundings for non-friendly robot
-            //TODO: Call hit robot's GetDamaged(int damage) method
+            Rect robot1Rect = new Rect(Robot1.Center.X - gameArea.Width / 12, Robot1.Center.Y - gameArea.Height / 6, gameArea.Width / 6, gameArea.Height / 3);
+            Rect robot2Rect = new Rect(Robot2.Center.X - gameArea.Width / 12, Robot2.Center.Y - gameArea.Height / 6, gameArea.Width / 6, gameArea.Height / 3);
+            if (verticalHitBox.IntersectsWith(robot1Rect) || HorizontalHitBox.IntersectsWith(robot1Rect))
+            {
+                Robot1.Health -= Damage;
+            }
+            if (verticalHitBox.IntersectsWith(robot2Rect) || HorizontalHitBox.IntersectsWith(robot2Rect))
+            {
+                Robot2.Health -= Damage;
+            }
 
 
         }
