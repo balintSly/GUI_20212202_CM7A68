@@ -19,15 +19,18 @@ namespace GUI_20212202_CM7A68.Models
         public int Height { get; set; }
         public int Width { get; set; }
         public Size PartSize { get; set; }                  // required for rendering
-        public List<string> CenterAnim { get; set; }        // contains the paths for the required animations   //MAYBE: change lists to queue to make animating easier
+        public int FrameCount { get; set; }
+        public bool LastFrameFlag { get; set; }
+        public List<string> CenterAnim { get; set; }        // contains the paths for the required animations  
         public List<string> LeftAnim { get; set; }
         public List<string> TopAnim { get; set; }
         public List<string> RightAnim { get; set; }
         public List<string> BottomAnim { get; set; }
         public List<string> SideContAnim { get; set; }
         public List<string> VertContAnim { get; set; }
-        public int FrameCount { get; set; }
 
+        bool robot1HitFlag = false;
+        bool robot2HitFlag = false;
         Size gameArea;
 
         void InitLists()
@@ -89,13 +92,15 @@ namespace GUI_20212202_CM7A68.Models
 
             Rect robot1Rect = new Rect(Robot1.Center.X - gameArea.Width / 12, Robot1.Center.Y - gameArea.Height / 6, gameArea.Width / 6, gameArea.Height / 3);
             Rect robot2Rect = new Rect(Robot2.Center.X - gameArea.Width / 12, Robot2.Center.Y - gameArea.Height / 6, gameArea.Width / 6, gameArea.Height / 3);
-            if (verticalHitBox.IntersectsWith(robot1Rect) || HorizontalHitBox.IntersectsWith(robot1Rect))
+            if (!robot1HitFlag && (verticalHitBox.IntersectsWith(robot1Rect) || HorizontalHitBox.IntersectsWith(robot1Rect)))
             {
                 Robot1.Health -= Damage;
+                robot1HitFlag = true;
             }
-            if (verticalHitBox.IntersectsWith(robot2Rect) || HorizontalHitBox.IntersectsWith(robot2Rect))
+            if (!robot2HitFlag && (verticalHitBox.IntersectsWith(robot2Rect) || HorizontalHitBox.IntersectsWith(robot2Rect)))
             {
                 Robot2.Health -= Damage;
+                robot2HitFlag = true;
             }
 
 

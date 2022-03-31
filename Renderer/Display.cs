@@ -177,6 +177,11 @@ namespace GUI_20212202_CM7A68.Renderer
                     ;
 
                 }
+                foreach (var explosion in model.Explosions)
+                {
+                    DrawExplosion(drawingContext, explosion);
+                    explosion.CheckHitBox(model.Robot1, model.Robot2);
+                }
             }
             //(ezt a metódust le se nyissátok xd)
         }
@@ -399,14 +404,12 @@ namespace GUI_20212202_CM7A68.Renderer
                     explosion.PartSize.Height));
 
 
-            if (explosion.FrameCount == explosion.CenterAnim.Count())
+            ++explosion.FrameCount;
+            if (explosion.FrameCount == explosion.CenterAnim.Count)
             {
-                explosion.FrameCount = 0;
+                explosion.LastFrameFlag = true;
             }
-            else
-            {
-                ++explosion.FrameCount;
-            }
+                
         }
     }
 }

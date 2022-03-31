@@ -13,6 +13,7 @@ namespace GUI_20212202_CM7A68.Logic
         bool Robot2IsMoving { get; set; }
 
         List<Bomb> Bombs { get; set; }
+        List<Explosion> Explosions { get; set; }
         void NewFallingBomb(Point robotPos);
         void NewThrowingBomb(Point robotPos, int direction);
     }
