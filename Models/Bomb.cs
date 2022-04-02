@@ -21,7 +21,7 @@ namespace GUI_20212202_CM7A68.Models
         public FallingBomb(Point center)
         {
             this.Center = center;
-            Speed = new Vector(0, 2);
+            Speed = new Vector(0, 3);
             Heal = 100;
             Power = 10;
         }
@@ -46,7 +46,7 @@ namespace GUI_20212202_CM7A68.Models
             x = 0;
             Heal = 100;
             Power = 20;
-            Speed = new Vector(4, 6);
+            Speed = new Vector(6, 6);
         }
         double x;
         //direction: melyik irányba kell dobni, 1-jobbra, (-1)-balra
@@ -71,7 +71,7 @@ namespace GUI_20212202_CM7A68.Models
                         Center = newCenter_up;
                     }
                     //vízszintes irány
-                    else if (x >= Speed.X * 4 && x <= Speed.X * 6)
+                    else if (x >= Speed.X * 4 && x <= Speed.X * 5)
                     {
                         x++;
                         Point newCenter_cons =
@@ -103,7 +103,7 @@ namespace GUI_20212202_CM7A68.Models
                         Center = newCenter_up;
                     }
                     //vízszintes
-                    else if (x >= Speed.X * 4 && x <= Speed.X * 6)
+                    else if (x >= Speed.X * 4 && x <= Speed.X * 5)
                     {
                         x++;
                         Point newCenter_cons =
