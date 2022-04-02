@@ -54,7 +54,10 @@ namespace GUI_20212202_CM7A68.Renderer
                 #region startup
                 if (!MenuLoaded)
                 {
-                    drawingContext.DrawRectangle(Brushes.Aqua, null, new Rect(0, 0, area.Width, area.Height)); //loading screen
+                    drawingContext.DrawRectangle(Brushes.Black, null, new Rect(0, 0, area.Width, area.Height)); //loading screen
+                    drawingContext.DrawText(new FormattedText("Todo loading", System.Globalization.CultureInfo.CurrentCulture,
+                       FlowDirection.LeftToRight, new Typeface(new FontFamily("Consolas"), FontStyles.Normal, FontWeights.Bold,
+                       FontStretches.Normal), area.Height * 0.05, Brushes.Red), new Point(area.Width*0.4, area.Height/2));
                 }
                 #endregion
                 else
