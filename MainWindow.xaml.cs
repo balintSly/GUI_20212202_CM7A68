@@ -45,11 +45,12 @@ namespace GUI_20212202_CM7A68
         {
             logic.TimeStep();
             totalms += 17; // egy időztő van, kb. összeadjuk a delayeket, és durván másodpercenként kivonunk 1 secet az alap 3 percből
-            if (totalms%680==0 && timeToDecrease.TotalSeconds!=0)
+            if (totalms%680==0 && timeToDecrease.TotalSeconds!=0 && display.GameStarted)
             {
                 timeToDecrease -= TimeSpan.FromSeconds(1);
                 display.Time=timeToDecrease.ToString(@"mm\:ss"); //átadjuk a visszamaradó időt a displaynek mint string
             }
+            display.TimeFromGameStart+=TimeSpan.FromSeconds(17);
             display.InvalidateVisual();
         }
 
