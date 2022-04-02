@@ -15,7 +15,7 @@
     </Window.DataContext>
     <Border BorderBrush="DarkRed" BorderThickness="5" Background="Transparent">
         <Grid x:Name="borderGrid">
-            <Grid x:Name="mainGrid" Margin="10" Visibility="Collapsed">
+            <Grid x:Name="mainGrid" Margin="10" Visibility="Visible">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="43*"/>
                     <ColumnDefinition Width="69*"/>
@@ -44,7 +44,7 @@
                        FontSize="30" Grid.Row="5" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" Click="Exit"/>
                 </Grid>
             </Grid>
-            <Grid x:Name="newGameGrid" Margin="10" Visibility="Visible">
+            <Grid x:Name="newGameGrid" Margin="10" Visibility="Collapsed">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="7*"/>
                     <RowDefinition Height="30*"/>
@@ -84,7 +84,7 @@
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
-                                            <Image Margin="3" Source="{Binding Path}" Height="50" Width="50"/>
+                                            <Image Margin="3" Source="{Binding}" Height="40" Width="40"/>
                                         </StackPanel>
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
@@ -106,7 +106,7 @@
                                 <Label Content="Nickname:" Grid.Column="0"/>
                                 <TextBox Grid.Column="1" Margin="3"/>
                             </Grid>
-                            <ListBox Grid.Row="2" Margin="10" ItemsSource="{Binding PlayerOneSkins}">
+                            <ListBox Grid.Row="2" Margin="10" ItemsSource="{Binding PlayerTwoSkins}">
                                 <ListBox.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <WrapPanel IsItemsHost="True"/>
@@ -115,7 +115,7 @@
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
-                                            <Image Margin="3" Source="{Binding Path}" Height="50" Width="50"/>
+                                            <Image Margin="3" Source="{Binding}" Height="40" Width="40"/>
                                         </StackPanel>
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
@@ -137,7 +137,7 @@
                             </ListBox.ItemsPanel>
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
-                                    <Image Margin="3" Source="{Binding Path}" Width="100" Height="100"/>
+                                    <Image Margin="3" Source="{Binding}" Height="70" Width="70"/>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
                         </ListBox>

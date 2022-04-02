@@ -16,7 +16,6 @@ namespace GUI_20212202_CM7A68.MenuWindows.ViewModels
         public MainMenuWindowViewModel()
         {
             var asd = Directory.GetCurrentDirectory();
-            var image= new BitmapImage(new Uri(Path.Combine(asd, "Renderer", "Images", "Backgrounds","mkmap1.jpg"), UriKind.RelativeOrAbsolute));
             Maps = Directory.GetFiles(Path.Combine(asd,"Renderer", "Images", "Backgrounds"), "*.jpg").ToList();
             PlayerOneSkins = Directory.GetFiles(Path.Combine(asd,"Renderer", "Images", "Robots"), "*.png").ToList();
             PlayerTwoSkins = Directory.GetFiles(Path.Combine(asd,"Renderer", "Images", "Robots"), "*.png").ToList();
