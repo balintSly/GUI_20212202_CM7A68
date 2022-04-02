@@ -20,6 +20,7 @@ namespace GUI_20212202_CM7A68.Renderer
         public string Time { get; set; }
         public TimeSpan TimeFromGameStart { get; set; }
         public bool GameStarted { get; set; }
+        public bool Quit { get; set; }
         public bool MenuLoaded { get { return TimeFromGameStart.TotalSeconds > 1000; } }
         public void SetupSize(Size area)
         {
@@ -58,6 +59,10 @@ namespace GUI_20212202_CM7A68.Renderer
                 #endregion
                 else
                 {
+                    if (true)
+                    {
+
+                    }
                     //map kirajzolás
                     GameStarted = true;
                     drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "Backgrounds", "mkmap1.jpg"),

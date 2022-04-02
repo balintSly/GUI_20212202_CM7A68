@@ -1,5 +1,6 @@
 ﻿using GUI_20212202_CM7A68.Controller;
 using GUI_20212202_CM7A68.Logic;
+using GUI_20212202_CM7A68.MenuWindows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,18 +30,31 @@ namespace GUI_20212202_CM7A68
         public MainWindow()
         {
             InitializeComponent();
+            var menu=new MainMenuWindow();
+            if (menu.ShowDialog()==true)
+            {
+                InitGame();
+            }
+            else
+            {
+                Application.Current.Shutdown();
+            }
+          
+        }
+        int totalms;
+        TimeSpan timeToDecrease;
+        public void InitGame()
+        {
             logic = new GameLogic();
             display.SetupModel(logic);
             controller = new GameController(logic);
-            DispatcherTimer gametimer=new DispatcherTimer();
+            DispatcherTimer gametimer = new DispatcherTimer();
             timeToDecrease = TimeSpan.FromMinutes(3);
             display.Time = "03:00"; //az visszaszámláló alaphelyzete
             gametimer.Interval = TimeSpan.FromMilliseconds(17);
             gametimer.Tick += Gametimer_Tick;
             gametimer.Start();
         }
-        int totalms;
-        TimeSpan timeToDecrease;
         private void Gametimer_Tick(object? sender, EventArgs e)
         {
             logic.TimeStep();
