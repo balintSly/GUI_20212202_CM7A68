@@ -60,7 +60,7 @@ namespace GUI_20212202_CM7A68.Models
             if (Center.Y - Speed.Y <= Floor)
             {
                 //ennyit megy felfelé
-                if (x <= Speed.X * 4)
+                if (x < 15)
                 {
                     x++;
                     Point newCenter_up =
@@ -69,7 +69,7 @@ namespace GUI_20212202_CM7A68.Models
                     Center = newCenter_up;
                 }
                 //vízszintes irány
-                else if (x >= Speed.X * 4 && x < Speed.X * 5)
+                else if (x >= 15 && x < 20)
                 {
                     x++;
                     Point newCenter_cons =
@@ -85,7 +85,7 @@ namespace GUI_20212202_CM7A68.Models
                     Center = newCenter_down;
                 }
             }
-            else if (x >= Speed.X * 5 && x < Speed.X * 6)
+            else if (x >= 20 && x < 27)
             {
                 x++;
                 Point newCenter_cons =
@@ -99,7 +99,7 @@ namespace GUI_20212202_CM7A68.Models
             if (Center.Y - Speed.Y <= Floor)
             {
                 //felfelé
-                if (x < Speed.X * 4)
+                if (x < 15)
                 {
                     x++;
                     Point newCenter_up =
@@ -108,7 +108,7 @@ namespace GUI_20212202_CM7A68.Models
                     Center = newCenter_up;
                 }
                 //vízszintes
-                else if (x >= Speed.X * 4 && x < Speed.X * 5)
+                else if (x >= 15 && x < 20)
                 {
                     x++;
                     Point newCenter_cons =
@@ -124,7 +124,7 @@ namespace GUI_20212202_CM7A68.Models
                     Center = newCenter_down;
                 }
             }
-            else if(x>=Speed.X*5 && x < Speed.X*6)
+            else if(x>=20 && x < 27)
             {
                 x++;
                 Point newCenter_cons =
@@ -140,13 +140,13 @@ namespace GUI_20212202_CM7A68.Models
             //jobbra
             if (direction == 1)
             {
-                if (Center.X <=Area.Width)
+                if (Center.X < Area.Width)
                 {
                     RightMove(Floor);
                 }
                 else
                 {
-                    x = Speed.X * 5;
+                    x = 20;
                     direction = -1;
                 }
 
@@ -155,13 +155,13 @@ namespace GUI_20212202_CM7A68.Models
             //balra
             else if (direction == -1)
             {
-                if (Center.X >= 0)
+                if (Center.X > 0)
                 {
                     LeftMove(Floor);
                 }
                 else
                 {
-                    x = Speed.X * 5;
+                    x = 20;
                     direction = 1;
                 }
                 
