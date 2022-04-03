@@ -114,7 +114,7 @@ namespace GUI_20212202_CM7A68.Logic
                 Robot1.Center = new Point(oldpos.X, oldpos.Y + robotspeedY);
             }
         }
-        //piros zuhanó bomba létrehozása
+        //piros && zöld zuhanó bomba létrehozása
         public void NewRedFallingBomb(System.Windows.Point robotPos)
         {
             Bombs.Add(new FallingBomb(new Point((int)robotPos.X, (int)robotPos.Y - area.Height * 0.05), area, ConsoleColor.Red));
@@ -167,7 +167,7 @@ namespace GUI_20212202_CM7A68.Logic
                 Robot2.Center = new Point(oldpos.X, oldpos.Y + robotspeedY);
             }
         }
-        //piros dobálós bomba létrehozása
+        //piros && zöld dobálós bomba létrehozása
         public void NewRedThrowingBomb(System.Windows.Point robotPos, int direction)
         {
             Bombs.Add(new ThrowingBomb(new Point((int)robotPos.X, (int)robotPos.Y),area, direction, ConsoleColor.Red));

@@ -146,7 +146,7 @@ namespace GUI_20212202_CM7A68.Models
             //jobbra
             if (direction == 1)
             {
-                if (Center.X < Area.Width)
+                if (Center.X < Area.Width-Area.Width/24)
                 {
                     RightMove(Floor);
                 }
@@ -161,7 +161,7 @@ namespace GUI_20212202_CM7A68.Models
             //balra
             else if (direction == -1)
             {
-                if (Center.X > 0)
+                if (Center.X > Area.Width/24)
                 {
                     LeftMove(Floor);
                 }
