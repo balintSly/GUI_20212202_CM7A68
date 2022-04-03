@@ -16,11 +16,12 @@ namespace GUI_20212202_CM7A68.Models
         public abstract void Move(int Floor);
         public double Heal { get; set; }
         public int Power { get; set; }
+        public ConsoleColor Color { get; set; }
     }
 
     public class FallingBomb : Bomb
     {
-        public FallingBomb(Point center, Size area)
+        public FallingBomb(Point center, Size area, ConsoleColor color)
         {
             this.Center = center;
             this.Area = area;
@@ -28,6 +29,7 @@ namespace GUI_20212202_CM7A68.Models
             Heal = 100;
             Power = 10;
             this.BombCount = 0;
+            this.Color = color;
         }
         public override void Move(int Floor)
         {
@@ -43,7 +45,7 @@ namespace GUI_20212202_CM7A68.Models
     }
     internal class ThrowingBomb : Bomb
     {
-        public ThrowingBomb(Point center, Size area, int directionX)
+        public ThrowingBomb(Point center, Size area, int directionX, ConsoleColor color)
         {
             Center = center;
             this.direction = directionX;
@@ -53,6 +55,7 @@ namespace GUI_20212202_CM7A68.Models
             Power = 20;
             Speed = new Vector(area.Width/120.0, area.Height/65.0);
             this.BombCount = 0;
+            this.Color = color;
         }
         double x;
         //direction: melyik irányba kell dobni, 1-jobbra, (-1)-balra

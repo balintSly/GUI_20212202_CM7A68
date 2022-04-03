@@ -99,8 +99,8 @@ namespace GUI_20212202_CM7A68.Logic
                     }
                     break;
                 case Directions.bomb:
-                    NewThrowingBomb(Robot1.Center, Robot1.Center.X > Robot2.Center.X ? -1 : 1);
-                    NewFallingBomb(Robot1.Center);
+                    NewGreenThrowingBomb(Robot1.Center, Robot1.Center.X > Robot2.Center.X ? -1 : 1);
+                    NewGreenFallingBomb(Robot1.Center);
                     break;
                 default:
                     break;
@@ -114,11 +114,16 @@ namespace GUI_20212202_CM7A68.Logic
                 Robot1.Center = new Point(oldpos.X, oldpos.Y + robotspeedY);
             }
         }
-        //zuhanó bomba létrehozása
-        public void NewFallingBomb(System.Windows.Point robotPos)
+        //piros zuhanó bomba létrehozása
+        public void NewRedFallingBomb(System.Windows.Point robotPos)
         {
-            Bombs.Add(new FallingBomb(new Point((int)robotPos.X, (int)robotPos.Y - area.Height*0.05),area));
+            Bombs.Add(new FallingBomb(new Point((int)robotPos.X, (int)robotPos.Y - area.Height * 0.05), area, ConsoleColor.Red));
             
+        }
+        public void NewGreenFallingBomb(System.Windows.Point robotPos)
+        {
+            Bombs.Add(new FallingBomb(new Point((int)robotPos.X, (int)robotPos.Y - area.Height * 0.05), area, ConsoleColor.Green));
+
         }
 
         public void MoveRobot2(Directions direction)
@@ -148,7 +153,7 @@ namespace GUI_20212202_CM7A68.Logic
                     }
                     break;
                 case Directions.bomb:
-                    NewThrowingBomb(Robot2.Center, Robot1.Center.X > Robot2.Center.X ? 1 : -1);
+                    NewRedThrowingBomb(Robot2.Center, Robot1.Center.X > Robot2.Center.X ? 1 : -1);
                     break;
                 default:
                     break;
@@ -162,10 +167,14 @@ namespace GUI_20212202_CM7A68.Logic
                 Robot2.Center = new Point(oldpos.X, oldpos.Y + robotspeedY);
             }
         }
-        //dobálós bomba létrehozása
-        public void NewThrowingBomb(System.Windows.Point robotPos, int direction)
+        //piros dobálós bomba létrehozása
+        public void NewRedThrowingBomb(System.Windows.Point robotPos, int direction)
         {
-            Bombs.Add(new ThrowingBomb(new Point((int)robotPos.X, (int)robotPos.Y),area, direction));
+            Bombs.Add(new ThrowingBomb(new Point((int)robotPos.X, (int)robotPos.Y),area, direction, ConsoleColor.Red));
+        }
+        public void NewGreenThrowingBomb(System.Windows.Point robotPos, int direction)
+        {
+            Bombs.Add(new ThrowingBomb(new Point((int)robotPos.X, (int)robotPos.Y), area, direction, ConsoleColor.Green));
         }
     }
 }

@@ -183,8 +183,17 @@ namespace GUI_20212202_CM7A68.Renderer
                         BombBrush = "LargeBombStaticFrame4.png";
                         bomb.BombCount++;
                     }
-                    drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "RedBombs", BombBrush),
+                    if (bomb.Color==ConsoleColor.Red)
+                    {
+                        drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "RedBombs", BombBrush),
                         UriKind.RelativeOrAbsolute))), null, new Rect(bomb.Center.X - area.Width / 10, bomb.Center.Y - area.Height / 10, area.Width / 5, area.Height / 5));
+                    }
+                    else if (bomb.Color == ConsoleColor.Green)
+                    {
+                        drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "GreenBombs", BombBrush),
+                        UriKind.RelativeOrAbsolute))), null, new Rect(bomb.Center.X - area.Width / 10, bomb.Center.Y - area.Height / 10, area.Width / 5, area.Height / 5));
+                    }
+                    
                     string bomb_hp = BombHp(bomb);
                     
 

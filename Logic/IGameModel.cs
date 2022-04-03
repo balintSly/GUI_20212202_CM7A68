@@ -14,7 +14,9 @@ namespace GUI_20212202_CM7A68.Logic
 
         List<Bomb> Bombs { get; set; }
         List<Explosion> Explosions { get; set; }
-        void NewFallingBomb(Point robotPos);
-        void NewThrowingBomb(Point robotPos, int direction);
+        void NewRedFallingBomb(Point robotPos);
+        void NewGreenFallingBomb(Point robotPos);
+        void NewRedThrowingBomb(Point robotPos, int direction);
+        void NewGreenThrowingBomb(Point robotPos, int direction);
     }
 }
