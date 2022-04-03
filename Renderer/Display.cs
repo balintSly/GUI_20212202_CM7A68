@@ -160,6 +160,7 @@ namespace GUI_20212202_CM7A68.Renderer
 
 
                 #endregion
+                #region BombaKirajzolás
                 foreach (var bomb in model.Bombs)
                 {
                     string BombBrush = "";
@@ -199,8 +200,8 @@ namespace GUI_20212202_CM7A68.Renderer
 
                     drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "BombHp", "Heath", bomb_hp),
                     UriKind.RelativeOrAbsolute))), null, new Rect(bomb.Center.X - area.Width / 32, bomb.Center.Y + area.Height / 16, area.Width / 18, area.Height / 26));
-                    ;
-
+                    
+                    #endregion
                 }
                 foreach (var explosion in model.Explosions)
                 {
