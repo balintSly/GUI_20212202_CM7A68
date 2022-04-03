@@ -28,13 +28,6 @@ namespace GUI_20212202_CM7A68.Renderer
         {
             this.model = model;
         }
-        public Brush BombBrush
-        {
-            get
-            {
-                return new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images","Bomb", "bomb1.png"), UriKind.RelativeOrAbsolute)));
-            }
-        }
         int piccount = 0;
         string robot1skin = "robotpic_stand2.png";
         string robot2skin = "robotpic_stand2.png";
@@ -169,11 +162,34 @@ namespace GUI_20212202_CM7A68.Renderer
                 #endregion
                 foreach (var bomb in model.Bombs)
                 {
-                    drawingContext.DrawRectangle(BombBrush, null, new Rect(bomb.Center.X - area.Width / 24, bomb.Center.Y - area.Width / 24, area.Width / 12, area.Height / 12));
+                    string BombBrush = "";
+                    if (bomb.BombCount % 4 == 0)
+                    {
+                        BombBrush = "LargeBombStaticFrame1.png";
+                        bomb.BombCount++;
+                    }
+                    else if (bomb.BombCount % 4 == 1)
+                    {
+                        BombBrush = "LargeBombStaticFrame2.png";
+                        bomb.BombCount++;
+                    }
+                    else if (bomb.BombCount % 4 == 2)
+                    {
+                        BombBrush = "LargeBombStaticFrame3.png";
+                        bomb.BombCount++;
+                    }
+                    else if (bomb.BombCount % 4 == 3)
+                    {
+                        BombBrush = "LargeBombStaticFrame4.png";
+                        bomb.BombCount++;
+                    }
+                    drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "RedBombs", BombBrush),
+                        UriKind.RelativeOrAbsolute))), null, new Rect(bomb.Center.X - area.Width / 10, bomb.Center.Y - area.Height / 10, area.Width / 5, area.Height / 5));
                     string bomb_hp = BombHp(bomb);
+                    
 
                     drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "BombHp", "Heath", bomb_hp),
-                    UriKind.RelativeOrAbsolute))), null, new Rect(bomb.Center.X - area.Width / 24, bomb.Center.Y + area.Height / 35, area.Width / 22, area.Height / 30));
+                    UriKind.RelativeOrAbsolute))), null, new Rect(bomb.Center.X - area.Width / 32, bomb.Center.Y + area.Height / 16, area.Width / 18, area.Height / 26));
                     ;
 
                 }

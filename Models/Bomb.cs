@@ -9,6 +9,7 @@ namespace GUI_20212202_CM7A68.Models
 {
     public abstract class Bomb
     {
+        public int BombCount { get; set; }
         public Size Area { get; set; }
         public Vector Speed { get; set; }
         public Point Center { get; set; }
@@ -26,6 +27,7 @@ namespace GUI_20212202_CM7A68.Models
             Speed = new Vector(0, area.Height/112.5);
             Heal = 100;
             Power = 10;
+            this.BombCount = 0;
         }
         public override void Move(int Floor)
         {
@@ -50,6 +52,7 @@ namespace GUI_20212202_CM7A68.Models
             Heal = 100;
             Power = 20;
             Speed = new Vector(area.Width/120.0, area.Height/65.0);
+            this.BombCount = 0;
         }
         double x;
         //direction: melyik irányba kell dobni, 1-jobbra, (-1)-balra

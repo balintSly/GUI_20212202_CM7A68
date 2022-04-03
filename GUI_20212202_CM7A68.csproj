@@ -10,6 +10,14 @@
   <ItemGroup>
     <None Remove="Renderer\Images\Backgrounds\BomberManEffect.png" />
     <None Remove="Renderer\Images\Backgrounds\mkmap1.jpg" />
+    <None Remove="Renderer\Images\GreenBombs\LargeBombStaticFrame1.png" />
+    <None Remove="Renderer\Images\GreenBombs\LargeBombStaticFrame2.png" />
+    <None Remove="Renderer\Images\GreenBombs\LargeBombStaticFrame3.png" />
+    <None Remove="Renderer\Images\GreenBombs\LargeBombStaticFrame4.png" />
+    <None Remove="Renderer\Images\RedBombs\LargeBombStaticFrame1.png" />
+    <None Remove="Renderer\Images\RedBombs\LargeBombStaticFrame2.png" />
+    <None Remove="Renderer\Images\RedBombs\LargeBombStaticFrame3.png" />
+    <None Remove="Renderer\Images\RedBombs\LargeBombStaticFrame4.png" />
     <None Remove="Renderer\Images\Explosions\Bomberman\bottom0.png" />
     <None Remove="Renderer\Images\Explosions\Bomberman\bottom1.png" />
     <None Remove="Renderer\Images\Explosions\Bomberman\bottom2.png" />
@@ -134,6 +142,30 @@
 
   <ItemGroup>
     <Content Include="Renderer\Images\Backgrounds\mkmap1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\GreenBombs\LargeBombStaticFrame1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\GreenBombs\LargeBombStaticFrame2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\GreenBombs\LargeBombStaticFrame3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\GreenBombs\LargeBombStaticFrame4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\RedBombs\LargeBombStaticFrame1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\RedBombs\LargeBombStaticFrame2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\RedBombs\LargeBombStaticFrame3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\RedBombs\LargeBombStaticFrame4.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Renderer\Images\Explosions\Bomberman\bottom0.png">

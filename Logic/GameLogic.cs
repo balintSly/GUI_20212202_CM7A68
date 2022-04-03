@@ -49,7 +49,7 @@ namespace GUI_20212202_CM7A68.Logic
             //TODO: minden mozgatást, állapotváltozást, ütközést itt állítani, ez 20ms-ként le fog futni
             for (int i = 0; i < Bombs.Count; i++)
             {
-                Bombs[i].Move((int)(area.Height*0.9));
+                Bombs[i].Move((int)(area.Height*0.85));
                 Bombs[i].Heal -= 1;
                 if (Bombs[i].Heal <= 0)
                 {
