@@ -49,7 +49,7 @@ namespace GUI_20212202_CM7A68.Logic
             //TODO: minden mozgatást, állapotváltozást, ütközést itt állítani, ez 20ms-ként le fog futni
             for (int i = 0; i < Bombs.Count; i++)
             {
-                Bombs[i].Move((int)(area.Height*0.9), new Size((int)area.Width, (int)area.Height));
+                Bombs[i].Move((int)(area.Height*0.9));
                 Bombs[i].Heal -= 1;
                 if (Bombs[i].Heal <= 0)
                 {
@@ -100,7 +100,7 @@ namespace GUI_20212202_CM7A68.Logic
                     break;
                 case Directions.bomb:
                     NewThrowingBomb(Robot1.Center, Robot1.Center.X > Robot2.Center.X ? -1 : 1);
-                    //NewFallingBomb(Robot1.Center);
+                    NewFallingBomb(Robot1.Center);
                     break;
                 default:
                     break;
@@ -117,7 +117,7 @@ namespace GUI_20212202_CM7A68.Logic
         //zuhanó bomba létrehozása
         public void NewFallingBomb(System.Windows.Point robotPos)
         {
-            Bombs.Add(new FallingBomb(new Point((int)robotPos.X, (int)robotPos.Y - area.Height*0.05)));
+            Bombs.Add(new FallingBomb(new Point((int)robotPos.X, (int)robotPos.Y - area.Height*0.05),area));
             
         }
 
@@ -165,7 +165,7 @@ namespace GUI_20212202_CM7A68.Logic
         //dobálós bomba létrehozása
         public void NewThrowingBomb(System.Windows.Point robotPos, int direction)
         {
-            Bombs.Add(new ThrowingBomb(new Point((int)robotPos.X, (int)robotPos.Y), direction));
+            Bombs.Add(new ThrowingBomb(new Point((int)robotPos.X, (int)robotPos.Y),area, direction));
         }
     }
 }

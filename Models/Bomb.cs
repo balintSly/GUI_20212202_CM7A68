@@ -9,23 +9,25 @@ namespace GUI_20212202_CM7A68.Models
 {
     public abstract class Bomb
     {
+        public Size Area { get; set; }
         public Vector Speed { get; set; }
         public Point Center { get; set; }
-        public abstract void Move(int Floor, Size area);
+        public abstract void Move(int Floor);
         public double Heal { get; set; }
         public int Power { get; set; }
     }
 
     public class FallingBomb : Bomb
     {
-        public FallingBomb(Point center)
+        public FallingBomb(Point center, Size area)
         {
             this.Center = center;
-            Speed = new Vector(0, 3);
+            this.Area = area;
+            Speed = new Vector(0, area.Height/112.5);
             Heal = 100;
             Power = 10;
         }
-        public override void Move(int Floor, Size are)
+        public override void Move(int Floor)
         {
             Point newCenter =
                 new Point(Center.X + (int)Speed.X,
@@ -39,14 +41,15 @@ namespace GUI_20212202_CM7A68.Models
     }
     internal class ThrowingBomb : Bomb
     {
-        public ThrowingBomb(Point center, int directionX)
+        public ThrowingBomb(Point center, Size area, int directionX)
         {
             Center = center;
             this.direction = directionX;
+            this.Area = area;
             x = 0;
             Heal = 100;
             Power = 20;
-            Speed = new Vector(6, 6);
+            Speed = new Vector(area.Width/120.0, area.Height/65.0);
         }
         double x;
         //direction: melyik irányba kell dobni, 1-jobbra, (-1)-balra
@@ -54,7 +57,7 @@ namespace GUI_20212202_CM7A68.Models
 
 
         //TODO: pattogás a falról
-        public override void Move(int Floor, Size area)
+        public override void Move(int Floor)
         {
             //jobbra
             if (direction == 1)
