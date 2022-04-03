@@ -60,67 +60,71 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Grid Grid.Column="0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="2*"/>
-                            </Grid.RowDefinitions>
-                            <Label Content="Player One" HorizontalAlignment="Center" Grid.Row="0"/>
-                            <Grid Grid.Row="1">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="2*"/>
-                                    <ColumnDefinition Width="9*"/>
-                                </Grid.ColumnDefinitions>
-                                <Label Content="Nickname:" Grid.Column="0"/>
-                                <TextBox Grid.Column="1" Margin="3"/>
+                        <Border BorderBrush="Black" BorderThickness="2" Grid.Column="0">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="2*"/>
+                                </Grid.RowDefinitions>
+                                <Label Content="Player One" HorizontalAlignment="Center" Grid.Row="0" FontSize="20" FontFamily="Consolas" FontWeight="Bold"/>
+                                <Grid Grid.Row="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="9*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Content="Name:" Grid.Column="0" Margin="5 0 0 0" FontSize="20" FontFamily="Consolas" FontWeight="Bold"/>
+                                    <TextBox Grid.Column="1" Text="{Binding PlayerOneName}" VerticalContentAlignment="Center" Margin="0 0 10 0"  FontSize="20" FontFamily="Consolas" FontWeight="Bold"/>
+                                </Grid>
+                                <ListBox Grid.Row="2" Margin="10" ItemsSource="{Binding PlayerOneSkins}" SelectedItem="{Binding SelctedPlayerOneSkinRoute}" SelectedIndex="0">
+                                    <ListBox.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <WrapPanel IsItemsHost="True"/>
+                                        </ItemsPanelTemplate>
+                                    </ListBox.ItemsPanel>
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Image Margin="3" Source="{Binding}" Height="35" Width="35"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
                             </Grid>
-                            <ListBox Grid.Row="2" Margin="10" ItemsSource="{Binding PlayerOneSkins}">
-                                <ListBox.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <WrapPanel IsItemsHost="True"/>
-                                    </ItemsPanelTemplate>
-                                </ListBox.ItemsPanel>
-                                <ListBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Image Margin="3" Source="{Binding}" Height="40" Width="40"/>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </ListBox.ItemTemplate>
-                            </ListBox>
-                        </Grid>
+                        </Border>
                         <!--player one side-->
-                        <Grid Grid.Column="1">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="2*"/>
-                            </Grid.RowDefinitions>
-                            <Label Content="Player Two" HorizontalAlignment="Center" Grid.Row="0"/>
-                            <Grid Grid.Row="1">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="2*"/>
-                                    <ColumnDefinition Width="9*"/>
-                                </Grid.ColumnDefinitions>
-                                <Label Content="Nickname:" Grid.Column="0"/>
-                                <TextBox Grid.Column="1" Margin="3"/>
+                        <Border Grid.Column="1" BorderBrush="Black" BorderThickness="2">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="2*"/>
+                                </Grid.RowDefinitions>
+                                <Label Content="Player Two" HorizontalAlignment="Center" Grid.Row="0" FontSize="20" FontFamily="Consolas" FontWeight="Bold"/>
+                                <Grid Grid.Row="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="9*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Content="Name:" Grid.Column="0" Margin="5 0 0 0" FontSize="20" FontFamily="Consolas" FontWeight="Bold"/>
+                                    <TextBox Grid.Column="1" Margin="0 0 10 0" Text="{Binding PlayerTwoName}" VerticalContentAlignment="Center" FontSize="20" FontFamily="Consolas" FontWeight="Bold"/>
+                                </Grid>
+                                <ListBox Grid.Row="2" Margin="10" ItemsSource="{Binding PlayerTwoSkins}" SelectedItem="{Binding SelectedPlayerTwoSkinRoute}" SelectedIndex="0">
+                                    <ListBox.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <WrapPanel IsItemsHost="True"/>
+                                        </ItemsPanelTemplate>
+                                    </ListBox.ItemsPanel>
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Image Margin="3" Source="{Binding}" Height="35" Width="35"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
                             </Grid>
-                            <ListBox Grid.Row="2" Margin="10" ItemsSource="{Binding PlayerTwoSkins}">
-                                <ListBox.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <WrapPanel IsItemsHost="True"/>
-                                    </ItemsPanelTemplate>
-                                </ListBox.ItemsPanel>
-                                <ListBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Image Margin="3" Source="{Binding}" Height="40" Width="40"/>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </ListBox.ItemTemplate>
-                            </ListBox>
-                        </Grid>
+                        </Border>
                         <!--player two side-->
                     </Grid>
                     <Grid Grid.Row="1"> <!--maps-->
@@ -128,8 +132,8 @@
                             <RowDefinition Height="40*"/>
                             <RowDefinition Height="103*"/>
                         </Grid.RowDefinitions>
-                        <Label Content="Choose a map" HorizontalAlignment="Center" Grid.RowSpan="2" Width="86" Grid.Row="0"/>
-                        <ListBox Grid.Row="1" Margin="10" x:Name="lb_maps" ItemsSource="{Binding Maps}">
+                        <Label Content="Choose a map" HorizontalAlignment="Center" Grid.Row="0" FontSize="20" FontFamily="Consolas" FontWeight="Bold" Margin="5"/>
+                        <ListBox Grid.Row="1" Margin="10" x:Name="lb_maps" ItemsSource="{Binding Maps}" SelectedItem="{Binding SelectedMapRoute}" SelectedIndex="0">
                             <ListBox.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <WrapPanel IsItemsHost="True"/>
@@ -137,7 +141,7 @@
                             </ListBox.ItemsPanel>
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
-                                    <Image Margin="3" Source="{Binding}" Height="70" Width="70"/>
+                                    <Image Margin="3" Source="{Binding}" Height="69" Width="70"/>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
                         </ListBox>
