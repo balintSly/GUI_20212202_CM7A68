@@ -55,6 +55,84 @@ namespace GUI_20212202_CM7A68.Models
         //direction: melyik irányba kell dobni, 1-jobbra, (-1)-balra
         int direction;
 
+        private void RightMove(int Floor)
+        {
+            if (Center.Y - Speed.Y <= Floor)
+            {
+                //ennyit megy felfelé
+                if (x <= Speed.X * 4)
+                {
+                    x++;
+                    Point newCenter_up =
+                            new Point(Center.X + (int)Speed.X,
+                            Center.Y - (int)Speed.Y);
+                    Center = newCenter_up;
+                }
+                //vízszintes irány
+                else if (x >= Speed.X * 4 && x < Speed.X * 5)
+                {
+                    x++;
+                    Point newCenter_cons =
+                            new Point(Center.X + (int)Speed.X,
+                            Center.Y);
+                    Center = newCenter_cons;
+                }
+                //zuhanás
+                else
+                {
+                    Point newCenter_down = new Point(Center.X + (int)Speed.X,
+                                Center.Y + (int)Speed.Y);
+                    Center = newCenter_down;
+                }
+            }
+            else if (x >= Speed.X * 5 && x < Speed.X * 6)
+            {
+                x++;
+                Point newCenter_cons =
+                            new Point(Center.X + (int)Speed.X,
+                            Center.Y);
+                Center = newCenter_cons;
+            }
+        }
+        private void LeftMove(int Floor)
+        {
+            if (Center.Y - Speed.Y <= Floor)
+            {
+                //felfelé
+                if (x < Speed.X * 4)
+                {
+                    x++;
+                    Point newCenter_up =
+                            new Point(Center.X - (int)Speed.X,
+                            Center.Y - (int)Speed.Y);
+                    Center = newCenter_up;
+                }
+                //vízszintes
+                else if (x >= Speed.X * 4 && x < Speed.X * 5)
+                {
+                    x++;
+                    Point newCenter_cons =
+                            new Point(Center.X - (int)Speed.X,
+                            Center.Y);
+                    Center = newCenter_cons;
+                }
+                //lefelé
+                else
+                {
+                    Point newCenter_down = new Point(Center.X - (int)Speed.X,
+                                Center.Y + (int)Speed.Y);
+                    Center = newCenter_down;
+                }
+            }
+            else if(x>=Speed.X*5 && x < Speed.X*6)
+            {
+                x++;
+                Point newCenter_cons =
+                            new Point(Center.X - (int)Speed.X,
+                            Center.Y);
+                Center = newCenter_cons;
+            }
+        }
 
         //TODO: pattogás a falról
         public override void Move(int Floor)
@@ -62,66 +140,31 @@ namespace GUI_20212202_CM7A68.Models
             //jobbra
             if (direction == 1)
             {
-                if (Center.Y - Speed.Y <= Floor)
+                if (Center.X <=Area.Width)
                 {
-                    //ennyit megy felfelé
-                    if (x <= Speed.X * 4)
-                    {
-                        x++;
-                        Point newCenter_up =
-                                new Point(Center.X + (int)Speed.X,
-                                Center.Y - (int)Speed.Y);
-                        Center = newCenter_up;
-                    }
-                    //vízszintes irány
-                    else if (x >= Speed.X * 4 && x <= Speed.X * 5)
-                    {
-                        x++;
-                        Point newCenter_cons =
-                                new Point(Center.X + (int)Speed.X,
-                                Center.Y);
-                        Center = newCenter_cons;
-                    }
-                    //zuhanás
-                    else
-                    {
-                        Point newCenter_down = new Point(Center.X + (int)Speed.X,
-                                    Center.Y + (int)Speed.Y);
-                        Center = newCenter_down;
-                    }
+                    RightMove(Floor);
                 }
+                else
+                {
+                    x = Speed.X * 5;
+                    direction = -1;
+                }
+
+                
             }
             //balra
             else if (direction == -1)
             {
-                if (Center.Y - Speed.Y <= Floor)
+                if (Center.X >= 0)
                 {
-                    //felfelé
-                    if (x < Speed.X * 4)
-                    {
-                        x++;
-                        Point newCenter_up =
-                                new Point(Center.X - (int)Speed.X,
-                                Center.Y - (int)Speed.Y);
-                        Center = newCenter_up;
-                    }
-                    //vízszintes
-                    else if (x >= Speed.X * 4 && x <= Speed.X * 5)
-                    {
-                        x++;
-                        Point newCenter_cons =
-                                new Point(Center.X - (int)Speed.X,
-                                Center.Y);
-                        Center = newCenter_cons;
-                    }
-                    //lefelé
-                    else
-                    {
-                        Point newCenter_down = new Point(Center.X - (int)Speed.X,
-                                    Center.Y + (int)Speed.Y);
-                        Center = newCenter_down;
-                    }
+                    LeftMove(Floor);
                 }
+                else
+                {
+                    x = Speed.X * 5;
+                    direction = 1;
+                }
+                
             }
         }
     }
