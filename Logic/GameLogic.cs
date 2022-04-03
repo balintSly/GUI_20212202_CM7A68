@@ -17,6 +17,8 @@ namespace GUI_20212202_CM7A68.Logic
         public bool Robot2IsMoving { get; set; }
         public bool Robot1IsJumping { get; set; }
         public bool Robot2IsJumping { get; set; }
+        public string Player1Name { get; set; }
+        public string Player2Name { get; set; }
 
         public List<Explosion>  Explosions { get; set; }
 

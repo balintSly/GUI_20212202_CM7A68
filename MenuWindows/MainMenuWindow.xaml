@@ -9,7 +9,9 @@
         Title="MainMenu" Height="450" Width="800"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
-        AllowsTransparency="True">
+        AllowsTransparency="True"
+        WindowState="Maximized"
+        >
     <Window.DataContext>
         <vms:MainMenuWindowViewModel/>
     </Window.DataContext>
@@ -160,7 +162,7 @@
                 </Grid>
 
                 <Button Content="Start Game" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                       FontSize="30" Grid.Row="2" FontFamily="Consolas" FontWeight="Bold" Margin="150 10 150 10" BorderThickness="0" Click="StartGame"/>
+                       FontSize="30" Grid.Row="2" FontFamily="Consolas" FontWeight="Bold" Margin="150 10 150 10" BorderThickness="0" Click="StartGame" Command="{Binding StartGameCommand}"/>
             </Grid>
             <Grid x:Name="leaderboardGrid" Margin="10" Visibility="Hidden">
                 <Grid.RowDefinitions>

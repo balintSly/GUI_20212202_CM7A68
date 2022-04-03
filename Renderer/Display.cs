@@ -31,8 +31,6 @@ namespace GUI_20212202_CM7A68.Renderer
         public void SetupModel(IGameModel model)
         {
             this.model = model;
-            Player1Name = "Player1";
-            Player2Name = "Player2";
         }
         public Brush BombBrush
         {
@@ -44,8 +42,7 @@ namespace GUI_20212202_CM7A68.Renderer
         int piccount = 0;
         string robot1skin = "robotpic_stand2.png";
         string robot2skin = "robotpic_stand2.png";
-        public string Player1Name { get; set; }
-        public string Player2Name { get; set; }
+
         protected override void OnRender(DrawingContext drawingContext)
         {
             if (area.Width > 0 && area.Height > 0)
@@ -193,11 +190,11 @@ namespace GUI_20212202_CM7A68.Renderer
                         FontStretches.Normal), area.Height * 0.05, Brushes.Red), new Point(area.Width * 0.465, area.Height * 0.05));
 
                     //nevek
-                    drawingContext.DrawText(new FormattedText(Player1Name, System.Globalization.CultureInfo.CurrentCulture,
+                    drawingContext.DrawText(new FormattedText(model.Player1Name, System.Globalization.CultureInfo.CurrentCulture,
                         FlowDirection.LeftToRight, new Typeface(new FontFamily("Consolas"), FontStyles.Normal, FontWeights.Bold,
                         FontStretches.Normal), area.Height * 0.05, Brushes.Red), new Point(area.Width * 0.02, area.Height * 0.13));
                     
-                    drawingContext.DrawText(new FormattedText(Player2Name, System.Globalization.CultureInfo.CurrentCulture,
+                    drawingContext.DrawText(new FormattedText(model.Player2Name, System.Globalization.CultureInfo.CurrentCulture,
                         FlowDirection.LeftToRight, new Typeface(new FontFamily("Consolas"), FontStyles.Normal, FontWeights.Bold,
                         FontStretches.Normal), area.Height * 0.05, Brushes.Red), new Point(area.Width * 0.88, area.Height * 0.13));
 

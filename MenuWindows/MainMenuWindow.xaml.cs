@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GUI_20212202_CM7A68.Logic;
+using GUI_20212202_CM7A68.MenuWindows.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,10 @@ namespace GUI_20212202_CM7A68.MenuWindows
     /// </summary>
     public partial class MainMenuWindow : Window
     {
-        public MainMenuWindow()
+        public MainMenuWindow(IGameModel model)
         {
             InitializeComponent();
+            (this.DataContext as MainMenuWindowViewModel).SetupLogic(model);
         }
 
         private void BackToMainMenu(object sender, RoutedEventArgs e)

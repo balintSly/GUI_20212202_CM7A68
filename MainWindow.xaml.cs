@@ -30,10 +30,11 @@ namespace GUI_20212202_CM7A68
         public MainWindow()
         {
             InitializeComponent();
-            var menu=new MainMenuWindow();
+            InitGame();
+            var menu=new MainMenuWindow(this.logic);
             if (menu.ShowDialog()==true)
             {
-                InitGame();
+                //InitGame();
             }
             else
             {
@@ -54,6 +55,8 @@ namespace GUI_20212202_CM7A68
             gametimer.Interval = TimeSpan.FromMilliseconds(17);
             gametimer.Tick += Gametimer_Tick;
             gametimer.Start();
+            display.SetupSize(new Size(mainGrid.ActualWidth, mainGrid.ActualHeight));
+            logic.SetupSize(new Size((int)mainGrid.ActualWidth, (int)mainGrid.ActualHeight));
         }
         private void Gametimer_Tick(object? sender, EventArgs e)
         {
