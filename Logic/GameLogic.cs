@@ -33,10 +33,12 @@ namespace GUI_20212202_CM7A68.Logic
         }
         public void InitLogic()
         {
-            this.RobotsSpawned = false;
+            this.Robot1 = new Robot(new Point(area.Width / 10, (int)(area.Height * 0.8)));
+            this.Robot2 = new Robot(new Point((int)(area.Width * 0.9), (int)(area.Height * 0.8)));
             this.RoundTime = TimeSpan.FromMinutes(3);
+            this.GamePaused = false;
 
-        }//visszaszámláló 3:00-ra, robotok újrapéldányosítva
+        }//visszaszámláló 3:00-ra, robotok újrapéldányosítva, GamePaused=false
         public List<Bomb> Bombs { get; set; }
         public void SetupSize(Size area)
         {
@@ -45,8 +47,7 @@ namespace GUI_20212202_CM7A68.Logic
             this.area = area;
             if (!RobotsSpawned)
             {
-                this.Robot1 = new Robot(new Point(area.Width / 10, (int)(area.Height * 0.8)));
-                this.Robot2 = new Robot(new Point((int)(area.Width * 0.9), (int)(area.Height * 0.8)));
+                InitLogic();
                 RobotsSpawned = true;
             }
             Robot1.Center = new Point(area.Width / 10, (int)(area.Height * 0.8));//robotok spawnpointja

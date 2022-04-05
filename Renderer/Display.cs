@@ -35,7 +35,7 @@ namespace GUI_20212202_CM7A68.Renderer
         {
             get
             {
-                return new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images","Bomb", "bomb1.png"), UriKind.RelativeOrAbsolute)));
+                return new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "Bomb", "bomb1.png"), UriKind.RelativeOrAbsolute)));
             }
         }
         int piccount = 0;
@@ -48,12 +48,13 @@ namespace GUI_20212202_CM7A68.Renderer
             {
                 base.OnRender(drawingContext);
                 #region startup
+
                 if (!MenuLoaded)
                 {
                     drawingContext.DrawRectangle(Brushes.Black, null, new Rect(0, 0, area.Width, area.Height)); //loading screen
                     drawingContext.DrawText(new FormattedText("Todo loading", System.Globalization.CultureInfo.CurrentCulture,
                        FlowDirection.LeftToRight, new Typeface(new FontFamily("Consolas"), FontStyles.Normal, FontWeights.Bold,
-                       FontStretches.Normal), area.Height * 0.05, Brushes.Red), new Point(area.Width*0.4, area.Height/2));
+                       FontStretches.Normal), area.Height * 0.05, Brushes.Red), new Point(area.Width * 0.4, area.Height / 2));
                 }
                 #endregion
                 else
@@ -192,7 +193,7 @@ namespace GUI_20212202_CM7A68.Renderer
                     drawingContext.DrawText(new FormattedText(model.Player1Name, System.Globalization.CultureInfo.CurrentCulture,
                         FlowDirection.LeftToRight, new Typeface(new FontFamily("Consolas"), FontStyles.Normal, FontWeights.Bold,
                         FontStretches.Normal), area.Height * 0.05, Brushes.Red), new Point(area.Width * 0.02, area.Height * 0.13));
-                    
+
                     drawingContext.DrawText(new FormattedText(model.Player2Name, System.Globalization.CultureInfo.CurrentCulture,
                         FlowDirection.LeftToRight, new Typeface(new FontFamily("Consolas"), FontStyles.Normal, FontWeights.Bold,
                         FontStretches.Normal), area.Height * 0.05, Brushes.Red), new Point(area.Width * 0.85, area.Height * 0.13));
@@ -214,8 +215,12 @@ namespace GUI_20212202_CM7A68.Renderer
                         DrawExplosion(drawingContext, explosion);
                         explosion.CheckHitBox(model.Robot1, model.Robot2);
                     }
-                }                      
-            }          
+                }
+                if (model.GamePaused)
+                {
+                    drawingContext.DrawRectangle(new SolidColorBrush(Color.FromArgb(200, 0, 0, 0)), null, new Rect(0, 0, area.Width, area.Height));
+                }
+            }
         }
         private string BombHp(Bomb b)
         {
@@ -441,7 +446,7 @@ namespace GUI_20212202_CM7A68.Renderer
             {
                 explosion.LastFrameFlag = true;
             }
-                
+
         }
     }
 }

@@ -32,11 +32,7 @@ namespace GUI_20212202_CM7A68
             InitializeComponent();
             InitGame();
             var menu=new MainMenuWindow(this.logic);
-            if (menu.ShowDialog()==true)
-            {
-                //InitGame();
-            }
-            else
+            if (menu.ShowDialog()==false)
             {
                 Application.Current.Shutdown();
             }
@@ -56,13 +52,37 @@ namespace GUI_20212202_CM7A68
         }
         private void Gametimer_Tick(object? sender, EventArgs e)
         {
-            logic.TimeStep();
-            display.TimeFromGameStart += TimeSpan.FromSeconds(17);// egy időztő van, kb. összeadjuk a delayeket, és durván másodpercenként kivonunk 1 secet az alap 3 percből
-            if (display.TimeFromGameStart.TotalSeconds % 680==0 && display.GameStarted && !logic.GamePaused)
+            if (logic.GamePaused)
             {
-                logic.RoundTime -= TimeSpan.FromSeconds(1); //csökkentjük a köridőt 1 seccel
-            }            
+                var pausemenu = new PauseWindow();
+                if (pausemenu.ShowDialog() == false)
+                {
+                    var mainmenu = new MainMenuWindow(this.logic);
+                    if (mainmenu.ShowDialog() == true)
+                    {
+                        logic.InitLogic();
+                    }
+                    else
+                    {
+                        Application.Current.Shutdown();
+                    }
+                }
+                else
+                {
+                    logic.GamePaused = false;
+                }
+            }
+            else 
+            {
+                logic.TimeStep();
+                display.TimeFromGameStart += TimeSpan.FromSeconds(17);// egy időztő van, kb. összeadjuk a delayeket, és durván másodpercenként kivonunk 1 secet az alap 3 percből
+                if (display.TimeFromGameStart.TotalSeconds % 680 == 0 && display.GameStarted && !logic.GamePaused)
+                {
+                    logic.RoundTime -= TimeSpan.FromSeconds(1); //csökkentjük a köridőt 1 seccel
+                }
+            }
             display.InvalidateVisual();
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

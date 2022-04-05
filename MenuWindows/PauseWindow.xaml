@@ -29,8 +29,16 @@
                    FontSize="50" FontWeight="Bold"/>
             <Button Content="Resume" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                        FontSize="30" Grid.Row="2" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" Click="ResumeGame"/>
-            <Button Content="Exit Game" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                       FontSize="30" Grid.Row="3" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" Click="ExitGame"/>
+            <Button Content="Main menu" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                       FontSize="30" Grid.Row="3" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" Click="ExitGame">
+                <Button.ToolTip>
+                    <ToolTip>
+                        <StackPanel>
+                            <Label Content="WARNING: THE GAME WON'T BE SAVED!"/>
+                        </StackPanel>
+                    </ToolTip>
+                </Button.ToolTip>
+            </Button>
             
         </Grid>
     </Grid>
