@@ -17,7 +17,6 @@ namespace GUI_20212202_CM7A68.Renderer
     {
         Size area;
         IGameModel model;
-        public string Time { get; set; }
         public TimeSpan TimeFromGameStart { get; set; }
         public bool GameStarted { get; set; }
         public bool Quit { get; set; }
@@ -185,7 +184,7 @@ namespace GUI_20212202_CM7A68.Renderer
                         UriKind.RelativeOrAbsolute))), null, new Rect(area.Width * 0.95, area.Height * 0.065, area.Width * 0.05, area.Height * 0.065));
 
                     //óra
-                    drawingContext.DrawText(new FormattedText(Time, System.Globalization.CultureInfo.CurrentCulture,
+                    drawingContext.DrawText(new FormattedText(model.RoundTime.ToString(@"mm\:ss"), System.Globalization.CultureInfo.CurrentCulture,
                         FlowDirection.LeftToRight, new Typeface(new FontFamily("Consolas"), FontStyles.Normal, FontWeights.Bold,
                         FontStretches.Normal), area.Height * 0.05, Brushes.Red), new Point(area.Width * 0.465, area.Height * 0.05));
 
@@ -215,14 +214,8 @@ namespace GUI_20212202_CM7A68.Renderer
                         DrawExplosion(drawingContext, explosion);
                         explosion.CheckHitBox(model.Robot1, model.Robot2);
                     }
-                }
-                
-
-
-
-         
-            }
-            //(ezt a metódust le se nyissátok xd)
+                }                      
+            }          
         }
         private string BombHp(Bomb b)
         {
@@ -311,7 +304,7 @@ namespace GUI_20212202_CM7A68.Renderer
                 return $"Helath_0_pecent.png";
             }
 
-        }
+        }//(ezt a metódust le se nyissátok xd)
         public void DrawExplosion(DrawingContext drawingContext, Explosion explosion)           //TODO: 0 range bomb    Call checkhitbox
         {
             double cursorX;

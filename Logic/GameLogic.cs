@@ -19,27 +19,35 @@ namespace GUI_20212202_CM7A68.Logic
         public bool Robot2IsJumping { get; set; }
         public string Player1Name { get; set; }
         public string Player2Name { get; set; }
+        public TimeSpan RoundTime { get; set; }
+        public bool GamePaused { get; set; } //esc lenyomásra a controller átállítja az értéket TODO: leállítani a visszaszámlálást.
 
         public List<Explosion>  Explosions { get; set; }
 
         int robotspeedX; //mozgás sebessége
         int robotspeedY; //ugrás sebessége
-        bool spawned; //true, ha már létrehoztuk a robotokat
+        public bool RobotsSpawned { get; set; } //true, ha már létrehoztuk a robotokat
         public enum Directions
         {
             up, down, left, right, bomb
         }
+        public void InitLogic()
+        {
+            this.RobotsSpawned = false;
+            this.RoundTime = TimeSpan.FromMinutes(3);
+
+        }//visszaszámláló 3:00-ra, robotok újrapéldányosítva
         public List<Bomb> Bombs { get; set; }
         public void SetupSize(Size area)
         {
             Bombs = new List<Bomb>();
             Explosions = new List<Explosion>();
             this.area = area;
-            if (!spawned)
+            if (!RobotsSpawned)
             {
                 this.Robot1 = new Robot(new Point(area.Width / 10, (int)(area.Height * 0.8)));
                 this.Robot2 = new Robot(new Point((int)(area.Width * 0.9), (int)(area.Height * 0.8)));
-                spawned = true;
+                RobotsSpawned = true;
             }
             Robot1.Center = new Point(area.Width / 10, (int)(area.Height * 0.8));//robotok spawnpointja
             Robot2.Center = new Point((int)(area.Width * 0.9), (int)(area.Height * 0.8));
@@ -115,11 +123,11 @@ namespace GUI_20212202_CM7A68.Logic
                 Robot1.Center = new Point(oldpos.X, oldpos.Y + robotspeedY);
             }
         }
-        //zuhanó bomba létrehozása
+        
         public void NewFallingBomb(System.Windows.Point robotPos)
         {
             Bombs.Add(new FallingBomb(new Point((int)robotPos.X, (int)robotPos.Y)));
-        }
+        }//zuhanó bomba létrehozása
 
         public void MoveRobot2(Directions direction)
         {
@@ -161,9 +169,8 @@ namespace GUI_20212202_CM7A68.Logic
             {
                 Robot2.Center = new Point(oldpos.X, oldpos.Y + robotspeedY);
             }
-        }
-        //dobálós bomba létrehozása
-        public void NewThrowingBomb(System.Windows.Point robotPos, int direction)
+        }      
+        public void NewThrowingBomb(System.Windows.Point robotPos, int direction)//dobálós bomba létrehozása
         {
             Bombs.Add(new ThrowingBomb(new Point((int)robotPos.X, (int)robotPos.Y), direction));
         }

@@ -74,12 +74,12 @@ namespace GUI_20212202_CM7A68.Controller
                     {
                         robot1IsInAir=true;
                         logic.Robot1IsJumping = true;
-                        for (int i = 0; i < 30; i++)
+                        for (int i = 0; i < 20; i++)
                         {
                             await Task.Delay(1);
                             logic.MoveRobot1(Directions.up);
                         }
-                        for (int i = 0; i < 30; i++)
+                        for (int i = 0; i < 20; i++)
                         {
                             await Task.Delay(1);
                             logic.Robot1Descend();
@@ -101,6 +101,7 @@ namespace GUI_20212202_CM7A68.Controller
                             logic.MoveRobot1(Directions.left);
                         }
                     }
+
                     break;
                 case Key.D:
                     if (logic.Robot1IsMoving == false)
@@ -115,6 +116,8 @@ namespace GUI_20212202_CM7A68.Controller
                     break;
                 case Key.Space:
                     logic.MoveRobot1(Directions.bomb);
+                    break;
+                case Key.Escape: logic.GamePaused = true;
                     break;
                 default:
                     break;

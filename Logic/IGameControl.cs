@@ -12,6 +12,7 @@ namespace GUI_20212202_CM7A68.Logic
         bool Robot2IsMoving { get; set; }
         bool Robot1IsJumping { get; set; }
         bool Robot2IsJumping { get; set; }
+        bool GamePaused { get; set; }
 
     }
 }
