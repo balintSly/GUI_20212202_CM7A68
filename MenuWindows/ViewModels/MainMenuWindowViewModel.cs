@@ -42,6 +42,7 @@ namespace GUI_20212202_CM7A68.MenuWindows.ViewModels
                 {
                     logic.Player1Name = PlayerOneName;
                     logic.Player2Name = PlayerTwoName;
+                    logic.SelectedMapPath = SelectedMapRoute;
                 }
                 );
             ;

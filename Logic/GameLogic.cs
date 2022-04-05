@@ -20,8 +20,8 @@ namespace GUI_20212202_CM7A68.Logic
         public string Player1Name { get; set; }
         public string Player2Name { get; set; }
         public TimeSpan RoundTime { get; set; }
-        public bool GamePaused { get; set; } //esc lenyomásra a controller átállítja az értéket TODO: leállítani a visszaszámlálást.
-
+        public string SelectedMapPath { get; set; }
+        public bool GamePaused { get; set; } //esc lenyomásra menü fel, visszaszámlálás leáll
         public List<Explosion>  Explosions { get; set; }
 
         int robotspeedX; //mozgás sebessége

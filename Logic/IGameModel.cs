@@ -14,6 +14,7 @@ namespace GUI_20212202_CM7A68.Logic
         bool Robot2IsMoving { get; set; }
         string Player1Name { get; set; }
         string Player2Name { get; set; }
+        string SelectedMapPath { get; set; }
 
         List<Bomb> Bombs { get; set; }
         List<Explosion> Explosions { get; set; }

@@ -65,8 +65,8 @@ namespace GUI_20212202_CM7A68.Renderer
                     }
                     //map kirajzolás
                     GameStarted = true;
-                    drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "Backgrounds", "mkmap1.jpg"),
-                        UriKind.RelativeOrAbsolute))), null, new Rect(0, 0, area.Width, area.Height));
+                    drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(model.SelectedMapPath,UriKind.RelativeOrAbsolute))),
+                        null, new Rect(0, 0, area.Width, area.Height));
 
                     #region Skinváltogatás
                     //állaptok szerint kép kiválsztása: áll, mozog, ugrik, gugol, dob
