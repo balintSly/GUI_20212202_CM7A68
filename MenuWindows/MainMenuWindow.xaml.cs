@@ -25,8 +25,10 @@ namespace GUI_20212202_CM7A68.MenuWindows
         {
             InitializeComponent();
             (this.DataContext as MainMenuWindowViewModel).SetupLogic(model);
-        }
 
+        }
+        public double MapSize { get; set; }
+        public double CharachterSize { get; set; }
         private void BackToMainMenu(object sender, RoutedEventArgs e)
         {
             var asd = borderGrid.Children.OfType<Grid>();
@@ -68,6 +70,21 @@ namespace GUI_20212202_CM7A68.MenuWindows
         private void StartGame(object sender, RoutedEventArgs e)
         {
             this.DialogResult = true;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.MapSize = (e.Source as Window).ActualWidth/8.6;
+            this.CharachterSize = (e.Source as Window).ActualWidth / 13.5;
+        }
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if ((e.Source as Window).ActualWidth>0)
+            {
+                this.MapSize = (e.Source as Window).ActualWidth/8.6;
+                this.CharachterSize = (e.Source as Window).ActualWidth / 13.5;
+            }
         }
     }
 }

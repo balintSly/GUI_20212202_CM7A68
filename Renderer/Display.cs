@@ -196,7 +196,7 @@ namespace GUI_20212202_CM7A68.Renderer
                     
                     drawingContext.DrawText(new FormattedText(model.Player2Name, System.Globalization.CultureInfo.CurrentCulture,
                         FlowDirection.LeftToRight, new Typeface(new FontFamily("Consolas"), FontStyles.Normal, FontWeights.Bold,
-                        FontStretches.Normal), area.Height * 0.05, Brushes.Red), new Point(area.Width * 0.88, area.Height * 0.13));
+                        FontStretches.Normal), area.Height * 0.05, Brushes.Red), new Point(area.Width * 0.85, area.Height * 0.13));
 
 
                     #endregion

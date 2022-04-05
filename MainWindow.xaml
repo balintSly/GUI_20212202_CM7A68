@@ -8,7 +8,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         Loaded="Window_Loaded" SizeChanged="Window_SizeChanged" KeyDown="Window_KeyDown" KeyUp="Window_KeyUp"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        WindowStyle="None">
     <Grid x:Name="mainGrid">
         <renderer:Display x:Name="display"/>
     </Grid>
