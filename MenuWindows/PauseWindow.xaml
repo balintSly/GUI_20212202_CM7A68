@@ -4,11 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI_20212202_CM7A68.MenuWindows"
+        xmlns:vms="clr-namespace:GUI_20212202_CM7A68.MenuWindows.ViewModels"
         mc:Ignorable="d"
         Title="PauseWindow" Height="450" Width="800"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         KeyDown="Window_KeyDown">
+    <Window.DataContext>
+        <vms:PauseWindowViewModel/>
+    </Window.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>

@@ -54,7 +54,7 @@ namespace GUI_20212202_CM7A68
         {
             if (logic.GamePaused)
             {
-                var pausemenu = new PauseWindow();
+                var pausemenu = new PauseWindow(this.logic);
                 if (pausemenu.ShowDialog() == false)
                 {
                     var mainmenu = new MainMenuWindow(this.logic);
