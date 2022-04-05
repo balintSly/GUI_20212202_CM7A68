@@ -42,7 +42,6 @@ namespace GUI_20212202_CM7A68
             }
           
         }
-        int totalms;
         public void InitGame()
         {
             logic = new GameLogic();
@@ -58,12 +57,11 @@ namespace GUI_20212202_CM7A68
         private void Gametimer_Tick(object? sender, EventArgs e)
         {
             logic.TimeStep();
-            totalms += 17; // egy időztő van, kb. összeadjuk a delayeket, és durván másodpercenként kivonunk 1 secet az alap 3 percből
-            if (totalms%680==0 && display.GameStarted)
+            display.TimeFromGameStart += TimeSpan.FromSeconds(17);// egy időztő van, kb. összeadjuk a delayeket, és durván másodpercenként kivonunk 1 secet az alap 3 percből
+            if (display.TimeFromGameStart.TotalSeconds % 680==0 && display.GameStarted && !logic.GamePaused)
             {
                 logic.RoundTime -= TimeSpan.FromSeconds(1); //csökkentjük a köridőt 1 seccel
-            }
-            display.TimeFromGameStart+=TimeSpan.FromSeconds(17);
+            }            
             display.InvalidateVisual();
         }
 

@@ -20,6 +20,7 @@ namespace GUI_20212202_CM7A68.Logic
         void NewFallingBomb(Point robotPos);
         void NewThrowingBomb(Point robotPos, int direction);
         public TimeSpan RoundTime { get; set; }
+        bool GamePaused { get; set; }
         void InitLogic();
     }
 }

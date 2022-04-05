@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI_20212202_CM7A68.MenuWindows"
         mc:Ignorable="d"
-        Title="PauseWindow" Height="450" Width="800">
+        Title="PauseWindow" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        KeyDown="Window_KeyDown">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -21,6 +24,14 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
+            <Label Grid.Row="0" Content="Paused" VerticalContentAlignment="Center" 
+                   HorizontalContentAlignment="Center" FontStyle="Normal" FontFamily="Consolas" 
+                   FontSize="50" FontWeight="Bold"/>
+            <Button Content="Resume" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                       FontSize="30" Grid.Row="2" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" Click="ResumeGame"/>
+            <Button Content="Exit Game" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                       FontSize="30" Grid.Row="3" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" Click="ExitGame"/>
+            
         </Grid>
     </Grid>
 </Window>

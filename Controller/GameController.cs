@@ -117,7 +117,8 @@ namespace GUI_20212202_CM7A68.Controller
                 case Key.Space:
                     logic.MoveRobot1(Directions.bomb);
                     break;
-                case Key.Escape: logic.GamePaused = true;
+                case Key.Escape: 
+                    logic.GamePaused = true;
                     break;
                 default:
                     break;

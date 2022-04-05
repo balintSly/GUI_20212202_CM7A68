@@ -23,5 +23,23 @@ namespace GUI_20212202_CM7A68.MenuWindows
         {
             InitializeComponent();
         }
+
+        private void ResumeGame(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = true;
+        }
+
+        private void ExitGame(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult= false;
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key==Key.Escape)
+            {
+                this.DialogResult = true;
+            }
+        }
     }
 }
