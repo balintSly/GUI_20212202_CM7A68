@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="MenuWindows\Images\mortalbombatmainmenubackg.jpg" />
     <None Remove="Renderer\Images\Backgrounds\BomberManEffect.png" />
     <None Remove="Renderer\Images\Backgrounds\mkmap1.jpg" />
     <None Remove="Renderer\Images\Backgrounds\mkmap2.jpg" />
@@ -136,6 +137,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="MenuWindows\Images\mortalbombatmainmenubackg.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Renderer\Images\Backgrounds\mkmap1.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

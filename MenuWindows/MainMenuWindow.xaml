@@ -37,15 +37,20 @@
                     <Label Content="Mortal Bombat" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                        FontSize="40" Grid.Row="0" FontFamily="Consolas" FontWeight="Bold"/>
                     <Button Content="New Game" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                       FontSize="30" Grid.Row="1" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" Click="NewGame"/>
+                       FontSize="30" Grid.Row="1" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" 
+                            Click="NewGame"/>
                     <Button Content="Leaderboard" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                       FontSize="30" Grid.Row="2" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" Click="Leaderboard"/>
+                       FontSize="30" Grid.Row="2" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" 
+                            Click="Leaderboard"/>
                     <Button Content="Description" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                       FontSize="30" Grid.Row="3" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" Click="Description"/>
+                       FontSize="30" Grid.Row="3" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" 
+                            Click="Description"/>
                     <Button Content="Options" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                       FontSize="30" Grid.Row="4" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" Click="Options"/>
+                       FontSize="30" Grid.Row="4" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" 
+                            Click="Options"/>
                     <Button Content="Exit Game" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                       FontSize="30" Grid.Row="5" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" Click="Exit"/>
+                       FontSize="30" Grid.Row="5" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" 
+                            Click="Exit"/>
                 </Grid>
             </Grid>
             <Grid x:Name="newGameGrid" Margin="10" Visibility="Collapsed">
@@ -154,7 +159,7 @@
                                Grid.Row="0" FontSize="20" FontFamily="Consolas" FontWeight="Bold" Margin="5"/>
                         <ListBox Grid.Row="1" Margin="10" x:Name="lb_maps" 
                                  ItemsSource="{Binding Maps}" SelectedItem="{Binding SelectedMapRoute}"
-                                 SelectedIndex="0">
+                                 SelectedIndex="0" Background="Transparent">
                             <ListBox.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <WrapPanel IsItemsHost="True"/>

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -76,6 +77,7 @@ namespace GUI_20212202_CM7A68.MenuWindows
         {
             this.MapSize = (e.Source as Window).ActualWidth/8.6;
             this.CharachterSize = (e.Source as Window).ActualWidth / 13.5;
+            borderGrid.Background = new ImageBrush(new BitmapImage(new Uri(System.IO.Path.Combine("MenuWindows", "Images", "mortalbombatmainmenubackg.jpg"), UriKind.RelativeOrAbsolute)));
         }
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
