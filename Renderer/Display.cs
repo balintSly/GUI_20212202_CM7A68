@@ -237,13 +237,15 @@ namespace GUI_20212202_CM7A68.Renderer
 
                     }
                     #endregion
+                    #region RobbanásKirajzolás
                     foreach (var explosion in model.Explosions)
                     {
                         DrawExplosion(drawingContext, explosion);
-                        explosion.CheckHitBox(model.Robot1, model.Robot2);
+                        explosion.CheckHitBox(model.Robot1, model.Robot2, model.Bombs);
                     }
+                    #endregion
                 }
-                
+
             }
            
 
@@ -336,7 +338,7 @@ namespace GUI_20212202_CM7A68.Renderer
             }
 
         }//(ezt a metódust le se nyissátok xd)
-        public void DrawExplosion(DrawingContext drawingContext, Explosion explosion)           //TODO: 0 range bomb    Call checkhitbox
+        public void DrawExplosion(DrawingContext drawingContext, Explosion explosion)           
         {
             double cursorX;
             double cursorY;

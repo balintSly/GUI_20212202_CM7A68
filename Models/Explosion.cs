@@ -9,8 +9,6 @@ using System.Threading.Tasks;
 namespace GUI_20212202_CM7A68.Models
 {
     //TODO: different explosion types using polymorphism
-    //TODO: process explosion asset cleaner
-    //TODO: setup animations and explosion parts
     //TODO: refactor bomb animations to separate class
     public class Explosion      
     {
@@ -31,7 +29,7 @@ namespace GUI_20212202_CM7A68.Models
 
         bool robot1HitFlag = false;
         bool robot2HitFlag = false;
-        Size gameArea;
+        Size area;
 
         void InitLists()
         {
@@ -57,14 +55,14 @@ namespace GUI_20212202_CM7A68.Models
             }              
         }
 
-        public Explosion(Size gameArea ,Point Center, int Damage = 10, int Height = 1, int Width = 1)
+        public Explosion(Size area ,Point Center, int Damage = 10, int Height = 1, int Width = 1)
         {
             InitLists();
             SetupAnims();
-            PartSize = new Size(gameArea.Width / 18, gameArea.Height / 8);
+            PartSize = new Size(area.Width / 18, area.Height / 8);
             this.Damage = Damage;
             this.Center = Center;
-            this.gameArea = gameArea;
+            this.area = area;
             FrameCount = 0;
 
             this.Height = Height;
@@ -74,7 +72,7 @@ namespace GUI_20212202_CM7A68.Models
         }
 
 
-        public void CheckHitBox(Robot Robot1, Robot Robot2)  
+        public void CheckHitBox(Robot Robot1, Robot Robot2, List<Bomb> Bombs)  
         {
             Rect verticalHitBox = new Rect(
                 Center.X - (PartSize.Width / 2) - (Width * PartSize.Width),
@@ -83,21 +81,31 @@ namespace GUI_20212202_CM7A68.Models
                 PartSize.Height
                 );
 
-            Rect HorizontalHitBox = new Rect(
+            Rect horizontalHitBox = new Rect(
                 Center.X - (PartSize.Width / 2),
                 Center.Y - (PartSize.Height / 2) - (Height * PartSize.Height),
                 PartSize.Width,
                 Height * 2 * PartSize.Height + PartSize.Height
                 );
 
-            Rect robot1Rect = new Rect(Robot1.Center.X - gameArea.Width / 12, Robot1.Center.Y - gameArea.Height / 6, gameArea.Width / 6, gameArea.Height / 3);
-            Rect robot2Rect = new Rect(Robot2.Center.X - gameArea.Width / 12, Robot2.Center.Y - gameArea.Height / 6, gameArea.Width / 6, gameArea.Height / 3);
-            if (!robot1HitFlag && (verticalHitBox.IntersectsWith(robot1Rect) || HorizontalHitBox.IntersectsWith(robot1Rect)))
+            Rect bombRect;
+            foreach (var bomb in Bombs)
+            {
+                bombRect = new Rect(bomb.Center.X - area.Width / 10, bomb.Center.Y - area.Height / 10, area.Width / 5, area.Height / 5);
+                if (verticalHitBox.IntersectsWith(bombRect) || horizontalHitBox.IntersectsWith(bombRect))
+                {
+                    bomb.Heal = 0;
+                }
+            }
+
+            Rect robot1Rect = new Rect(Robot1.Center.X - area.Width / 12, Robot1.Center.Y - area.Height / 6, area.Width / 6, area.Height / 3);
+            Rect robot2Rect = new Rect(Robot2.Center.X - area.Width / 12, Robot2.Center.Y - area.Height / 6, area.Width / 6, area.Height / 3);
+            if (!robot1HitFlag && (verticalHitBox.IntersectsWith(robot1Rect) || horizontalHitBox.IntersectsWith(robot1Rect)))
             {
                 Robot1.Health -= Damage;
                 robot1HitFlag = true;
             }
-            if (!robot2HitFlag && (verticalHitBox.IntersectsWith(robot2Rect) || HorizontalHitBox.IntersectsWith(robot2Rect)))
+            if (!robot2HitFlag && (verticalHitBox.IntersectsWith(robot2Rect) || horizontalHitBox.IntersectsWith(robot2Rect)))
             {
                 Robot2.Health -= Damage;
                 robot2HitFlag = true;
