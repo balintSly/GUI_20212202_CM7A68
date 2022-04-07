@@ -199,10 +199,11 @@ namespace GUI_20212202_CM7A68.Renderer
                     
 
                     drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "BombHp", "Heath", bomb_hp),
-                    UriKind.RelativeOrAbsolute))), null, new Rect(bomb.Center.X - area.Width / 32, bomb.Center.Y + area.Height / 16, area.Width / 18, area.Height / 26));
+                    UriKind.RelativeOrAbsolute))), null, new Rect(bomb.Center.X - area.Width / 32, bomb.Center.Y + area.Height / 16, area.Width / 18, area.Height / 35));
                     
-                    #endregion
+                    
                 }
+                #endregion
                 foreach (var explosion in model.Explosions)
                 {
                     DrawExplosion(drawingContext, explosion);
@@ -211,6 +212,7 @@ namespace GUI_20212202_CM7A68.Renderer
             }
             //(ezt a metódust le se nyissátok xd)
         }
+        #region BombHP(Danger!!)
         private string BombHp(Bomb b)
         {
             if (b.Heal <= 100 && b.Heal > 95)
@@ -299,6 +301,7 @@ namespace GUI_20212202_CM7A68.Renderer
             }
 
         }
+        #endregion
         public void DrawExplosion(DrawingContext drawingContext, Explosion explosion)           //TODO: 0 range bomb    Call checkhitbox
         {
             double cursorX;

@@ -100,7 +100,6 @@ namespace GUI_20212202_CM7A68.Logic
                     break;
                 case Directions.bomb:
                     NewGreenThrowingBomb(Robot1.Center, Robot1.Center.X > Robot2.Center.X ? -1 : 1);
-                    NewGreenFallingBomb(Robot1.Center);
                     break;
                 default:
                     break;
