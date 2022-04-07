@@ -34,23 +34,162 @@
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <Label Content="Mortal Bombat" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                       FontSize="40" Grid.Row="0" FontFamily="Consolas" FontWeight="Bold"/>
+                    <Border Grid.Row="0" BorderThickness="2" BorderBrush="Red">
+                        <Label Content="Mortal Bombat" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                       FontSize="{Binding ElementName=mainwindow, Path=TitleFontSize}" FontFamily="Consolas" 
+                           FontWeight="Bold" Foreground="Red"/>
+                    </Border>
+                    
                     <Button Content="New Game" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                       FontSize="30" Grid.Row="1" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" 
-                            Click="NewGame"/>
+                       FontSize="{Binding ElementName=mainwindow,Path=ButtonFontSize}" Grid.Row="1" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" 
+                            Click="NewGame" Foreground="Red">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="20"/>
+                            </Style>
+                        </Button.Resources>
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background" Value="#F0646464"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#FA585858"/>
+                                        <Setter Property="FontWeight" Value="ExtraBold"/>
+                                        <Setter Property="FontStyle" Value="Italic"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
                     <Button Content="Leaderboard" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                       FontSize="30" Grid.Row="2" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" 
-                            Click="Leaderboard"/>
+                       FontSize="{Binding ElementName=mainwindow,Path=ButtonFontSize}" Grid.Row="2" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" 
+                            Click="Leaderboard" Foreground="Red">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="20"/>
+                            </Style>
+                        </Button.Resources>
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background" Value="#F0646464"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#FA585858"/>
+                                        <Setter Property="FontWeight" Value="ExtraBold"/>
+                                        <Setter Property="FontStyle" Value="Italic"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
                     <Button Content="Description" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                       FontSize="30" Grid.Row="3" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" 
-                            Click="Description"/>
+                       FontSize="{Binding ElementName=mainwindow,Path=ButtonFontSize}" Grid.Row="3" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" 
+                            Click="Description" Foreground="Red">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="20"/>
+                            </Style>
+                        </Button.Resources>
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background" Value="#F0646464"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#FA585858"/>
+                                        <Setter Property="FontWeight" Value="ExtraBold"/>
+                                        <Setter Property="FontStyle" Value="Italic"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
                     <Button Content="Options" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                       FontSize="30" Grid.Row="4" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" 
-                            Click="Options"/>
+                       FontSize="{Binding ElementName=mainwindow,Path=ButtonFontSize}" Grid.Row="4" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" 
+                            Click="Options" Foreground="Red">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="20"/>
+                            </Style>
+                        </Button.Resources>
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background" Value="#F0646464"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#FA585858"/>
+                                        <Setter Property="FontWeight" Value="ExtraBold"/>
+                                        <Setter Property="FontStyle" Value="Italic"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
                     <Button Content="Exit Game" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                       FontSize="30" Grid.Row="5" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" 
-                            Click="Exit"/>
+                       FontSize="{Binding ElementName=mainwindow,Path=ButtonFontSize}" Grid.Row="5" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" 
+                            Click="Exit" Foreground="Red">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="20"/>
+                            </Style>
+                        </Button.Resources>
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background" Value="#F0646464"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#FA585858"/>
+                                        <Setter Property="FontWeight" Value="ExtraBold"/>
+                                        <Setter Property="FontStyle" Value="Italic"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
                 </Grid>
             </Grid>
             <Grid x:Name="newGameGrid" Margin="10" Visibility="Collapsed">

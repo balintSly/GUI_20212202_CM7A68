@@ -24,11 +24,15 @@ namespace GUI_20212202_CM7A68.MenuWindows
     {
         public MainMenuWindow(IGameModel model)
         {
+            ButtonFontSize = 64;
+            TitleFontSize = (int)(ButtonFontSize * 1.2);
             InitializeComponent();
             (this.DataContext as MainMenuWindowViewModel).SetupLogic(model);
 
         }
         public double MapSize { get; set; }
+        public int ButtonFontSize { get; set; }
+        public int TitleFontSize { get; set; }
         public double CharachterSize { get; set; }
         private void BackToMainMenu(object sender, RoutedEventArgs e)
         {
@@ -41,8 +45,8 @@ namespace GUI_20212202_CM7A68.MenuWindows
 
         private void NewGame(object sender, RoutedEventArgs e)
         {
-            mainGrid.Visibility=Visibility.Collapsed;
-            newGameGrid.Visibility=Visibility.Visible;
+            mainGrid.Visibility = Visibility.Collapsed;
+            newGameGrid.Visibility = Visibility.Visible;
         }
 
         private void Leaderboard(object sender, RoutedEventArgs e)
@@ -65,7 +69,7 @@ namespace GUI_20212202_CM7A68.MenuWindows
 
         private void Exit(object sender, RoutedEventArgs e)
         {
-            DialogResult=false;
+            DialogResult = false;
         }
 
         private void StartGame(object sender, RoutedEventArgs e)
@@ -75,16 +79,18 @@ namespace GUI_20212202_CM7A68.MenuWindows
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            this.MapSize = (e.Source as Window).ActualWidth/8.6;
+            this.MapSize = (e.Source as Window).ActualWidth / 8.6;
+            this.ButtonFontSize = (int)((e.Source as Window).ActualWidth / 30);
             this.CharachterSize = (e.Source as Window).ActualWidth / 13.5;
             borderGrid.Background = new ImageBrush(new BitmapImage(new Uri(System.IO.Path.Combine("MenuWindows", "Images", "mortalbombatmainmenubackg.jpg"), UriKind.RelativeOrAbsolute)));
+
         }
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            if ((e.Source as Window).ActualWidth>0)
+            if ((e.Source as Window).ActualWidth > 0)
             {
-                this.MapSize = (e.Source as Window).ActualWidth/8.6;
+                this.MapSize = (e.Source as Window).ActualWidth / 8.6;
                 this.CharachterSize = (e.Source as Window).ActualWidth / 13.5;
             }
         }

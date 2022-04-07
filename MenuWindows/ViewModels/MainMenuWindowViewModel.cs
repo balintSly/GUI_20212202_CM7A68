@@ -29,6 +29,7 @@ namespace GUI_20212202_CM7A68.MenuWindows.ViewModels
         public string SelctedPlayerOneSkinRoute { get; set; }
         public string SelectedPlayerTwoSkinRoute { get; set; }
         public ICommand StartGameCommand { get; set; }
+
         public MainMenuWindowViewModel()
         {
             var asd = Directory.GetCurrentDirectory();
