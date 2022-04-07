@@ -9,15 +9,18 @@
         Title="PauseWindow" Height="450" Width="800"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
-        KeyDown="Window_KeyDown">
+        AllowsTransparency="True"
+        KeyDown="Window_KeyDown"
+        x:Name="pausemenu"
+        Loaded="pausemenu_Loaded">
     <Window.DataContext>
         <vms:PauseWindowViewModel/>
     </Window.DataContext>
-    <Grid>
+    <Grid x:Name="maingrid">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="43*"/>
+            <ColumnDefinition Width="69*"/>
+            <ColumnDefinition Width="43*"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
@@ -28,22 +31,81 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" Content="Paused" VerticalContentAlignment="Center" 
+            <Border BorderBrush="red" BorderThickness="2">
+                <Label Grid.Row="0" Content="Paused" VerticalContentAlignment="Center" 
                    HorizontalContentAlignment="Center" FontStyle="Normal" FontFamily="Consolas" 
-                   FontSize="50" FontWeight="Bold"/>
-            <Button Content="Resume" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                       FontSize="30" Grid.Row="2" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" Click="ResumeGame"/>
-            <Button Content="Main menu" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                       FontSize="30" Grid.Row="3" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" Click="ExitGame">
+                   FontSize="{Binding ElementName=pausemenu, Path=TitleFontSize}" FontWeight="Bold" Foreground="Red"/>
+            </Border>
+
+
+            <Button Content="Resume Game" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                       FontSize="{Binding ElementName=pausemenu,Path=ButtonFontSize}" Grid.Row="2" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" 
+                            Click="ResumeGame" Foreground="Red" MouseEnter="MouseOnButton">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="20"/>
+                    </Style>
+                </Button.Resources>
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#F0646464"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FA585858"/>
+                                <Setter Property="FontWeight" Value="ExtraBold"/>
+                                <Setter Property="FontStyle" Value="Italic"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <Button Content="Main Menu" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                       FontSize="{Binding ElementName=pausemenu,Path=ButtonFontSize}" Grid.Row="3" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" 
+                            Click="ExitGame" Foreground="Red" MouseEnter="MouseOnButton">
                 <Button.ToolTip>
                     <ToolTip>
-                        <StackPanel>
-                            <Label Content="WARNING: THE GAME WON'T BE SAVED!"/>
-                        </StackPanel>
+                        <Grid Background="#FA585858">
+                            <Label Content="WARNING: THE GAME WON'T BE SAVED!" FontFamily="Consolas" FontWeight="Bold" Foreground="Red"/>
+                        </Grid>
                     </ToolTip>
                 </Button.ToolTip>
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="20"/>
+                    </Style>
+                </Button.Resources>
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#F0646464"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FA585858"/>
+                                <Setter Property="FontWeight" Value="ExtraBold"/>
+                                <Setter Property="FontStyle" Value="Italic"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
             </Button>
-            
         </Grid>
     </Grid>
 </Window>

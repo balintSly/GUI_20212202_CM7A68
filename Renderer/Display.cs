@@ -243,7 +243,11 @@ namespace GUI_20212202_CM7A68.Renderer
                         DrawExplosion(drawingContext, explosion);
                         explosion.CheckHitBox(model.Robot1, model.Robot2, model.Bombs);
                     }
-                    #endregion
+                    if (model.GamePaused)
+                    {
+                        drawingContext.DrawRectangle(new SolidColorBrush(Color.FromArgb(200, 0, 0, 0)),
+                       null, new Rect(0, 0, area.Width, area.Height));
+                    }
                 }
 
             }
