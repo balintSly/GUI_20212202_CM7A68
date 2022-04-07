@@ -131,11 +131,11 @@ namespace GUI_20212202_CM7A68.Controller
             {
                 logic.Robot2IsMoving = false;
             }
-            else if (key == Key.S || key == Key.D || key == Key.W)
+            else if (key == Key.S || key == Key.D || key == Key.A)
             {
                 logic.Robot1IsMoving = false;
             }
-            if (key == Key.A)
+            if (key == Key.W)
             {
                 logic.Robot1IsJumping = false;
             }
