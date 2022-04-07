@@ -42,7 +42,7 @@
                     
                     <Button Content="New Game" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                        FontSize="{Binding ElementName=mainwindow,Path=ButtonFontSize}" Grid.Row="1" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" 
-                            Click="NewGame" Foreground="Red">
+                            Click="NewGame" Foreground="Red" MouseEnter="MouseOnButton">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="20"/>
@@ -72,7 +72,7 @@
                     </Button>
                     <Button Content="Leaderboard" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                        FontSize="{Binding ElementName=mainwindow,Path=ButtonFontSize}" Grid.Row="2" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" 
-                            Click="Leaderboard" Foreground="Red">
+                            Click="Leaderboard" Foreground="Red" MouseEnter="MouseOnButton">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="20"/>
@@ -102,7 +102,7 @@
                     </Button>
                     <Button Content="Description" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                        FontSize="{Binding ElementName=mainwindow,Path=ButtonFontSize}" Grid.Row="3" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" 
-                            Click="Description" Foreground="Red">
+                            Click="Description" Foreground="Red" MouseEnter="MouseOnButton">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="20"/>
@@ -132,7 +132,7 @@
                     </Button>
                     <Button Content="Options" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                        FontSize="{Binding ElementName=mainwindow,Path=ButtonFontSize}" Grid.Row="4" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" 
-                            Click="Options" Foreground="Red">
+                            Click="Options" Foreground="Red" MouseEnter="MouseOnButton">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="20"/>
@@ -162,7 +162,7 @@
                     </Button>
                     <Button Content="Exit Game" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                        FontSize="{Binding ElementName=mainwindow,Path=ButtonFontSize}" Grid.Row="5" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" 
-                            Click="Exit" Foreground="Red">
+                            Click="Exit" Foreground="Red" MouseEnter="MouseOnButton">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="20"/>

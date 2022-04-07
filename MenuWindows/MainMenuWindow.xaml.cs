@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Media;
 
 namespace GUI_20212202_CM7A68.MenuWindows
 {
@@ -47,33 +48,45 @@ namespace GUI_20212202_CM7A68.MenuWindows
         {
             mainGrid.Visibility = Visibility.Collapsed;
             newGameGrid.Visibility = Visibility.Visible;
+            SoundPlayer s = new SoundPlayer(System.IO.Path.Combine("MenuWindows", "Sounds", "SAmenuClick.wav"));
+            s.Play();
         }
 
         private void Leaderboard(object sender, RoutedEventArgs e)
         {
             mainGrid.Visibility = Visibility.Collapsed;
             leaderboardGrid.Visibility = Visibility.Visible;
+            SoundPlayer s = new SoundPlayer(System.IO.Path.Combine("MenuWindows", "Sounds", "SAmenuClick.wav"));
+            s.Play();
         }
 
         private void Description(object sender, RoutedEventArgs e)
         {
             mainGrid.Visibility = Visibility.Collapsed;
             descriptionGrid.Visibility = Visibility.Visible;
+            SoundPlayer s = new SoundPlayer(System.IO.Path.Combine("MenuWindows", "Sounds", "SAmenuClick.wav"));
+            s.Play();
         }
 
         private void Options(object sender, RoutedEventArgs e)
         {
             mainGrid.Visibility = Visibility.Collapsed;
             optionsGrid.Visibility = Visibility.Visible;
+            SoundPlayer s = new SoundPlayer(System.IO.Path.Combine("MenuWindows", "Sounds", "SAmenuClick.wav"));
+            s.Play();
         }
 
         private void Exit(object sender, RoutedEventArgs e)
         {
+            SoundPlayer s = new SoundPlayer(System.IO.Path.Combine("MenuWindows", "Sounds", "SAmenuClick.wav"));
+            s.Play();
             DialogResult = false;
         }
 
         private void StartGame(object sender, RoutedEventArgs e)
         {
+            SoundPlayer s = new SoundPlayer(System.IO.Path.Combine("MenuWindows", "Sounds", "SAmenuClick.wav"));
+            s.Play();
             this.DialogResult = true;
         }
 
@@ -93,6 +106,11 @@ namespace GUI_20212202_CM7A68.MenuWindows
                 this.MapSize = (e.Source as Window).ActualWidth / 8.6;
                 this.CharachterSize = (e.Source as Window).ActualWidth / 13.5;
             }
+        }
+        private void MouseOnButton(object sender, MouseEventArgs e)
+        {
+            SoundPlayer s = new SoundPlayer(System.IO.Path.Combine("MenuWindows", "Sounds", "SAmenuSelect.wav"));
+            s.Play();
         }
     }
 }
