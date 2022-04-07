@@ -248,6 +248,7 @@ namespace GUI_20212202_CM7A68.Renderer
                         drawingContext.DrawRectangle(new SolidColorBrush(Color.FromArgb(200, 0, 0, 0)),
                        null, new Rect(0, 0, area.Width, area.Height));
                     }
+                    #endregion
                 }
 
             }
