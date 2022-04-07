@@ -471,6 +471,7 @@ namespace GUI_20212202_CM7A68.Renderer
             if (explosion.FrameCount == explosion.CenterAnim.Count)
             {
                 explosion.LastFrameFlag = true;
+                explosion.FrameCount = 0;                                   //fixes ArgumentOutOfRangeException
             }
 
         }
