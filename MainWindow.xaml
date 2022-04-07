@@ -7,7 +7,10 @@
         xmlns:renderer="clr-namespace:GUI_20212202_CM7A68.Renderer"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
-        Loaded="Window_Loaded" SizeChanged="Window_SizeChanged" KeyDown="Window_KeyDown" KeyUp="Window_KeyUp">
+        Loaded="Window_Loaded" SizeChanged="Window_SizeChanged" KeyDown="Window_KeyDown" KeyUp="Window_KeyUp"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        WindowStyle="None">
     <Grid x:Name="mainGrid">
         <renderer:Display x:Name="display"/>
     </Grid>
