@@ -30,6 +30,9 @@ namespace GUI_20212202_CM7A68.MenuWindows
             TitleFontSize = (int)(ButtonFontSize * 1.2);
             InitializeComponent();
             (this.DataContext as PauseWindowViewModel).SetupModel(model);
+            SoundPlayer s = new SoundPlayer(System.IO.Path.Combine("MenuWindows", "Sounds", "SAmenuClick.wav"));
+            s.Play();
+
         }
 
         private void ResumeGame(object sender, RoutedEventArgs e)
