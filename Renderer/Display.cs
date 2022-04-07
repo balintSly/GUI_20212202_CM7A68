@@ -58,7 +58,7 @@ namespace GUI_20212202_CM7A68.Renderer
                     }
                     //map kirajzolás
                     GameStarted = true;
-                    drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(model.SelectedMapPath,UriKind.RelativeOrAbsolute))),
+                    drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(model.SelectedMapPath, UriKind.RelativeOrAbsolute))),
                         null, new Rect(0, 0, area.Width, area.Height));
 
                     #region Skinváltogatás
@@ -192,60 +192,62 @@ namespace GUI_20212202_CM7A68.Renderer
                         FontStretches.Normal), area.Height * 0.05, Brushes.Red), new Point(area.Width * 0.85, area.Height * 0.13));
 
 
-                #endregion
-                #region BombaKirajzolás
-                foreach (var bomb in model.Bombs)
-                {
-                    string BombBrush = "";
-                    if (bomb.BombCount % 4 == 0)
+                    #endregion
+                    #region BombaKirajzolás
+                    foreach (var bomb in model.Bombs)
                     {
-                        BombBrush = "LargeBombStaticFrame1.png";
-                        bomb.BombCount++;
-                    }
-                    else if (bomb.BombCount % 4 == 1)
-                    {
-                        BombBrush = "LargeBombStaticFrame2.png";
-                        bomb.BombCount++;
-                    }
-                    else if (bomb.BombCount % 4 == 2)
-                    {
-                        BombBrush = "LargeBombStaticFrame3.png";
-                        bomb.BombCount++;
-                    }
-                    else if (bomb.BombCount % 4 == 3)
-                    {
-                        BombBrush = "LargeBombStaticFrame4.png";
-                        bomb.BombCount++;
-                    }
-                    if (bomb.Color==ConsoleColor.Red)
-                    {
-                        drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "RedBombs", BombBrush),
-                        UriKind.RelativeOrAbsolute))), null, new Rect(bomb.Center.X - area.Width / 10, bomb.Center.Y - area.Height / 10, area.Width / 5, area.Height / 5));
-                    }
-                    else if (bomb.Color == ConsoleColor.Green)
-                    {
-                        drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "GreenBombs", BombBrush),
-                        UriKind.RelativeOrAbsolute))), null, new Rect(bomb.Center.X - area.Width / 10, bomb.Center.Y - area.Height / 10, area.Width / 5, area.Height / 5));
-                    }
-                    
-                    string bomb_hp = BombHp(bomb);
-                    
+                        string BombBrush = "";
+                        if (bomb.BombCount % 4 == 0)
+                        {
+                            BombBrush = "LargeBombStaticFrame1.png";
+                            bomb.BombCount++;
+                        }
+                        else if (bomb.BombCount % 4 == 1)
+                        {
+                            BombBrush = "LargeBombStaticFrame2.png";
+                            bomb.BombCount++;
+                        }
+                        else if (bomb.BombCount % 4 == 2)
+                        {
+                            BombBrush = "LargeBombStaticFrame3.png";
+                            bomb.BombCount++;
+                        }
+                        else if (bomb.BombCount % 4 == 3)
+                        {
+                            BombBrush = "LargeBombStaticFrame4.png";
+                            bomb.BombCount++;
+                        }
+                        if (bomb.Color == ConsoleColor.Red)
+                        {
+                            drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "RedBombs", BombBrush),
+                            UriKind.RelativeOrAbsolute))), null, new Rect(bomb.Center.X - area.Width / 10, bomb.Center.Y - area.Height / 10, area.Width / 5, area.Height / 5));
+                        }
+                        else if (bomb.Color == ConsoleColor.Green)
+                        {
+                            drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "GreenBombs", BombBrush),
+                            UriKind.RelativeOrAbsolute))), null, new Rect(bomb.Center.X - area.Width / 10, bomb.Center.Y - area.Height / 10, area.Width / 5, area.Height / 5));
+                        }
 
-                    drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "BombHp", "Heath", bomb_hp),
-                    UriKind.RelativeOrAbsolute))), null, new Rect(bomb.Center.X - area.Width / 32, bomb.Center.Y + area.Height / 16, area.Width / 18, area.Height / 35));
-                    
-                    
+                        string bomb_hp = BombHp(bomb);
+
+
+                        drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "BombHp", "Heath", bomb_hp),
+                        UriKind.RelativeOrAbsolute))), null, new Rect(bomb.Center.X - area.Width / 32, bomb.Center.Y + area.Height / 16, area.Width / 18, area.Height / 35));
+
+
+                    }
+                    #endregion
+                    foreach (var explosion in model.Explosions)
+                    {
+                        DrawExplosion(drawingContext, explosion);
+                        explosion.CheckHitBox(model.Robot1, model.Robot2);
+                    }
                 }
-                #endregion
-                foreach (var explosion in model.Explosions)
-                {
-                    DrawExplosion(drawingContext, explosion);
-                    explosion.CheckHitBox(model.Robot1, model.Robot2);
-                }
+                
             }
-            //(ezt a metódust le se nyissátok xd)
-        }
-        #region BombHP(Danger!!)
+           
+
+        } 
         private string BombHp(Bomb b)
         {
             if (b.Heal <= 100 && b.Heal > 95)
@@ -333,8 +335,7 @@ namespace GUI_20212202_CM7A68.Renderer
                 return $"Helath_0_pecent.png";
             }
 
-        }
-        #endregion
+        }//(ezt a metódust le se nyissátok xd)
         public void DrawExplosion(DrawingContext drawingContext, Explosion explosion)           //TODO: 0 range bomb    Call checkhitbox
         {
             double cursorX;
