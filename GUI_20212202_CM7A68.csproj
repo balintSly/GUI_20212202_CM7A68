@@ -11,6 +11,8 @@
     <None Remove="MenuWindows\Images\mortalbombatmainmenubackg.jpg" />
     <None Remove="MenuWindows\Sounds\SAmenuClick.wav" />
     <None Remove="MenuWindows\Sounds\SAmenuSelect.wav" />
+    <None Remove="MenuWindows\Sounds\SAselectionChanged.wav" />
+    <None Remove="MenuWindows\Sounds\typewritersound.wav" />
     <None Remove="Renderer\Images\Backgrounds\BomberManEffect.png" />
     <None Remove="Renderer\Images\Backgrounds\mkmap1.jpg" />
     <None Remove="Renderer\Images\GreenBombs\LargeBombStaticFrame1.png" />
@@ -154,6 +156,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="MenuWindows\Sounds\SAmenuSelect.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MenuWindows\Sounds\SAselectionChanged.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MenuWindows\Sounds\typewritersound.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Renderer\Images\Backgrounds\mkmap1.jpg">

@@ -27,6 +27,7 @@ namespace GUI_20212202_CM7A68.MenuWindows
         {
             ButtonFontSize = 64;
             TitleFontSize = (int)(ButtonFontSize * 1.2);
+            ContentFontSize = (int)(ButtonFontSize * 0.8);
             InitializeComponent();
             (this.DataContext as MainMenuWindowViewModel).SetupLogic(model);
 
@@ -34,9 +35,12 @@ namespace GUI_20212202_CM7A68.MenuWindows
         public double MapSize { get; set; }
         public int ButtonFontSize { get; set; }
         public int TitleFontSize { get; set; }
+        public int ContentFontSize { get; set; }
         public double CharachterSize { get; set; }
         private void BackToMainMenu(object sender, RoutedEventArgs e)
         {
+            SoundPlayer s = new SoundPlayer(System.IO.Path.Combine("MenuWindows", "Sounds", "SAmenuClick.wav"));
+            s.Play();
             var asd = borderGrid.Children.OfType<Grid>();
             foreach (Grid g in asd)
                 g.Visibility = Visibility.Collapsed;
@@ -46,34 +50,37 @@ namespace GUI_20212202_CM7A68.MenuWindows
 
         private void NewGame(object sender, RoutedEventArgs e)
         {
-            mainGrid.Visibility = Visibility.Collapsed;
-            newGameGrid.Visibility = Visibility.Visible;
             SoundPlayer s = new SoundPlayer(System.IO.Path.Combine("MenuWindows", "Sounds", "SAmenuClick.wav"));
             s.Play();
+            mainGrid.Visibility = Visibility.Collapsed;
+            newGameGrid.Visibility = Visibility.Visible;
         }
 
         private void Leaderboard(object sender, RoutedEventArgs e)
         {
-            mainGrid.Visibility = Visibility.Collapsed;
-            leaderboardGrid.Visibility = Visibility.Visible;
             SoundPlayer s = new SoundPlayer(System.IO.Path.Combine("MenuWindows", "Sounds", "SAmenuClick.wav"));
             s.Play();
+            mainGrid.Visibility = Visibility.Collapsed;
+            leaderboardGrid.Visibility = Visibility.Visible;
+            
         }
 
         private void Description(object sender, RoutedEventArgs e)
         {
-            mainGrid.Visibility = Visibility.Collapsed;
-            descriptionGrid.Visibility = Visibility.Visible;
             SoundPlayer s = new SoundPlayer(System.IO.Path.Combine("MenuWindows", "Sounds", "SAmenuClick.wav"));
             s.Play();
+            mainGrid.Visibility = Visibility.Collapsed;
+            descriptionGrid.Visibility = Visibility.Visible;
+            
         }
 
         private void Options(object sender, RoutedEventArgs e)
         {
-            mainGrid.Visibility = Visibility.Collapsed;
-            optionsGrid.Visibility = Visibility.Visible;
             SoundPlayer s = new SoundPlayer(System.IO.Path.Combine("MenuWindows", "Sounds", "SAmenuClick.wav"));
             s.Play();
+            mainGrid.Visibility = Visibility.Collapsed;
+            optionsGrid.Visibility = Visibility.Visible;
+            
         }
 
         private void Exit(object sender, RoutedEventArgs e)
@@ -110,6 +117,17 @@ namespace GUI_20212202_CM7A68.MenuWindows
         private void MouseOnButton(object sender, MouseEventArgs e)
         {
             SoundPlayer s = new SoundPlayer(System.IO.Path.Combine("MenuWindows", "Sounds", "SAmenuSelect.wav"));
+            s.Play();
+        }
+        private void lb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            SoundPlayer s = new SoundPlayer(System.IO.Path.Combine("MenuWindows", "Sounds", "SAselectionChanged.wav"));
+            s.Play();
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SoundPlayer s = new SoundPlayer(System.IO.Path.Combine("MenuWindows", "Sounds", "typewritersound.wav"));
             s.Play();
         }
     }

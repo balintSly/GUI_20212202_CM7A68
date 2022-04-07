@@ -208,7 +208,7 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Border BorderBrush="Black" BorderThickness="2" Grid.Column="0">
+                        <Border BorderBrush="Black" BorderThickness="0" Grid.Column="0">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="1*"/>
@@ -216,20 +216,27 @@
                                     <RowDefinition Height="2*"/>
                                 </Grid.RowDefinitions>
                                 <Label Content="Player One" HorizontalAlignment="Center" Grid.Row="0" 
-                                       FontSize="20" FontFamily="Consolas" FontWeight="Bold"/>
+                                       FontSize="{Binding ElementName=mainwindow, Path=ContentFontSize}" 
+                                       FontFamily="Consolas" FontWeight="Bold" Foreground="red"/>
                                 <Grid Grid.Row="1">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="9*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Label Content="Name:" Grid.Column="0" Margin="5 0 0 0" 
-                                           FontSize="20" FontFamily="Consolas" FontWeight="Bold"/>
+                                    <Label Content="Name:" Grid.Column="0" VerticalContentAlignment="Center" 
+                                           FontSize="{Binding ElementName=mainwindow, Path=ContentFontSize}" 
+                                           FontFamily="Consolas" FontWeight="Bold" Foreground="Red"/>
                                     <TextBox Grid.Column="1" Text="{Binding PlayerOneName}" 
-                                             VerticalContentAlignment="Center" Margin="0 0 10 0"  
-                                             FontSize="20" FontFamily="Consolas" FontWeight="Bold" MaxLength="9"/>
+                                             VerticalContentAlignment="Center"  
+                                             FontSize="{Binding ElementName=mainwindow, Path=ContentFontSize}"
+                                             FontFamily="Consolas" FontWeight="Bold" MaxLength="9" Foreground="Red" 
+                                             FontStyle="Italic" Background="#F0646464" BorderBrush="Red"
+                                             TextChanged="TextBox_TextChanged"/>
                                 </Grid>
                                 <ListBox Grid.Row="2" Margin="10" ItemsSource="{Binding PlayerOneSkins}"
-                                         SelectedItem="{Binding SelctedPlayerOneSkinRoute}" SelectedIndex="0" x:Name="lb_left">
+                                         SelectedItem="{Binding SelctedPlayerOneSkinRoute}" 
+                                         SelectedIndex="0" x:Name="lb_left" Background="#F0646464" 
+                                         BorderThickness="2" BorderBrush="red" SelectionChanged="lb_SelectionChanged">
                                     <ListBox.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <WrapPanel IsItemsHost="True"/>
@@ -237,39 +244,47 @@
                                     </ListBox.ItemsPanel>
                                     <ListBox.ItemTemplate>
                                         <DataTemplate>
-                                            <StackPanel Orientation="Horizontal">
+                                            <Border BorderBrush="Red" BorderThickness="1">
                                                 <Image Margin="3" Source="{Binding}" 
                                                        Width="{Binding ElementName=mainwindow,Path=CharachterSize}"
                                                        Height="{Binding ElementName=mainwindow,Path=CharachterSize}"/>
-                                            </StackPanel>
+                                            </Border>
                                         </DataTemplate>
                                     </ListBox.ItemTemplate>
                                 </ListBox>
                             </Grid>
                         </Border>
                         <!--player one side-->
-                        <Border Grid.Column="1" BorderBrush="Black" BorderThickness="2">
+                        <Border BorderBrush="Black" BorderThickness="0" Grid.Column="1">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="1*"/>
                                     <RowDefinition Height="1*"/>
                                     <RowDefinition Height="2*"/>
                                 </Grid.RowDefinitions>
-                                <Label Content="Player Two" HorizontalAlignment="Center" 
-                                       Grid.Row="0" FontSize="20" FontFamily="Consolas" FontWeight="Bold"/>
+                                <Label Content="Player Two" HorizontalAlignment="Center" Grid.Row="0" 
+                                       FontSize="{Binding ElementName=mainwindow, Path=ContentFontSize}" 
+                                       FontFamily="Consolas" FontWeight="Bold" Foreground="red"/>
                                 <Grid Grid.Row="1">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="9*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Label Content="Name:" Grid.Column="0" Margin="5 0 0 0" 
-                                           FontSize="20" FontFamily="Consolas" FontWeight="Bold"/>
-                                    <TextBox Grid.Column="1" Margin="0 0 10 0" Text="{Binding PlayerTwoName}" 
-                                             VerticalContentAlignment="Center" FontSize="20" FontFamily="Consolas" 
-                                             FontWeight="Bold" MaxLength="9"/>
+                                    <Label Content="Name:" Grid.Column="0" VerticalContentAlignment="Center" 
+                                           FontSize="{Binding ElementName=mainwindow, Path=ContentFontSize}" 
+                                           FontFamily="Consolas" FontWeight="Bold" Foreground="Red"/>
+                                    <TextBox Grid.Column="1" Text="{Binding PlayerTwoName}" 
+                                             VerticalContentAlignment="Center"  
+                                             FontSize="{Binding ElementName=mainwindow, Path=ContentFontSize}"
+                                             FontFamily="Consolas" FontWeight="Bold" MaxLength="9" Foreground="Red" 
+                                             FontStyle="Italic" Background="#F0646464" BorderBrush="Red" 
+                                             TextChanged="TextBox_TextChanged"/>
                                 </Grid>
-                                <ListBox Grid.Row="2" Margin="10" ItemsSource="{Binding PlayerTwoSkins}" 
-                                         SelectedItem="{Binding SelectedPlayerTwoSkinRoute}" SelectedIndex="0" x:Name="lb_right">
+                                <ListBox Grid.Row="2" Margin="10" ItemsSource="{Binding PlayerTwoSkins}"
+                                         SelectedItem="{Binding SelectedPlayerTwoSkinRoute}" 
+                                         SelectedIndex="0" x:Name="lb_right" Background="#F0646464" 
+                                         BorderThickness="2" BorderBrush="red" 
+                                         SelectionChanged="lb_SelectionChanged">
                                     <ListBox.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <WrapPanel IsItemsHost="True"/>
@@ -277,11 +292,11 @@
                                     </ListBox.ItemsPanel>
                                     <ListBox.ItemTemplate>
                                         <DataTemplate>
-                                            <StackPanel Orientation="Horizontal">
-                                                <Image Margin="3" Source="{Binding}"
+                                            <Border BorderBrush="Red" BorderThickness="1">
+                                                <Image Margin="3" Source="{Binding}" 
                                                        Width="{Binding ElementName=mainwindow,Path=CharachterSize}"
                                                        Height="{Binding ElementName=mainwindow,Path=CharachterSize}"/>
-                                            </StackPanel>
+                                            </Border>
                                         </DataTemplate>
                                     </ListBox.ItemTemplate>
                                 </ListBox>
@@ -295,10 +310,12 @@
                             <RowDefinition Height="103*"/>
                         </Grid.RowDefinitions>
                         <Label Content="Choose a map" HorizontalAlignment="Center" 
-                               Grid.Row="0" FontSize="20" FontFamily="Consolas" FontWeight="Bold" Margin="5"/>
+                               Grid.Row="0" FontSize="{Binding ElementName=mainwindow, Path=ContentFontSize}"
+                               FontFamily="Consolas" FontWeight="Bold" Margin="5" Foreground="Red" VerticalContentAlignment="Center"/>
                         <ListBox Grid.Row="1" Margin="10" x:Name="lb_maps" 
                                  ItemsSource="{Binding Maps}" SelectedItem="{Binding SelectedMapRoute}"
-                                 SelectedIndex="0" Background="Transparent">
+                                 SelectedIndex="0" Background="#F0646464" SelectionChanged="lb_SelectionChanged"
+                                 BorderBrush="Red" BorderThickness="2">
                             <ListBox.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <WrapPanel IsItemsHost="True"/>
@@ -306,10 +323,12 @@
                             </ListBox.ItemsPanel>
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
-                                    <Image Margin="3" Source="{Binding}" 
+                                    <Border BorderBrush="Red" BorderThickness="1">
+                                        <Image Margin="1" Source="{Binding}" 
                                            Width="{Binding ElementName=mainwindow,Path=MapSize}"
                                            Height="{Binding ElementName=mainwindow,Path=MapSize}"
                                            />
+                                    </Border>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
                         </ListBox>
@@ -317,22 +336,92 @@
                 </Grid>
                 <Grid Grid.Row="0">
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="43*"/>
+                        <ColumnDefinition Width="69*"/>
+                        <ColumnDefinition Width="43*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Column="1" BorderBrush="Red" BorderThickness="2">
+                        <Label Content="New Game" HorizontalContentAlignment="Center" 
+                           VerticalContentAlignment="Center"
+                       FontSize="{Binding ElementName=mainwindow, Path=TitleFontSize}" 
+                           FontFamily="Consolas" FontWeight="Bold" Foreground="Red"/>
+                    </Border>
+                </Grid>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="13*"/>
                         <ColumnDefinition Width="64*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Content="New Game" HorizontalContentAlignment="Center" 
-                           VerticalContentAlignment="Center"
-                       FontSize="40" FontFamily="Consolas" FontWeight="Bold" 
-                           Grid.Column="1" Padding="10 10 120 10"/>
-                    <Button Content="Main Menu" HorizontalContentAlignment="Center" 
-                            VerticalContentAlignment="Center"
-                       FontSize="20" Grid.Column="0" FontFamily="Consolas"
-                            FontWeight="Bold" Margin="10" BorderThickness="0" Click="BackToMainMenu"/>
-
-                </Grid>
-
-                <Button Content="Start Game" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                       FontSize="30" Grid.Row="2" FontFamily="Consolas" FontWeight="Bold" Margin="150 10 150 10" BorderThickness="0" Click="StartGame" Command="{Binding StartGameCommand}"/>
+                    <Button Content="Back" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                       FontSize="{Binding ElementName=mainwindow,Path=ButtonFontSize}" Grid.Row="1" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" 
+                            Click="BackToMainMenu" Foreground="Red" MouseEnter="MouseOnButton">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="20"/>
+                            </Style>
+                        </Button.Resources>
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background" Value="#F0646464"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#FA585858"/>
+                                        <Setter Property="FontWeight" Value="ExtraBold"/>
+                                        <Setter Property="FontStyle" Value="Italic"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </Grid> <!--back to menu button-->
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="43*"/>
+                        <ColumnDefinition Width="69*"/>
+                        <ColumnDefinition Width="43*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Start Game" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                       FontSize="{Binding ElementName=mainwindow,Path=ButtonFontSize}" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" 
+                          Foreground="Red" MouseEnter="MouseOnButton" Click="StartGame" 
+                        Command="{Binding StartGameCommand}" Grid.Column="1" >
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="20"/>
+                            </Style>
+                        </Button.Resources>
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background" Value="#F0646464"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#FA585858"/>
+                                        <Setter Property="FontWeight" Value="ExtraBold"/>
+                                        <Setter Property="FontStyle" Value="Italic"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </Grid> <!--start game button-->
+               
             </Grid>
             <Grid x:Name="leaderboardGrid" Margin="10" Visibility="Hidden">
                 <Grid.RowDefinitions>
@@ -341,17 +430,56 @@
                     <RowDefinition Height="7*"/>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="1">
-                    <Label Content="todo: loading leaderboard from json: playername, won rounds, matches" FontSize="20" VerticalContentAlignment="Center"></Label>
+                    <Label HorizontalContentAlignment="Center" Foreground="red" Content="todo: loading leaderboard from json: playername, won rounds, matches" FontSize="50" VerticalContentAlignment="Center"></Label>
                 </Grid>
                 <Grid Grid.Row="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="13*"/>
                         <ColumnDefinition Width="64*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Content="Leaderboard" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                       FontSize="40" FontFamily="Consolas" FontWeight="Bold" Grid.Column="1" Padding="10 10 120 10"/>
-                    <Button Content="Main Menu" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                       FontSize="20" Grid.Row="2" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" Click="BackToMainMenu"/>
+                    <Button Content="Back" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                       FontSize="{Binding ElementName=mainwindow,Path=ButtonFontSize}" Grid.Row="1" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" 
+                            Click="BackToMainMenu" Foreground="Red" MouseEnter="MouseOnButton">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="20"/>
+                            </Style>
+                        </Button.Resources>
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background" Value="#F0646464"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#FA585858"/>
+                                        <Setter Property="FontWeight" Value="ExtraBold"/>
+                                        <Setter Property="FontStyle" Value="Italic"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </Grid>
+                <!--back to menu button-->
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="43*"/>
+                        <ColumnDefinition Width="69*"/>
+                        <ColumnDefinition Width="43*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Column="1" BorderBrush="Red" BorderThickness="2">
+                        <Label Content="Leaderboard" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                       FontSize="{Binding ElementName=mainwindow, Path=TitleFontSize}" FontFamily="Consolas" 
+                           FontWeight="Bold"  Foreground="Red"/>
+                    </Border>
                 </Grid>
             </Grid>
             <Grid x:Name="descriptionGrid" Margin="10" Visibility="Hidden">
@@ -361,18 +489,56 @@
                     <RowDefinition Height="7*"/>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="1">
-                    <Label Content="todo: description or something" FontSize="20" VerticalContentAlignment="Center"></Label>
+                    <Label Content="todo:description" HorizontalContentAlignment="Center" Foreground="red" FontSize="70" VerticalContentAlignment="Center"></Label>
                 </Grid>
                 <Grid Grid.Row="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="13*"/>
                         <ColumnDefinition Width="64*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Content="Description" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                       FontSize="40" FontFamily="Consolas" FontWeight="Bold" Grid.Column="1" Padding="10 10 120 10"/>
-                    <Button Content="Main Menu" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                       FontSize="20" Grid.Row="2" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" Click="BackToMainMenu"/>
-
+                    <Button Content="Back" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                       FontSize="{Binding ElementName=mainwindow,Path=ButtonFontSize}" Grid.Row="1" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" 
+                            Click="BackToMainMenu" Foreground="Red" MouseEnter="MouseOnButton">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="20"/>
+                            </Style>
+                        </Button.Resources>
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background" Value="#F0646464"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#FA585858"/>
+                                        <Setter Property="FontWeight" Value="ExtraBold"/>
+                                        <Setter Property="FontStyle" Value="Italic"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </Grid>
+                <!--back to menu button-->
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="43*"/>
+                        <ColumnDefinition Width="69*"/>
+                        <ColumnDefinition Width="43*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Column="1" BorderBrush="Red" BorderThickness="2">
+                        <Label Content="Description" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                       FontSize="{Binding ElementName=mainwindow, Path=TitleFontSize}" FontFamily="Consolas" 
+                           FontWeight="Bold"  Foreground="Red"/>
+                    </Border>
                 </Grid>
             </Grid>
             <Grid x:Name="optionsGrid" Margin="10" Visibility="Hidden">
@@ -382,18 +548,56 @@
                     <RowDefinition Height="7*"/>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="1">
-                    <Label Content="todo: keybindings, music etc." FontSize="20" VerticalContentAlignment="Center"></Label>
+                    <Label HorizontalContentAlignment="Center" Foreground="red" Content="todo: loading leaderboard from json: playername, won rounds, matches" FontSize="50" VerticalContentAlignment="Center"></Label>
                 </Grid>
                 <Grid Grid.Row="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="13*"/>
                         <ColumnDefinition Width="64*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Content="Options" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                       FontSize="40" FontFamily="Consolas" FontWeight="Bold" Grid.Column="1" Padding="10 10 120 10"/>
-                    <Button Content="Main Menu" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                       FontSize="20" Grid.Row="2" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" Click="BackToMainMenu"/>
-
+                    <Button Content="Back" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                       FontSize="{Binding ElementName=mainwindow,Path=ButtonFontSize}" Grid.Row="1" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" 
+                            Click="BackToMainMenu" Foreground="Red" MouseEnter="MouseOnButton">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="20"/>
+                            </Style>
+                        </Button.Resources>
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background" Value="#F0646464"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#FA585858"/>
+                                        <Setter Property="FontWeight" Value="ExtraBold"/>
+                                        <Setter Property="FontStyle" Value="Italic"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </Grid>
+                <!--back to menu button-->
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="43*"/>
+                        <ColumnDefinition Width="69*"/>
+                        <ColumnDefinition Width="43*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Column="1" BorderBrush="Red" BorderThickness="2">
+                        <Label Content="Options" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                       FontSize="{Binding ElementName=mainwindow, Path=TitleFontSize}" FontFamily="Consolas" 
+                           FontWeight="Bold"  Foreground="Red"/>
+                    </Border>
                 </Grid>
             </Grid>
         </Grid>
