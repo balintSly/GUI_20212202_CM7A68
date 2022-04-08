@@ -19,6 +19,7 @@
     <None Remove="Renderer\Images\GreenBombs\LargeBombStaticFrame2.png" />
     <None Remove="Renderer\Images\GreenBombs\LargeBombStaticFrame3.png" />
     <None Remove="Renderer\Images\GreenBombs\LargeBombStaticFrame4.png" />
+    <None Remove="Renderer\Images\Items\HealBooster\heal.png" />
     <None Remove="Renderer\Images\RedBombs\LargeBombStaticFrame1.png" />
     <None Remove="Renderer\Images\RedBombs\LargeBombStaticFrame2.png" />
     <None Remove="Renderer\Images\RedBombs\LargeBombStaticFrame3.png" />
@@ -177,6 +178,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Renderer\Images\GreenBombs\LargeBombStaticFrame4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Items\HealBooster\heal.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Renderer\Images\RedBombs\LargeBombStaticFrame1.png">
