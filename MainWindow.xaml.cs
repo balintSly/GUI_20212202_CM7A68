@@ -48,8 +48,20 @@ namespace GUI_20212202_CM7A68
             gametimer.Interval = TimeSpan.FromMilliseconds(17);
             gametimer.Tick += Gametimer_Tick;
             gametimer.Start();
+
+            DispatcherTimer itemtimer = new DispatcherTimer();
+            itemtimer.Interval = TimeSpan.FromSeconds(30);
+            itemtimer.Tick += Itemtimer_Tick;
+            itemtimer.Start();
+
             logic.SetupSize(new Size((int)mainGrid.ActualWidth, (int)mainGrid.ActualHeight));
         }
+
+        private void Itemtimer_Tick(object? sender, EventArgs e)
+        {
+            logic.ItemTimeStep();
+        }
+
         private void Gametimer_Tick(object? sender, EventArgs e)
         {
             if (logic.GamePaused)

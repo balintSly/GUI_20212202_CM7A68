@@ -15,6 +15,7 @@ namespace GUI_20212202_CM7A68.Logic
         string Player1Name { get; set; }
         string Player2Name { get; set; }
         string SelectedMapPath { get; set; }
+        List<Item> Items { get; set; }
 
         List<Bomb> Bombs { get; set; }
         List<Explosion> Explosions { get; set; }
@@ -22,6 +23,7 @@ namespace GUI_20212202_CM7A68.Logic
         void NewGreenFallingBomb(Point robotPos);
         void NewRedThrowingBomb(Point robotPos, int direction);
         void NewGreenThrowingBomb(Point robotPos, int direction);
+        public void ItemTimeStep();
         public TimeSpan RoundTime { get; set; }
         bool GamePaused { get; set; }
         void InitLogic();

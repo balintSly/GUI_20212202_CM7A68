@@ -19,6 +19,7 @@ namespace GUI_20212202_CM7A68.Logic
         public bool Robot2IsJumping { get; set; }
         public string Player1Name { get; set; }
         public string Player2Name { get; set; }
+        public List<Item> Items { get; set; }
         public TimeSpan RoundTime { get; set; }
         public string SelectedMapPath { get; set; }
         public bool GamePaused { get; set; } //esc lenyomásra menü fel, visszaszámlálás leáll
@@ -43,6 +44,7 @@ namespace GUI_20212202_CM7A68.Logic
         public void SetupSize(Size area)
         {
             Bombs = new List<Bomb>();
+            Items = new List<Item>();
             Explosions = new List<Explosion>();
             this.area = area;
             if (!RobotsSpawned)
@@ -54,6 +56,26 @@ namespace GUI_20212202_CM7A68.Logic
             Robot2.Center = new Point((int)(area.Width * 0.9), (int)(area.Height * 0.8));
             robotspeedX = (int)area.Width / 50;
             robotspeedY = (int)area.Height / 50;
+        }
+
+        static Random r = new Random();
+
+        public void ItemTimeStep()
+        {
+            int rnd = r.Next(0, 2);
+            switch (rnd)
+            {
+                case 0:
+                    //todo center
+                    Items.Add(new HealBoost(new Point(), area));
+                    break;
+                case 1:
+                    //todo center
+                    Items.Add(new ArmorBoost(new Point(), area));
+                    break;
+                default:
+                    break;
+            }
         }
         public void TimeStep()
         {
