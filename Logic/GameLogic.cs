@@ -85,7 +85,7 @@ namespace GUI_20212202_CM7A68.Logic
             {
                 TickCounter++;
             }
-            if (TickCounter==100)
+            if (TickCounter==500000)
             {
                 ItemTimeStep();
                 TickCounter = 0;
@@ -93,6 +93,10 @@ namespace GUI_20212202_CM7A68.Logic
             for (int i = 0; i < Items.Count; i++)
             {
                 Items[i].Move((int)(area.Height * 0.85));
+                if(Items[i].CheckHitbox(Robot1, Robot2))
+                {
+                    Items.RemoveAt(i);
+                }
             }
             
             for (int i = 0; i < Bombs.Count; i++)
