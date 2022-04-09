@@ -14,15 +14,26 @@ namespace GUI_20212202_CM7A68.Models
         public Size Area { get; set; }
         public abstract void Change(ref Robot robot);
         public Vector Speed { get; set; }
+        static Random r = new Random();
 
         bool direction;
 
-        public Item(Point center, Size area)
+        public Item(Size area)
         {
             direction = true;
             Speed = new Vector(0, Area.Height / 112.5);
-            this.Center = center;
+            this.Center = new Point(Randomizer(0,(int)area.Width), (int)(area.Height * 0.85));
             this.Area = area;
+        }
+
+        private int Randomizer(int min, int max)
+        {
+            int rnd = 0;
+            do
+            {
+                rnd = r.Next(min, max + 1);
+            } while (rnd == 0);
+            return rnd;
         }
 
         public void Move(int Floor)
@@ -56,7 +67,7 @@ namespace GUI_20212202_CM7A68.Models
 
     public class HealBoost : Item
     {
-        public HealBoost(Point center, Size area) : base(center, area)
+        public HealBoost(Size area) : base(area)
         {
             this.Value = 20;
         }
@@ -68,7 +79,7 @@ namespace GUI_20212202_CM7A68.Models
 
     public class ArmorBoost : Item
     {
-        public ArmorBoost(Point center, Size area) : base(center, area)
+        public ArmorBoost(Size area) : base(area)
         {
             this.Value = 20;
         }

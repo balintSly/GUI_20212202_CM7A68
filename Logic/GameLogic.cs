@@ -67,11 +67,11 @@ namespace GUI_20212202_CM7A68.Logic
             {
                 case 0:
                     //todo center
-                    Items.Add(new HealBoost(new Point(), area));
+                    Items.Add(new HealBoost(area));
                     break;
                 case 1:
                     //todo center
-                    Items.Add(new ArmorBoost(new Point(), area));
+                    Items.Add(new ArmorBoost(area));
                     break;
                 default:
                     break;
