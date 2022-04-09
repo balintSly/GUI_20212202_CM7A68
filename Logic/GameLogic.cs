@@ -81,14 +81,14 @@ namespace GUI_20212202_CM7A68.Logic
         public void TimeStep()
         {
             //TODO: minden mozgatást, állapotváltozást, ütközést itt állítani, ez 20ms-ként le fog futni
-
-            TickCounter++;
-            ;
-            if (TickCounter==1000)
+            if (RoundTime < new TimeSpan(0, 3, 0) && !GamePaused)
+            {
+                TickCounter++;
+            }
+            if (TickCounter==100)
             {
                 ItemTimeStep();
                 TickCounter = 0;
-                ;
             }
             for (int i = 0; i < Items.Count; i++)
             {

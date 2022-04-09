@@ -21,7 +21,7 @@ namespace GUI_20212202_CM7A68.Models
         public Item(Size area)
         {
             direction = true;
-            Speed = new Vector(0, Area.Height / 112.5);
+            Speed = new Vector(0, Area.Height / 300);
             this.Center = new Point(Randomizer(0,(int)area.Width), (int)(area.Height * 0.85));
             this.Area = area;
         }
@@ -50,9 +50,9 @@ namespace GUI_20212202_CM7A68.Models
             else
             {
                 direction = false;
-                Speed = new Vector(0, -Area.Height / 112.5);
+                Speed = new Vector(0, -(Area.Height / 300));
             }
-            if (newCenter.Y >= Floor - Area.Height*0.88 && !direction)
+            if (newCenter.Y >= Area.Height*0.8 && !direction)
             {
                 Center = newCenter;
                 direction = false;
@@ -60,7 +60,7 @@ namespace GUI_20212202_CM7A68.Models
             else
             {
                 direction = true;
-                Speed = new Vector(0, Area.Height / 112.5);
+                Speed = new Vector(0, Area.Height / 300);
             }
         }
     }

@@ -244,13 +244,13 @@ namespace GUI_20212202_CM7A68.Renderer
                         //több item esetén bővíteni kell
                         if (item is HealBoost)
                         {
-                            drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "Items", "HealBooster", "heal.png"),
-                            UriKind.RelativeOrAbsolute))), null, new Rect(item.Center.X - area.Width / 8, item.Center.Y - area.Height / 8, area.Width / 4, area.Height / 4));
+                            drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "Items", "HealBooster", "health_icon.png"),
+                            UriKind.RelativeOrAbsolute))), null, new Rect(item.Center.X - area.Width / 32, item.Center.Y - area.Height / 32, area.Width / 16, area.Height / 16));
                         }
                         else if (item is ArmorBoost)
                         {
-                            drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "Items", "ArmorBooster", "shield.png"),
-                            UriKind.RelativeOrAbsolute))), null, new Rect(item.Center.X - area.Width / 8, item.Center.Y - area.Height / 8, area.Width / 4, area.Height / 4));
+                            drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "Items", "ArmorBooster", "armor_icon.png"),
+                            UriKind.RelativeOrAbsolute))), null, new Rect(item.Center.X - area.Width / 32, item.Center.Y - area.Height / 32, area.Width / 16, area.Height / 16));
                         }
                     }
                     #endregion
