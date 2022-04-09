@@ -22,6 +22,7 @@ namespace GUI_20212202_CM7A68.Logic
         public List<Item> Items { get; set; }
         public TimeSpan RoundTime { get; set; }
         public string SelectedMapPath { get; set; }
+        private int TickCounter { get; set; }
         public bool GamePaused { get; set; } //esc lenyomásra menü fel, visszaszámlálás leáll
         public List<Explosion>  Explosions { get; set; }
 
@@ -43,6 +44,7 @@ namespace GUI_20212202_CM7A68.Logic
         public List<Bomb> Bombs { get; set; }
         public void SetupSize(Size area)
         {
+            TickCounter = 0;
             Bombs = new List<Bomb>();
             Items = new List<Item>();
             Explosions = new List<Explosion>();
@@ -62,15 +64,14 @@ namespace GUI_20212202_CM7A68.Logic
 
         public void ItemTimeStep()
         {
+            //több item esetén frissíteni kell
             int rnd = r.Next(0, 2);
             switch (rnd)
             {
                 case 0:
-                    //todo center
                     Items.Add(new HealBoost(area));
                     break;
                 case 1:
-                    //todo center
                     Items.Add(new ArmorBoost(area));
                     break;
                 default:
@@ -80,6 +81,20 @@ namespace GUI_20212202_CM7A68.Logic
         public void TimeStep()
         {
             //TODO: minden mozgatást, állapotváltozást, ütközést itt állítani, ez 20ms-ként le fog futni
+
+            TickCounter++;
+            ;
+            if (TickCounter==1000)
+            {
+                ItemTimeStep();
+                TickCounter = 0;
+                ;
+            }
+            for (int i = 0; i < Items.Count; i++)
+            {
+                Items[i].Move((int)(area.Height * 0.85));
+            }
+            
             for (int i = 0; i < Bombs.Count; i++)
             {
                 Bombs[i].Move((int)(area.Height*0.85));

@@ -19,6 +19,8 @@
     <None Remove="Renderer\Images\GreenBombs\LargeBombStaticFrame2.png" />
     <None Remove="Renderer\Images\GreenBombs\LargeBombStaticFrame3.png" />
     <None Remove="Renderer\Images\GreenBombs\LargeBombStaticFrame4.png" />
+    <None Remove="Renderer\Images\Items\ArmorBooster\shield.jpg" />
+    <None Remove="Renderer\Images\Items\ArmorBooster\shield2.png" />
     <None Remove="Renderer\Images\Items\HealBooster\heal.png" />
     <None Remove="Renderer\Images\RedBombs\LargeBombStaticFrame1.png" />
     <None Remove="Renderer\Images\RedBombs\LargeBombStaticFrame2.png" />
@@ -178,6 +180,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Renderer\Images\GreenBombs\LargeBombStaticFrame4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Items\ArmorBooster\shield.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Items\ArmorBooster\shield2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Renderer\Images\Items\HealBooster\heal.png">
