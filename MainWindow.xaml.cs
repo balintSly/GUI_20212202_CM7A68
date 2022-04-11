@@ -60,6 +60,8 @@ namespace GUI_20212202_CM7A68
                     var mainmenu = new MainMenuWindow(this.logic);
                     if (mainmenu.ShowDialog() == true)
                     {
+                        logic.PlayerOneWins = 0;
+                        logic.PlayerTwoWins = 0;
                         logic.InitLogic();
                     }
                     else
@@ -72,7 +74,32 @@ namespace GUI_20212202_CM7A68
                     logic.GamePaused = false;
                 }
             }
-            else 
+            else if (logic.GameOver)
+            {
+                var gameovermenu = new GameOverWindow(this.logic);
+                if (gameovermenu.ShowDialog() == false)
+                {
+                    var mainmenu = new MainMenuWindow(this.logic);
+                    if (mainmenu.ShowDialog() == true)
+                    {
+                        logic.PlayerOneWins = 0;
+                        logic.PlayerTwoWins = 0;
+                        logic.InitLogic();
+                    }
+                    else
+                    {
+                        Application.Current.Shutdown();
+                    }
+                }
+                else
+                {
+                    logic.PlayerOneWins = 0;
+                    logic.PlayerTwoWins = 0;
+                    logic.InitLogic();
+                }
+                logic.GameOver = false;
+            }
+            else
             {
                 logic.TimeStep();
                 display.TimeFromGameStart += TimeSpan.FromSeconds(17);// egy időztő van, kb. összeadjuk a delayeket, és durván másodpercenként kivonunk 1 secet az alap 3 percből

@@ -139,10 +139,12 @@ namespace GUI_20212202_CM7A68.Renderer
                     #endregion
                     #region HUD kirajzolás
                     //áttetsző fekete háttér
-                    drawingContext.DrawRectangle(new SolidColorBrush(Color.FromArgb(150, 0, 0, 0))
-                        , null, new Rect(0, area.Height * 0.02, area.Width, area.Height * 0.1));
-                    drawingContext.DrawEllipse(new SolidColorBrush(Color.FromArgb(200, 0, 0, 0)), null, new Point(area.Width * 0.02, area.Height * 0.13), area.Width * 0.2, area.Height * 0.1);
-                    drawingContext.DrawEllipse(new SolidColorBrush(Color.FromArgb(200, 0, 0, 0)), null, new Point(area.Width * 0.98, area.Height * 0.13), area.Width * 0.2, area.Height * 0.1);
+                    
+                    //drawingContext.DrawRectangle(new SolidColorBrush(Color.FromArgb(200, 0, 0, 0)), null, new Rect(0,0, area.Width, area.Height * 0.122));
+                    drawingContext.DrawEllipse(new SolidColorBrush(Color.FromArgb(200, 0, 0, 0)), null, new Point(area.Width * 0.02, area.Height * 0.121), area.Width * 0.2, area.Height * 0.1);
+                    drawingContext.DrawEllipse(new SolidColorBrush(Color.FromArgb(200, 0, 0, 0)), null, new Point(area.Width * 0.98, area.Height * 0.121), area.Width * 0.2, area.Height * 0.1);
+
+                    drawingContext.DrawEllipse(new SolidColorBrush(Color.FromArgb(200, 0, 0, 0)), null, new Point(area.Width * 0.5, area.Height * 0.1), area.Width * 0.12, area.Height * 0.09);
 
                     //robot1
                     string hp1 = $"Helath_{model.Robot1.Health}_pecent.png";
@@ -181,6 +183,11 @@ namespace GUI_20212202_CM7A68.Renderer
                     drawingContext.DrawText(new FormattedText(model.RoundTime.ToString(@"mm\:ss"), System.Globalization.CultureInfo.CurrentCulture,
                         FlowDirection.LeftToRight, new Typeface(new FontFamily("Consolas"), FontStyles.Normal, FontWeights.Bold,
                         FontStretches.Normal), area.Height * 0.05, Brushes.Red), new Point(area.Width * 0.465, area.Height * 0.05));
+
+                    //állás
+                    drawingContext.DrawText(new FormattedText($"{model.PlayerOneWins}:{model.PlayerTwoWins}", System.Globalization.CultureInfo.CurrentCulture,
+                        FlowDirection.LeftToRight, new Typeface(new FontFamily("Consolas"), FontStyles.Normal, FontWeights.Bold,
+                        FontStretches.Normal), area.Height * 0.05, Brushes.Red), new Point(area.Width * 0.48, area.Height * 0.12));
 
                     //nevek
                     drawingContext.DrawText(new FormattedText(model.Player1Name, System.Globalization.CultureInfo.CurrentCulture,
@@ -244,6 +251,11 @@ namespace GUI_20212202_CM7A68.Renderer
                         explosion.CheckHitBox(model.Robot1, model.Robot2, model.Bombs);
                     }
                     if (model.GamePaused)
+                    {
+                        drawingContext.DrawRectangle(new SolidColorBrush(Color.FromArgb(200, 0, 0, 0)),
+                       null, new Rect(0, 0, area.Width, area.Height));
+                    }
+                    else if (model.GameOver)
                     {
                         drawingContext.DrawRectangle(new SolidColorBrush(Color.FromArgb(200, 0, 0, 0)),
                        null, new Rect(0, 0, area.Width, area.Height));

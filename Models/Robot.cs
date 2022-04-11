@@ -18,9 +18,13 @@ namespace GUI_20212202_CM7A68.Models
             get { return health; }
             set 
             {
-                if (value>0)
+                if (value>0 && value<=100)
                 {
                     health = value;
+                }
+                else if (value>100)
+                {
+                    health = 100;
                 }
                 else
                 {

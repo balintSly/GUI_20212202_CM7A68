@@ -25,5 +25,8 @@ namespace GUI_20212202_CM7A68.Logic
         public TimeSpan RoundTime { get; set; }
         bool GamePaused { get; set; }
         void InitLogic();
+        public int PlayerOneWins { get; set; }
+        public int PlayerTwoWins { get; set; }
+        public bool GameOver { get; set; }
     }
 }

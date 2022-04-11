@@ -23,6 +23,9 @@ namespace GUI_20212202_CM7A68.Logic
         public string SelectedMapPath { get; set; }
         public bool GamePaused { get; set; } //esc lenyomásra menü fel, visszaszámlálás leáll
         public List<Explosion>  Explosions { get; set; }
+        public int PlayerOneWins { get; set; }
+        public int PlayerTwoWins { get; set; }
+        public bool GameOver { get; set; }
 
         int robotspeedX; //mozgás sebessége
         int robotspeedY; //ugrás sebessége
@@ -37,13 +40,14 @@ namespace GUI_20212202_CM7A68.Logic
             this.Robot2 = new Robot(new Point((int)(area.Width * 0.9), (int)(area.Height * 0.8)));
             this.RoundTime = TimeSpan.FromMinutes(3);
             this.GamePaused = false;
+            Bombs = new List<Bomb>();
+            Explosions = new List<Explosion>();
 
         }//visszaszámláló 3:00-ra, robotok újrapéldányosítva, GamePaused=false
         public List<Bomb> Bombs { get; set; }
         public void SetupSize(Size area)
         {
-            Bombs = new List<Bomb>();
-            Explosions = new List<Explosion>();
+           
             this.area = area;
             if (!RobotsSpawned)
             {
@@ -80,6 +84,20 @@ namespace GUI_20212202_CM7A68.Logic
                 {
                     Explosions.RemoveAt(i);
                 }
+            }
+            if (Robot2.Health==0)
+            {
+                PlayerOneWins++;
+                InitLogic();
+            }
+            else if(Robot1.Health==0)
+            {
+                PlayerTwoWins++;
+                InitLogic();
+            }
+            if (PlayerOneWins+PlayerTwoWins==3)
+            {
+                GameOver = true;
             }
         }
 
