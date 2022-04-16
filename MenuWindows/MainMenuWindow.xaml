@@ -423,14 +423,29 @@
                 </Grid> <!--start game button-->
                
             </Grid>
-            <Grid x:Name="leaderboardGrid" Margin="10" Visibility="Hidden">
+            <Grid x:Name="leaderboardGrid" Margin="10" Visibility="Collapsed">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="7*"/>
                     <RowDefinition Height="30*"/>
                     <RowDefinition Height="7*"/>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="1">
-                    <Label HorizontalContentAlignment="Center" Foreground="red" Content="todo: loading leaderboard from json: playername, won rounds, matches" FontSize="50" VerticalContentAlignment="Center"></Label>
+                    <ListBox Margin="10" ItemsSource="{Binding Players}" Background="Transparent" HorizontalContentAlignment="Stretch">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Content="{Binding Name}" Foreground="Red" HorizontalContentAlignment="Center"/>
+                                    <Label Grid.Column="1" Content="{Binding WonRounds}" Foreground="Red" HorizontalContentAlignment="Center"/>
+                                    <Label Grid.Column="2" Content="{Binding WonMatches}" Foreground="Red" HorizontalContentAlignment="Center"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                 </Grid>
                 <Grid Grid.Row="0">
                     <Grid.ColumnDefinitions>

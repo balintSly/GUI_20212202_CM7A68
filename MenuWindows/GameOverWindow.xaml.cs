@@ -24,6 +24,7 @@ namespace GUI_20212202_CM7A68.MenuWindows
     {
         public int ButtonFontSize { get; set; }
         public int TitleFontSize { get; set; }
+        public ICommand SaveGame { get; set; }
         public GameOverWindow(IGameModel model)
         {
             ButtonFontSize = 40;

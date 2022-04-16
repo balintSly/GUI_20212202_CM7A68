@@ -41,7 +41,7 @@
                 </Grid.RowDefinitions>
                 <Button Content="Rematch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                        FontSize="{Binding ElementName=gameovermenu,Path=ButtonFontSize}" Grid.Row="1" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" 
-                            Click="Rematch" Foreground="Red" MouseEnter="MouseOnButton">
+                            Click="Rematch" Foreground="Red" MouseEnter="MouseOnButton" Command="{Binding SaveGame}">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="20"/>
@@ -72,7 +72,7 @@
 
                 <Button Content="Main Menu" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                        FontSize="{Binding ElementName=gameovermenu,Path=ButtonFontSize}" Grid.Row="2" FontFamily="Consolas" FontWeight="Bold" Margin="10" BorderThickness="0" 
-                            Click="ExitGame" Foreground="Red" MouseEnter="MouseOnButton">
+                            Click="ExitGame" Foreground="Red" MouseEnter="MouseOnButton" Command="{Binding SaveGame}">
                     <Button.ToolTip>
                         <ToolTip>
                             <Grid Background="#FA585858">

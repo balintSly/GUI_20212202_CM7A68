@@ -1,7 +1,11 @@
 ﻿using GUI_20212202_CM7A68.Logic;
+using GUI_20212202_CM7A68.Models;
+using GUI_20212202_CM7A68.Services;
+using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -29,9 +33,13 @@ namespace GUI_20212202_CM7A68.MenuWindows.ViewModels
         public string SelctedPlayerOneSkinRoute { get; set; }
         public string SelectedPlayerTwoSkinRoute { get; set; }
         public ICommand StartGameCommand { get; set; }
+        public ILeaderboardHandler LeaderboardHandler { get; set; }
+        public ObservableCollection<Player> Players { get; set; }
 
-        public MainMenuWindowViewModel()
+        public MainMenuWindowViewModel(ILeaderboardHandler leaderboardHandler)
         {
+            this.LeaderboardHandler = leaderboardHandler;
+            this.Players = new ObservableCollection<Player>(this.LeaderboardHandler.GetLeaderboard());
             var asd = Directory.GetCurrentDirectory();
             Maps = Directory.GetFiles(Path.Combine(asd,"Renderer", "Images", "Backgrounds"), "*.jpg").ToList();
             PlayerOneSkins = Directory.GetFiles(Path.Combine(asd,"Renderer", "Images", "Robots"), "*.png").ToList();
@@ -47,6 +55,10 @@ namespace GUI_20212202_CM7A68.MenuWindows.ViewModels
                 }
                 );
             ;
+        }
+        public MainMenuWindowViewModel() : this(Ioc.Default.GetService<ILeaderboardHandler>())
+        {
+
         }
     }
 }
