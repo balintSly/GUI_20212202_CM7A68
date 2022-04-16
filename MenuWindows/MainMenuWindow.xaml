@@ -426,11 +426,35 @@
             <Grid x:Name="leaderboardGrid" Margin="10" Visibility="Collapsed">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="7*"/>
+                    <RowDefinition Height="5*"/>
                     <RowDefinition Height="30*"/>
                     <RowDefinition Height="7*"/>
                 </Grid.RowDefinitions>
-                <Grid Grid.Row="1">
-                    <ListBox Margin="10" ItemsSource="{Binding Players}" Background="Transparent" HorizontalContentAlignment="Stretch">
+                <Border Grid.Row="1" BorderBrush="Red" BorderThickness="2" Margin="10 5 10 0" Background="#F0646464">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="Name" Foreground="Red" 
+                               HorizontalContentAlignment="Center" FontSize="{Binding ElementName=mainwindow, Path=ContentFontSize}" 
+                               FontFamily="Consolas" VerticalContentAlignment="Center"
+                               FontWeight="Bold"/>
+                        <Label Grid.Column="1" Content="Won Rounds" Foreground="Red" 
+                               HorizontalContentAlignment="Center" FontSize="{Binding ElementName=mainwindow, Path=ContentFontSize}" 
+                               FontFamily="Consolas" VerticalContentAlignment="Center"
+                               FontWeight="Bold"/>
+                        <Label Grid.Column="2" Content="Won Matches" Foreground="Red" 
+                               HorizontalContentAlignment="Center" FontSize="{Binding ElementName=mainwindow, Path=ContentFontSize}" 
+                               FontFamily="Consolas" VerticalContentAlignment="Center"
+                               FontWeight="Bold"/>
+                    </Grid>
+                </Border>
+                <Grid Grid.Row="2">
+                    <ListBox Margin="10 0 10 10" ItemsSource="{Binding Players}" 
+                             Background="#F0646464" HorizontalContentAlignment="Stretch"
+                             BorderBrush="Red" BorderThickness="2">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
@@ -439,12 +463,32 @@
                                         <ColumnDefinition/>
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
-                                    <Label Grid.Column="0" Content="{Binding Name}" Foreground="Red" HorizontalContentAlignment="Center"/>
-                                    <Label Grid.Column="1" Content="{Binding WonRounds}" Foreground="Red" HorizontalContentAlignment="Center"/>
-                                    <Label Grid.Column="2" Content="{Binding WonMatches}" Foreground="Red" HorizontalContentAlignment="Center"/>
+                                    <Label Grid.Column="0" Content="{Binding Name}" Foreground="Red" 
+                                           HorizontalContentAlignment="Center" FontSize="{Binding ElementName=mainwindow, Path=ContentFontSize}" 
+                                           FontFamily="Consolas" />
+                                    <Label Grid.Column="1" Content="{Binding WonRounds}" Foreground="Red" 
+                                           HorizontalContentAlignment="Center" FontSize="{Binding ElementName=mainwindow, Path=ContentFontSize}" 
+                                           FontFamily="Consolas" />
+                                    <Label Grid.Column="2" Content="{Binding WonMatches}" Foreground="Red" 
+                                           HorizontalContentAlignment="Center" FontSize="{Binding ElementName=mainwindow, Path=ContentFontSize}" 
+                                           FontFamily="Consolas" />
                                 </Grid>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True" >
+                                        <Setter Property="FontWeight" Value="Bold" />
+                                        <Setter Property="Background" Value="#FA585858" />
+                                        <Setter Property="Foreground" Value="Black" />
+                                    </Trigger>
+                                </Style.Triggers>
+                                <Style.Resources>
+                                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
+                                </Style.Resources>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
                     </ListBox>
                 </Grid>
                 <Grid Grid.Row="0">
