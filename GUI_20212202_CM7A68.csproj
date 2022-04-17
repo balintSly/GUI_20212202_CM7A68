@@ -119,11 +119,6 @@
     <None Remove="Renderer\Images\HUD\Health\Helath_95_pecent.png" />
     <None Remove="Renderer\Images\HUD\Icons\armor_icon.png" />
     <None Remove="Renderer\Images\HUD\Icons\health_icon.png" />
-    <None Remove="Renderer\Images\Robots\robotpic_jump.png" />
-    <None Remove="Renderer\Images\Robots\robotpic_stand.png" />
-    <None Remove="Renderer\Images\Robots\robotpic_stand2.png" />
-    <None Remove="Renderer\Images\Robots\robotpic_step.png" />
-    <None Remove="Renderer\Images\Robots\robotpic_step2.png" />
     <None Remove="Renderer\Images\BombHp\Heath\Helath_0_pecent.png" />
     <None Remove="Renderer\Images\BombHp\Heath\Helath_100_pecent.png" />
     <None Remove="Renderer\Images\BombHp\Heath\Helath_10_pecent.png" />
@@ -146,6 +141,12 @@
     <None Remove="Renderer\Images\BombHp\Heath\Helath_90_pecent.png" />
     <None Remove="Renderer\Images\BombHp\Heath\Helath_95_pecent.png" />
     <None Remove="Renderer\Images\Bomb\bomb1.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_crouch.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_jump.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_stand.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_stand2.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_step.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_step2.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -479,21 +480,6 @@
     <Content Include="Renderer\Images\HUD\Icons\health_icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Renderer\Images\Robots\robotpic_jump.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Renderer\Images\Robots\robotpic_stand.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Renderer\Images\Robots\robotpic_stand2.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Renderer\Images\Robots\robotpic_step.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Renderer\Images\Robots\robotpic_step2.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Renderer\Images\BombHp\Heath\Helath_0_pecent.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -561,6 +547,24 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Renderer\Images\Backgrounds\mkmap1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_crouch.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_jump.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_stand.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_stand2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_step.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_step2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
