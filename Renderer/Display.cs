@@ -32,8 +32,8 @@ namespace GUI_20212202_CM7A68.Renderer
             this.model = model;
         }
         int piccount = 0;
-        string robot1skin = "robotpic_stand2.png";
-        string robot2skin = "robotpic_stand2.png";
+        string robot1skin = "robotpic_stand2_";
+        string robot2skin = "robotpic_stand2_";
 
         protected override void OnRender(DrawingContext drawingContext)
         {
@@ -66,54 +66,56 @@ namespace GUI_20212202_CM7A68.Renderer
                     //ugrás: robot.center.y < (int)(area.Height * 0.8) 
                     if (model.Robot1.Center.Y < (int)(area.Height * 0.8))
                     {
-                        robot1skin = "robotpic_jump.png";
+                        robot1skin = "robotpic_jump_";
                     }
                     else if (!model.Robot1IsMoving)
                     {
-                        robot1skin = "robotpic_stand2.png";
+                        robot1skin = "robotpic_stand_";
                     }
                     else
                     {
                         piccount++;
                         if (piccount % 9 == 0 || piccount % 9 == 1 || piccount % 9 == 2)
                         {
-                            robot1skin = "robotpic_stand.png";
+                            robot1skin = "robotpic_stand_";
                         }
                         else if (piccount % 9 == 3 || piccount % 9 == 4 || piccount % 9 == 5)
                         {
-                            robot1skin = "robotpic_step.png";
+                            robot1skin = "robotpic_step_";
                         }
                         else if (piccount % 9 == 6 || piccount % 9 == 7 || piccount % 9 == 8)
                         {
-                            robot1skin = "robotpic_step2.png";
+                            robot1skin = "robotpic_step2_";
                             piccount %= 9;
                         }
                     }
                     if (model.Robot2.Center.Y < (int)(area.Height * 0.8))
                     {
-                        robot2skin = "robotpic_jump.png";
+                        robot2skin = "robotpic_jump_";
                     }
                     else if (!model.Robot2IsMoving)
                     {
-                        robot2skin = "robotpic_stand2.png";
+                        robot2skin = "robotpic_stand_";
                     }
                     else
                     {
                         piccount++;
                         if (piccount % 9 == 0 || piccount % 9 == 1 || piccount % 9 == 2)
                         {
-                            robot2skin = "robotpic_stand.png";
+                            robot2skin = "robotpic_stand_";
                         }
                         else if (piccount % 9 == 3 || piccount % 9 == 4 || piccount % 9 == 5)
                         {
-                            robot2skin = "robotpic_step.png";
+                            robot2skin = "robotpic_step_";
                         }
                         else if (piccount % 9 == 6 || piccount % 9 == 7 || piccount % 9 == 8)
                         {
-                            robot2skin = "robotpic_step2.png";
+                            robot2skin = "robotpic_step2_";
                             piccount %= 9;
                         }
                     }
+                    robot1skin += model.PlayerOneColor;
+                    robot2skin+=model.PlayerTwoColor;
                     #endregion
                     #region RobotKirajzolás
                     if (model.Robot1.Center.X < model.Robot2.Center.X)//merre nézzenek a robotok, kirajzolásuk

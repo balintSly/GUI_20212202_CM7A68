@@ -16,7 +16,7 @@ using System.Windows.Media.Imaging;
 
 namespace GUI_20212202_CM7A68.MenuWindows.ViewModels
 {
-    public class MainMenuWindowViewModel:ObservableRecipient
+    public class MainMenuWindowViewModel : ObservableRecipient
     {
         //dp injection: ablak megkapja a logicot, datacontext.setupmodel metúdussal megkapja ez az osztály
         IGameModel logic;
@@ -35,34 +35,42 @@ namespace GUI_20212202_CM7A68.MenuWindows.ViewModels
 
 
         private string selectedPlayerOneSkinRoute;
-        public string SelectedPlayerOneSkinRoute 
+        public string SelectedPlayerOneSkinRoute
         {
             get => selectedPlayerOneSkinRoute;
-            set 
-            { 
+            set
+            {
                 SetProperty(ref selectedPlayerOneSkinRoute, value);
-                if (selectedPlayerOneSkinRoute!=null)
+                if (selectedPlayerOneSkinRoute != null)
                 {
-                    PlayerTwoSkins.Clear();
-                    AllSkin.Where(x => x != selectedPlayerOneSkinRoute).ToList().ForEach(x => PlayerTwoSkins.Add(x));
+                    PlayerTwoSkins.Remove(selectedPlayerOneSkinRoute);
+                    AllSkin.Where(x => x != selectedPlayerOneSkinRoute).ToList().ForEach(x =>
+                    {
+                        if (!PlayerTwoSkins.Contains(x))
+                            PlayerTwoSkins.Add(x);
+                    });
                 }
-                
-            } 
+
+            }
         }
 
         private string selectedPlayerTwoSkinRoute;
-        public string SelectedPlayerTwoSkinRoute 
-        { 
+        public string SelectedPlayerTwoSkinRoute
+        {
             get => selectedPlayerTwoSkinRoute;
-            set 
+            set
             {
                 SetProperty(ref selectedPlayerTwoSkinRoute, value);
-                if (selectedPlayerTwoSkinRoute!=null)
+                if (selectedPlayerTwoSkinRoute != null)
                 {
-                    PlayerOneSkins.Clear();
-                    AllSkin.Where(x => x != selectedPlayerTwoSkinRoute).ToList().ForEach(x => PlayerOneSkins.Add(x));
+                    PlayerOneSkins.Remove(selectedPlayerTwoSkinRoute);
+                    AllSkin.Where(x => x != selectedPlayerTwoSkinRoute).ToList().ForEach(x =>
+                    {
+                        if (!PlayerOneSkins.Contains(x))
+                            PlayerOneSkins.Add(x);
+                    });
                 }
-                
+
             }
         }
 
@@ -93,8 +101,8 @@ namespace GUI_20212202_CM7A68.MenuWindows.ViewModels
                     logic.Player1Name = PlayerOneName;
                     logic.Player2Name = PlayerTwoName;
                     logic.SelectedMapPath = SelectedMapRoute;
-                    logic.PlayerOneColor = SelectedPlayerOneSkinRoute.Split('_')[2];
-                    logic.PlayerTwoColor = SelectedPlayerTwoSkinRoute.Split('_')[2];
+                    logic.PlayerOneColor = SelectedPlayerOneSkinRoute.Split('_')[4];
+                    logic.PlayerTwoColor = SelectedPlayerTwoSkinRoute.Split('_')[4];
                 }
                 );
             ;
