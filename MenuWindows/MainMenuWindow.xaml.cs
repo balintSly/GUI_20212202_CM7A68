@@ -101,7 +101,7 @@ namespace GUI_20212202_CM7A68.MenuWindows
         {
             this.MapSize = (e.Source as Window).ActualWidth / 8.6;
             this.ButtonFontSize = (int)((e.Source as Window).ActualWidth / 30);
-            this.CharachterSize = (e.Source as Window).ActualWidth / 13.5;
+            this.CharachterSize = (e.Source as Window).ActualWidth / 14.19;
             borderGrid.Background = new ImageBrush(new BitmapImage(new Uri(System.IO.Path.Combine("MenuWindows", "Images", "mortalbombatmainmenubackg.jpg"), UriKind.RelativeOrAbsolute)));
 
         }
@@ -111,7 +111,7 @@ namespace GUI_20212202_CM7A68.MenuWindows
             if ((e.Source as Window).ActualWidth > 0)
             {
                 this.MapSize = (e.Source as Window).ActualWidth / 8.6;
-                this.CharachterSize = (e.Source as Window).ActualWidth / 13.5;
+                this.CharachterSize = (e.Source as Window).ActualWidth / 14.19;
             }
         }
         private void MouseOnButton(object sender, MouseEventArgs e)

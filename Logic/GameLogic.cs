@@ -19,6 +19,8 @@ namespace GUI_20212202_CM7A68.Logic
         public bool Robot2IsJumping { get; set; }
         public string Player1Name { get; set; }
         public string Player2Name { get; set; }
+        public string PlayerOneColor { get; set; }
+        public string PlayerTwoColor { get; set; }
         public TimeSpan RoundTime { get; set; }
         public string SelectedMapPath { get; set; }
         public bool GamePaused { get; set; } //esc lenyomásra menü fel, visszaszámlálás leáll

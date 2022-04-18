@@ -141,12 +141,48 @@
     <None Remove="Renderer\Images\BombHp\Heath\Helath_90_pecent.png" />
     <None Remove="Renderer\Images\BombHp\Heath\Helath_95_pecent.png" />
     <None Remove="Renderer\Images\Bomb\bomb1.png" />
-    <None Remove="Renderer\Images\Robots\robotpic_crouch.png" />
-    <None Remove="Renderer\Images\Robots\robotpic_jump.png" />
-    <None Remove="Renderer\Images\Robots\robotpic_stand.png" />
-    <None Remove="Renderer\Images\Robots\robotpic_stand2.png" />
-    <None Remove="Renderer\Images\Robots\robotpic_step.png" />
-    <None Remove="Renderer\Images\Robots\robotpic_step2.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_crouch_blue.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_crouch_brblue.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_crouch_brown.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_crouch_green.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_crouch_pink.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_crouch_turk.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_crouch_yellow.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_jump_blue.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_jump_brblue.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_jump_brown.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_jump_green.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_jump_pink.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_jump_turk.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_jump_yellow.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_stand2_blue.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_stand2_brblue.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_stand2_brown.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_stand2_green.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_stand2_pink.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_stand2_turk.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_stand2_yellow.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_stand_blue.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_stand_brblue.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_stand_brown.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_stand_green.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_stand_pink.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_stand_turk.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_stand_yellow.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_step2_blue.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_step2_brblue.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_step2_brown.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_step2_green.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_step2_pink.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_step2_turk.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_step2_yellow.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_step_blue.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_step_brblue.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_step_brown.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_step_green.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_step_pink.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_step_turk.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_step_yellow.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -549,22 +585,130 @@
     <Content Include="Renderer\Images\Backgrounds\mkmap1.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Renderer\Images\Robots\robotpic_crouch.png">
+    <Content Include="Renderer\Images\Robots\robotpic_crouch_blue.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Renderer\Images\Robots\robotpic_jump.png">
+    <Content Include="Renderer\Images\Robots\robotpic_crouch_brblue.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Renderer\Images\Robots\robotpic_stand.png">
+    <Content Include="Renderer\Images\Robots\robotpic_crouch_brown.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Renderer\Images\Robots\robotpic_stand2.png">
+    <Content Include="Renderer\Images\Robots\robotpic_crouch_green.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Renderer\Images\Robots\robotpic_step.png">
+    <Content Include="Renderer\Images\Robots\robotpic_crouch_pink.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Renderer\Images\Robots\robotpic_step2.png">
+    <Content Include="Renderer\Images\Robots\robotpic_crouch_turk.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_crouch_yellow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_jump_blue.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_jump_brblue.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_jump_brown.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_jump_green.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_jump_pink.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_jump_turk.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_jump_yellow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_stand2_blue.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_stand2_brblue.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_stand2_brown.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_stand2_green.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_stand2_pink.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_stand2_turk.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_stand2_yellow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_stand_blue.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_stand_brblue.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_stand_brown.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_stand_green.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_stand_pink.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_stand_turk.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_stand_yellow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_step2_blue.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_step2_brblue.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_step2_brown.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_step2_green.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_step2_pink.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_step2_turk.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_step2_yellow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_step_blue.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_step_brblue.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_step_brown.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_step_green.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_step_pink.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_step_turk.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_step_yellow.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

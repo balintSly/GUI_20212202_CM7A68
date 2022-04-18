@@ -129,7 +129,7 @@
                                              TextChanged="TextBox_TextChanged"/>
                                 </Grid>
                                 <ListBox Grid.Row="2" Margin="10" ItemsSource="{Binding PlayerOneSkins}"
-                                         SelectedItem="{Binding SelctedPlayerOneSkinRoute}" 
+                                         SelectedItem="{Binding SelectedPlayerOneSkinRoute}" 
                                          SelectedIndex="0" x:Name="lb_left" Background="#F0646464" 
                                          BorderThickness="2" BorderBrush="red" SelectionChanged="lb_SelectionChanged">
                                     <ListBox.ItemsPanel>
