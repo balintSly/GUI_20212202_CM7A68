@@ -5,9 +5,14 @@ using System.Windows;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace GUI_20212202_CM7A68.Logic
 {
+    public enum Directions
+    {
+        up, down, left, right, bomb
+    }
     public class GameLogic : IGameModel, IGameControl
     {
         Size area;
@@ -32,10 +37,7 @@ namespace GUI_20212202_CM7A68.Logic
         int robotspeedX; //mozgás sebessége
         int robotspeedY; //ugrás sebessége
         public bool RobotsSpawned { get; set; } //true, ha már létrehoztuk a robotokat
-        public enum Directions
-        {
-            up, down, left, right, bomb
-        }
+       
         public void InitLogic()
         {
             this.Robot1 = new Robot(new Point(area.Width / 10, (int)(area.Height * 0.8)));
@@ -44,6 +46,7 @@ namespace GUI_20212202_CM7A68.Logic
             this.GamePaused = false;
             Bombs = new List<Bomb>();
             Explosions = new List<Explosion>();
+            CreateBots();
 
         }//visszaszámláló 3:00-ra, robotok újrapéldányosítva, GamePaused=false
         public List<Bomb> Bombs { get; set; }
@@ -205,6 +208,79 @@ namespace GUI_20212202_CM7A68.Logic
         public void NewGreenThrowingBomb(System.Windows.Point robotPos, int direction)
         {
             Bombs.Add(new ThrowingBomb(new Point((int)robotPos.X, (int)robotPos.Y), area, direction, ConsoleColor.Green));
+        }
+        private void CreateBots()
+        {
+            var ts = new List<Task>();
+            if (!Robot1.IsControllable)
+            {
+                ts.Add(new Task(()=>AIBehavior(Robot1), TaskCreationOptions.LongRunning));
+            }
+            if (!Robot2.IsControllable)
+            {
+                ts.Add(new Task(() => AIBehavior(Robot2), TaskCreationOptions.LongRunning));
+            }
+            ts.ForEach(x => x.Start());
+        }
+        Random r = new Random();
+        private async void AIBehavior(Robot robot)
+        {
+            bool robot2IsInAir = false;
+            while (!GameOver && !Robot2.IsControllable)
+            {
+                switch (r.Next(0, 6))
+                {
+                    case 0:
+                        if (Robot2IsJumping == false && robot2IsInAir == false)
+                        {
+                            Robot2IsJumping = true;
+                            for (int i = 0; i < 20; i++)
+                            {
+                                await Task.Delay(1);
+                                MoveRobot2(Directions.up);
+                            }
+                            for (int i = 0; i < 20; i++)
+                            {
+                                await Task.Delay(1);
+                                Robot2Descend();
+                            }
+                            robot2IsInAir = false;
+                        }
+                        break;
+                    case 1:
+                        MoveRobot2(Directions.down);
+                        break;
+                    case 2:
+                        if (Robot2IsMoving == false)
+                        {
+                            Robot2IsMoving = true;
+                            while (Robot2IsMoving)
+                            {
+                                await Task.Delay(1);
+                                MoveRobot2(Directions.left);
+                            }
+                        }
+                        break;
+                    case 3:
+                        if (Robot2IsMoving == false)
+                        {
+                            Robot2IsMoving = true;
+                            while (Robot2IsMoving)
+                            {
+                                await Task.Delay(1);
+                                MoveRobot2(Directions.right);
+                            }
+                        }
+                        break;
+                    case 4:
+                        MoveRobot2(Directions.bomb);
+                        break;
+                    default:Robot2IsMoving = false;
+                        break;
+                }
+                Thread.Sleep(1000);
+            }
+           
         }
     }
 }

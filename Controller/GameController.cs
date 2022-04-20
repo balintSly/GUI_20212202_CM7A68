@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using static GUI_20212202_CM7A68.Logic.GameLogic;
 
 namespace GUI_20212202_CM7A68.Controller
 {
