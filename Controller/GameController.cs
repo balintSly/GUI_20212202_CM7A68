@@ -29,18 +29,18 @@ namespace GUI_20212202_CM7A68.Controller
                         for (int i = 0; i < 20; i++)
                         {
                             await Task.Delay(1);
-                            logic.MoveRobot2(Directions.up);
+                            logic.MoveRobot(Directions.up, logic.Robots[1]);
                         }
                         for (int i = 0; i < 20; i++)
                         {
                             await Task.Delay(1);
-                            logic.Robot2Descend();
+                            logic.RobotDescend(logic.Robots[1]);
                         }
                         robot2IsInAir=false;
                     }
                     break;
                 case Key.Down:
-                    logic.MoveRobot2(Directions.down);
+                    logic.MoveRobot(Directions.down, logic.Robots[1]);
                     break;
                 case Key.Left:
                     if (logic.Robot2IsMoving == false)
@@ -49,7 +49,7 @@ namespace GUI_20212202_CM7A68.Controller
                         while (logic.Robot2IsMoving)
                         {
                             await Task.Delay(1);
-                            logic.MoveRobot2(Directions.left);
+                            logic.MoveRobot(Directions.left, logic.Robots[1]);
                         }
                     }
                     break;
@@ -60,12 +60,12 @@ namespace GUI_20212202_CM7A68.Controller
                         while (logic.Robot2IsMoving)
                         {
                             await Task.Delay(1);
-                            logic.MoveRobot2(Directions.right);
+                            logic.MoveRobot(Directions.right, logic.Robots[1]);
                         }
                     }
                     break;
                 case Key.RightShift:
-                    logic.MoveRobot2(Directions.bomb);
+                    logic.MoveRobot(Directions.bomb, logic.Robots[1]);
                     break;
 
                 case Key.W:
@@ -76,19 +76,19 @@ namespace GUI_20212202_CM7A68.Controller
                         for (int i = 0; i < 20; i++)
                         {
                             await Task.Delay(1);
-                            logic.MoveRobot1(Directions.up);
+                            logic.MoveRobot(Directions.up, logic.Robots[0]);
                         }
                         for (int i = 0; i < 20; i++)
                         {
                             await Task.Delay(1);
-                            logic.Robot1Descend();
+                            logic.RobotDescend(logic.Robots[0]);
                         }
                         robot1IsInAir = false;
                     }
                     
                     break;
                 case Key.S:
-                    logic.MoveRobot1(Directions.down);
+                    logic.MoveRobot(Directions.down, logic.Robots[0]);
                     break;
                 case Key.A:
                     if (logic.Robot1IsMoving == false)
@@ -97,7 +97,7 @@ namespace GUI_20212202_CM7A68.Controller
                         while (logic.Robot1IsMoving)
                         {
                             await Task.Delay(1);
-                            logic.MoveRobot1(Directions.left);
+                            logic.MoveRobot(Directions.left, logic.Robots[0]);
                         }
                     }
 
@@ -109,12 +109,12 @@ namespace GUI_20212202_CM7A68.Controller
                         while (logic.Robot1IsMoving)
                         {
                             await Task.Delay(1);
-                            logic.MoveRobot1(Directions.right);
+                            logic.MoveRobot(Directions.right, logic.Robots[0]);
                         }
                     }
                     break;
                 case Key.Space:
-                    logic.MoveRobot1(Directions.bomb);
+                    logic.MoveRobot(Directions.bomb, logic.Robots[0]);
                     break;
                 case Key.Escape: 
                     logic.GamePaused = true;

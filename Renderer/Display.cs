@@ -64,7 +64,7 @@ namespace GUI_20212202_CM7A68.Renderer
                     #region Skinváltogatás
                     //állaptok szerint kép kiválsztása: áll, mozog, ugrik, gugol, dob
                     //ugrás: robot.center.y < (int)(area.Height * 0.8) 
-                    if (model.Robot1.Center.Y < (int)(area.Height * 0.8))
+                    if (model.Robots[0].Center.Y < (int)(area.Height * 0.8))
                     {
                         robot1skin = "robotpic_jump_";
                     }
@@ -89,7 +89,7 @@ namespace GUI_20212202_CM7A68.Renderer
                             piccount %= 9;
                         }
                     }
-                    if (model.Robot2.Center.Y < (int)(area.Height * 0.8))
+                    if (model.Robots[1].Center.Y < (int)(area.Height * 0.8))
                     {
                         robot2skin = "robotpic_jump_";
                     }
@@ -118,25 +118,25 @@ namespace GUI_20212202_CM7A68.Renderer
                     robot2skin+=model.PlayerTwoColor;
                     #endregion
                     #region RobotKirajzolás
-                    if (model.Robot1.Center.X < model.Robot2.Center.X)//merre nézzenek a robotok, kirajzolásuk
+                    if (model.Robots[0].Center.X < model.Robots[1].Center.X)//merre nézzenek a robotok, kirajzolásuk
                     {
                         drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "Robots", robot1skin),
-                     UriKind.RelativeOrAbsolute))), null, new Rect(model.Robot1.Center.X - area.Width / 12, model.Robot1.Center.Y - area.Height / 6, area.Width / 6, area.Height / 3));
+                     UriKind.RelativeOrAbsolute))), null, new Rect(model.Robots[0].Center.X - area.Width / 12, model.Robots[0].Center.Y - area.Height / 6, area.Width / 6, area.Height / 3));
 
-                        drawingContext.PushTransform(new ScaleTransform(-1, 1, model.Robot2.Center.X, model.Robot2.Center.Y));
+                        drawingContext.PushTransform(new ScaleTransform(-1, 1, model.Robots[1].Center.X, model.Robots[1].Center.Y));
                         drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "Robots", robot2skin),
-                      UriKind.RelativeOrAbsolute))), null, new Rect(model.Robot2.Center.X - area.Width / 12, model.Robot2.Center.Y - area.Height / 6, area.Width / 6, area.Height / 3));
+                      UriKind.RelativeOrAbsolute))), null, new Rect(model.Robots[1].Center.X - area.Width / 12, model.Robots[1].Center.Y - area.Height / 6, area.Width / 6, area.Height / 3));
                         drawingContext.Pop();
                     }
                     else
                     {
-                        drawingContext.PushTransform(new ScaleTransform(-1, 1, model.Robot1.Center.X, model.Robot1.Center.Y));
+                        drawingContext.PushTransform(new ScaleTransform(-1, 1, model.Robots[0].Center.X, model.Robots[0].Center.Y));
                         drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "Robots", robot1skin),
-                   UriKind.RelativeOrAbsolute))), null, new Rect(model.Robot1.Center.X - area.Width / 12, model.Robot1.Center.Y - area.Height / 6, area.Width / 6, area.Height / 3));
+                   UriKind.RelativeOrAbsolute))), null, new Rect(model.Robots[0].Center.X - area.Width / 12, model.Robots[0].Center.Y - area.Height / 6, area.Width / 6, area.Height / 3));
                         drawingContext.Pop();
 
                         drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "Robots", robot2skin),
-                      UriKind.RelativeOrAbsolute))), null, new Rect(model.Robot2.Center.X - area.Width / 12, model.Robot2.Center.Y - area.Height / 6, area.Width / 6, area.Height / 3));
+                      UriKind.RelativeOrAbsolute))), null, new Rect(model.Robots[1].Center.X - area.Width / 12, model.Robots[1].Center.Y - area.Height / 6, area.Width / 6, area.Height / 3));
                     }
                     #endregion
                     #region HUD kirajzolás
@@ -149,22 +149,22 @@ namespace GUI_20212202_CM7A68.Renderer
                     drawingContext.DrawEllipse(new SolidColorBrush(Color.FromArgb(200, 0, 0, 0)), null, new Point(area.Width * 0.5, area.Height * 0.1), area.Width * 0.12, area.Height * 0.09);
 
                     //robot1
-                    string hp1 = $"Helath_{model.Robot1.Health}_pecent.png";
+                    string hp1 = $"Helath_{model.Robots[0].Health}_pecent.png";
                     drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "HUD", "Health", hp1),
                        UriKind.RelativeOrAbsolute))), null, new Rect(area.Width * 0.048, area.Height * 0.02, area.Width * 0.4, area.Height * 0.05));
 
-                    string armor1 = $"Armor_{model.Robot1.Shield}_pecent.png";
+                    string armor1 = $"Armor_{model.Robots[0].Shield}_pecent.png";
                     drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "HUD", "Armor", armor1),
                       UriKind.RelativeOrAbsolute))), null, new Rect(area.Width * 0.048, area.Height * 0.07, area.Width * 0.4, area.Height * 0.05));
 
                     //robot2
-                    string hp2 = $"Helath_{model.Robot2.Health}_pecent.png";
+                    string hp2 = $"Helath_{model.Robots[1].Health}_pecent.png";
                     drawingContext.PushTransform(new ScaleTransform(-1, 1, area.Width * 0.78, area.Height * 0.02));
                     drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "HUD", "Health", hp2),
                        UriKind.RelativeOrAbsolute))), null, new Rect(area.Width * 0.608, area.Height * 0.02, area.Width * 0.4, area.Height * 0.05));
                     drawingContext.Pop();
 
-                    string armor2 = $"Armor_{model.Robot2.Shield}_pecent.png";
+                    string armor2 = $"Armor_{model.Robots[1].Shield}_pecent.png";
                     drawingContext.PushTransform(new ScaleTransform(-1, 1, area.Width * 0.78, area.Height * 0.07));
                     drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "HUD", "Armor", armor1),
                       UriKind.RelativeOrAbsolute))), null, new Rect(area.Width * 0.608, area.Height * 0.07, area.Width * 0.4, area.Height * 0.05));
@@ -250,7 +250,7 @@ namespace GUI_20212202_CM7A68.Renderer
                     foreach (var explosion in model.Explosions)
                     {
                         DrawExplosion(drawingContext, explosion);
-                        explosion.CheckHitBox(model.Robot1, model.Robot2, model.Bombs);
+                        explosion.CheckHitBox(model.Robots[0], model.Robots[1], model.Bombs);
                     }
                     if (model.GamePaused)
                     {

@@ -16,8 +16,7 @@ namespace GUI_20212202_CM7A68.Logic
     public class GameLogic : IGameModel, IGameControl
     {
         Size area;
-        public Robot Robot1 { get; set; }
-        public Robot Robot2 { get; set; }
+        public List<Robot> Robots { get; set; }
         public bool Robot1IsMoving { get; set; }
         public bool Robot2IsMoving { get; set; }
         public bool Robot1IsJumping { get; set; }
@@ -40,8 +39,9 @@ namespace GUI_20212202_CM7A68.Logic
        
         public void InitLogic()
         {
-            this.Robot1 = new Robot(new Point(area.Width / 10, (int)(area.Height * 0.8)));
-            this.Robot2 = new Robot(new Point((int)(area.Width * 0.9), (int)(area.Height * 0.8)));
+            this.Robots= new List<Robot>();
+            this.Robots.Add(new Robot(new Point(area.Width / 10, (int)(area.Height * 0.8))));
+            this.Robots.Add(new Robot(new Point((int)(area.Width * 0.9), (int)(area.Height * 0.8))));
             this.RoundTime = TimeSpan.FromMinutes(3);
             this.GamePaused = false;
             Bombs = new List<Bomb>();
@@ -59,8 +59,8 @@ namespace GUI_20212202_CM7A68.Logic
                 InitLogic();
                 RobotsSpawned = true;
             }
-            Robot1.Center = new Point(area.Width / 10, (int)(area.Height * 0.8));//robotok spawnpointja
-            Robot2.Center = new Point((int)(area.Width * 0.9), (int)(area.Height * 0.8));
+            Robots[0].Center = new Point(area.Width / 10, (int)(area.Height * 0.8));//robotok spawnpointja
+            Robots[1].Center = new Point((int)(area.Width * 0.9), (int)(area.Height * 0.8));
             robotspeedX = (int)area.Width / 50;
             robotspeedY = (int)area.Height / 50;
         }
@@ -90,12 +90,12 @@ namespace GUI_20212202_CM7A68.Logic
                     Explosions.RemoveAt(i);
                 }
             }
-            if (Robot2.Health==0)
+            if (Robots[1].Health==0)
             {
                 PlayerOneWins++;
                 InitLogic();
             }
-            else if(Robot1.Health==0)
+            else if(Robots[0].Health==0)
             {
                 PlayerTwoWins++;
                 InitLogic();
@@ -106,15 +106,15 @@ namespace GUI_20212202_CM7A68.Logic
             }
         }
 
-        public void MoveRobot1(Directions direction)
+        public void MoveRobot(Directions direction, Robot robot)
         {
-            var oldpos = Robot1.Center;
+            var oldpos = robot.Center;
             switch (direction)
             {
                 case Directions.up:
                     if (oldpos.Y - 2 * robotspeedY > 0) 
                     {
-                        Robot1.Center = new Point(oldpos.X, oldpos.Y - robotspeedY);
+                        robot.Center = new Point(oldpos.X, oldpos.Y - robotspeedY);
                     }
                     break;
                 case Directions.down:
@@ -123,83 +123,51 @@ namespace GUI_20212202_CM7A68.Logic
                 case Directions.left:
                     if (oldpos.X - 2 * robotspeedX >= 0)
                     {
-                        Robot1.Center = new Point(oldpos.X - robotspeedX, oldpos.Y);
+                        robot.Center = new Point(oldpos.X - robotspeedX, oldpos.Y);
                     }
                     break;
                 case Directions.right:
                     if (oldpos.X + 2 * robotspeedX <= area.Width)
                     {
-                        Robot1.Center = new Point(oldpos.X + robotspeedX, oldpos.Y);
+                        robot.Center = new Point(oldpos.X + robotspeedX, oldpos.Y);
                     }
                     break;
                 case Directions.bomb:
-                    NewGreenThrowingBomb(Robot1.Center, Robot1.Center.X > Robot2.Center.X ? -1 : 1);
+                    if (robot == Robots[0])
+                    {
+                        NewGreenThrowingBomb(Robots[0].Center, Robots[0].Center.X > Robots[1].Center.X ? -1 : 1);
+                    }
+                    else
+                    {
+                        NewGreenThrowingBomb(Robots[1].Center, Robots[0].Center.X > Robots[1].Center.X ? 1 : 1);
+                    }
+                   
                     break;
                 default:
                     break;
             }
         }
-        public void Robot1Descend() //segédmetódus az ugráshoz
+        public void RobotDescend(Robot robot) //segédmetódus az ugráshoz
         {
-            var oldpos = Robot1.Center;
+            var oldpos = robot.Center;
             if (oldpos.Y + robotspeedY <=area.Height*0.8)
             {
-                Robot1.Center = new Point(oldpos.X, oldpos.Y + robotspeedY);
+                robot.Center = new Point(oldpos.X, oldpos.Y + robotspeedY);
             }
         }
         //piros && zöld zuhanó bomba létrehozása
-        public void NewRedFallingBomb(System.Windows.Point robotPos)
+        public void NewRedFallingBomb(Point robotPos)
         {
             Bombs.Add(new FallingBomb(new Point((int)robotPos.X, (int)robotPos.Y - area.Height * 0.05), area, ConsoleColor.Red));
             
         }
-        public void NewGreenFallingBomb(System.Windows.Point robotPos)
+        public void NewGreenFallingBomb(Point robotPos)
         {
             Bombs.Add(new FallingBomb(new Point((int)robotPos.X, (int)robotPos.Y - area.Height * 0.05), area, ConsoleColor.Green));
 
         }
 
-        public void MoveRobot2(Directions direction)
-        {
-            var oldpos = Robot2.Center;
-            switch (direction)
-            {
-                case Directions.up:
-                    if (oldpos.Y - 2 * robotspeedY > 0)
-                    {
-                        Robot2.Center = new Point(oldpos.X, oldpos.Y - robotspeedY);
-                    }
-                    break;
-                case Directions.down:
-                    //todo uggolás
-                    break;
-                case Directions.left:
-                    if (oldpos.X - 2 * robotspeedX >= 0)
-                    {
-                        Robot2.Center = new Point(oldpos.X - robotspeedX, oldpos.Y);
-                    }
-                    break;
-                case Directions.right:
-                    if (oldpos.X + 2 * robotspeedX <= area.Width)
-                    {
-                        Robot2.Center = new Point(oldpos.X + robotspeedX, oldpos.Y);
-                    }
-                    break;
-                case Directions.bomb:
-                    NewRedThrowingBomb(Robot2.Center, Robot1.Center.X > Robot2.Center.X ? 1 : -1);
-                    break;
-                default:
-                    break;
-            }
-        }
-        public void Robot2Descend()
-        {
-            var oldpos = Robot2.Center;
-            if (oldpos.Y + robotspeedY <= area.Height * 0.8)
-            {
-                Robot2.Center = new Point(oldpos.X, oldpos.Y + robotspeedY);
-            }
-        }
+       
         //piros && zöld dobálós bomba létrehozása
         public void NewRedThrowingBomb(System.Windows.Point robotPos, int direction)
         {
@@ -211,22 +179,14 @@ namespace GUI_20212202_CM7A68.Logic
         }
         private void CreateBots()
         {
-            var ts = new List<Task>();
-            if (!Robot1.IsControllable)
-            {
-                ts.Add(new Task(()=>AIBehavior(Robot1), TaskCreationOptions.LongRunning));
-            }
-            if (!Robot2.IsControllable)
-            {
-                ts.Add(new Task(() => AIBehavior(Robot2), TaskCreationOptions.LongRunning));
-            }
+            var ts = Robots.Where(x=>!x.IsControllable).Select(x=> new Task(() => AIBehavior(x), TaskCreationOptions.LongRunning)).ToList();
             ts.ForEach(x => x.Start());
         }
         Random r = new Random();
         private async void AIBehavior(Robot robot)
         {
             bool robot2IsInAir = false;
-            while (!GameOver && !Robot2.IsControllable)
+            while (!GameOver)
             {
                 switch (r.Next(0, 6))
                 {
@@ -237,18 +197,18 @@ namespace GUI_20212202_CM7A68.Logic
                             for (int i = 0; i < 20; i++)
                             {
                                 await Task.Delay(1);
-                                MoveRobot2(Directions.up);
+                                MoveRobot(Directions.up, robot);
                             }
                             for (int i = 0; i < 20; i++)
                             {
                                 await Task.Delay(1);
-                                Robot2Descend();
+                                RobotDescend(robot);
                             }
                             robot2IsInAir = false;
                         }
                         break;
                     case 1:
-                        MoveRobot2(Directions.down);
+                        MoveRobot(Directions.down, robot);
                         break;
                     case 2:
                         if (Robot2IsMoving == false)
@@ -257,7 +217,7 @@ namespace GUI_20212202_CM7A68.Logic
                             while (Robot2IsMoving)
                             {
                                 await Task.Delay(1);
-                                MoveRobot2(Directions.left);
+                                MoveRobot(Directions.left, robot);
                             }
                         }
                         break;
@@ -268,12 +228,12 @@ namespace GUI_20212202_CM7A68.Logic
                             while (Robot2IsMoving)
                             {
                                 await Task.Delay(1);
-                                MoveRobot2(Directions.right);
+                                MoveRobot(Directions.right, robot);
                             }
                         }
                         break;
                     case 4:
-                        MoveRobot2(Directions.bomb);
+                        MoveRobot(Directions.bomb, robot);
                         break;
                     default:Robot2IsMoving = false;
                         break;

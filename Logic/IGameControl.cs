@@ -1,13 +1,14 @@
-﻿using static GUI_20212202_CM7A68.Logic.GameLogic;
+﻿using GUI_20212202_CM7A68.Models;
+using System.Collections.Generic;
+using static GUI_20212202_CM7A68.Logic.GameLogic;
 
 namespace GUI_20212202_CM7A68.Logic
 {
     public interface IGameControl
     {
-        void MoveRobot1(Directions direction);
-        void Robot1Descend();
-        void MoveRobot2(Directions direction);
-        void Robot2Descend();
+        List<Robot> Robots { get; set; }
+        void MoveRobot(Directions direction, Robot robot);
+        void RobotDescend(Robot robot);
         bool Robot1IsMoving { get; set; } //a skinváltások miatt kellenek ezek a boolok
         bool Robot2IsMoving { get; set; }
         bool Robot1IsJumping { get; set; }
