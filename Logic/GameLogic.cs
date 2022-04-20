@@ -187,7 +187,7 @@ namespace GUI_20212202_CM7A68.Logic
             {
                 if (!GamePaused && GameStarted)
                 {
-                    switch (r.Next(0, 6))
+                    switch (r.Next(0, 8))
                     {
                         case 0:
                             if (robot.IsJumping == false && robotIsInAir == false)
@@ -217,6 +217,8 @@ namespace GUI_20212202_CM7A68.Logic
                                 {
                                     await Task.Delay(1);
                                     MoveRobot(Directions.left, robot);
+                                    if (robot.Center.X < area.Width * 0.05)
+                                        robot.IsMoving = false;
                                 }
                             }
                             break;
@@ -228,6 +230,8 @@ namespace GUI_20212202_CM7A68.Logic
                                 {
                                     await Task.Delay(1);
                                     MoveRobot(Directions.right, robot);
+                                    if (robot.Center.X>area.Width*0.95)
+                                        robot.IsMoving = false;
                                 }
                             }
                             break;
@@ -239,7 +243,7 @@ namespace GUI_20212202_CM7A68.Logic
                             break;
                     }
                 }
-                Thread.Sleep(1000);
+                Thread.Sleep(r.Next(500,1000));
             }
            
         }
