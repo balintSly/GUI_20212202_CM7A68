@@ -41,7 +41,9 @@ namespace GUI_20212202_CM7A68.Logic
             this.Robots= new List<Robot>();
             this.Robots.Add(new Robot(new Point(area.Width / 10, (int)(area.Height * 0.8))));
             this.Robots.Add(new Robot(new Point((int)(area.Width * 0.9), (int)(area.Height * 0.8))));
-            this.RoundTime = TimeSpan.FromMinutes(3);
+            Robots[0].IsControllable = !PlayerOneIsAI;
+            Robots[1].IsControllable = !PlayerTwoIsAI;
+            this.RoundTime = TimeSpan.FromMinutes(1.5);
             this.GamePaused = false;
             Bombs = new List<Bomb>();
             Explosions = new List<Explosion>();

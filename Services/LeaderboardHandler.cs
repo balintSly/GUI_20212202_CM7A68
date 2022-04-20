@@ -20,21 +20,21 @@ namespace GUI_20212202_CM7A68.Services
             else
             {
                 var players = JsonConvert.DeserializeObject<List<Player>>(File.ReadAllText("leaderboard.json"));
-                if (!players.Contains(playerOne))
+                if (!players.Contains(playerOne) && playerOne.Name != "BOT_LEFT")
                 {
                     players.Add(playerOne);
                 }
-                else
+                else if (players.Contains(playerOne))
                 {
                     var old = players.Where(x => x.Name == playerOne.Name).FirstOrDefault();
                     old.WonMatches += playerOne.WonMatches;
                     old.WonRounds += playerOne.WonRounds;
                 }
-                if (!players.Contains(playerTwo))
+                if (!players.Contains(playerTwo) && playerTwo.Name != "BOT_RIGHT")
                 {
                     players.Add(playerTwo);
                 }
-                else
+                else if (players.Contains(playerTwo))
                 {
                     var old = players.Where(x => x.Name == playerTwo.Name).FirstOrDefault();
                     old.WonMatches += playerTwo.WonMatches;

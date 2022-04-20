@@ -18,7 +18,6 @@ namespace GUI_20212202_CM7A68.MenuWindows.ViewModels
 {
     public class MainMenuWindowViewModel : ObservableRecipient
     {
-        //dp injection: ablak megkapja a logicot, datacontext.setupmodel metúdussal megkapja ez az osztály
         IGameModel logic;
 
         public void SetupLogic(IGameModel model)
@@ -29,12 +28,48 @@ namespace GUI_20212202_CM7A68.MenuWindows.ViewModels
         public ObservableCollection<string> PlayerOneSkins { get; set; }
         public ObservableCollection<string> PlayerTwoSkins { get; set; }
         public List<string> AllSkin { get; set; }
-        public string PlayerOneName { get; set; }
-        public string PlayerTwoName { get; set; }
+        public string PlayerOneName { get => playerOneName; set => SetProperty(ref playerOneName, value); }
+        public string PlayerTwoName { get => playerTwoName; set => SetProperty(ref playerTwoName, value); }
         public string SelectedMapRoute { get; set; }
 
-        public bool PlayerOneIsAI { get; set; }
-        public bool PlayerTwoIsAI { get; set; }
+        public bool PlayerOneIsHuman { get => playerOneIsHuman; set => SetProperty(ref playerOneIsHuman, value); }
+        public bool PlayerTwoIsHuman { get => playerTwoIsHuman; set => SetProperty(ref playerTwoIsHuman, value); }
+        public bool PlayerOneIsAI
+        {
+            get => playerOneIsAI;
+            set
+            {
+                playerOneIsAI = value;
+                if (value)
+                {
+                    PlayerOneName = "BOT_LEFT";
+                    PlayerOneIsHuman = false;
+                }
+                else
+                {
+                    PlayerOneName = "PlayerOne";
+                    PlayerOneIsHuman = true;
+                }
+            }
+        }
+        public bool PlayerTwoIsAI
+        {
+            get => playerTwoIsAI;
+            set
+            {
+                playerTwoIsAI = value;
+                if (value)
+                {
+                    PlayerTwoName = "BOT_RIGHT";
+                    PlayerTwoIsHuman = false;
+                }
+                else
+                {
+                    PlayerTwoName = "PlayerTwo";
+                    PlayerTwoIsHuman = true;
+                }
+            }
+        }
 
         private string selectedPlayerOneSkinRoute;
         public string SelectedPlayerOneSkinRoute
@@ -57,6 +92,13 @@ namespace GUI_20212202_CM7A68.MenuWindows.ViewModels
         }
 
         private string selectedPlayerTwoSkinRoute;
+        private string playerOneName;
+        private string playerTwoName;
+        private bool playerOneIsAI;
+        private bool playerTwoIsAI;
+        private bool playerOneIsHuman;
+        private bool playerTwoIsHuman;
+
         public string SelectedPlayerTwoSkinRoute
         {
             get => selectedPlayerTwoSkinRoute;
@@ -97,6 +139,9 @@ namespace GUI_20212202_CM7A68.MenuWindows.ViewModels
 
             PlayerOneName = "PlayerOne";
             PlayerTwoName = "PlayerTwo";
+            PlayerOneIsHuman = true;
+            PlayerTwoIsHuman = true;
+
             this.StartGameCommand = new RelayCommand(
                 () =>
                 {
@@ -107,6 +152,7 @@ namespace GUI_20212202_CM7A68.MenuWindows.ViewModels
                     logic.PlayerTwoColor = SelectedPlayerTwoSkinRoute.Split('_')[4];
                     logic.PlayerOneIsAI = PlayerOneIsAI;
                     logic.PlayerTwoIsAI = PlayerTwoIsAI;
+                    logic.InitLogic();
                 }
                 );
             ;
