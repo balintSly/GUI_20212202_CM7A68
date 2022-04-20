@@ -12,6 +12,8 @@ namespace GUI_20212202_CM7A68.Models
     {
         public bool IsControllable { get; set; }
         private int health;
+        public bool IsMoving { get; set; }
+        public bool IsJumping { get; set; }
 
         public int Health
         {
@@ -41,6 +43,9 @@ namespace GUI_20212202_CM7A68.Models
             this.Health = 100;
             this.Shield = 100;
             this.Center = spawnpoint;
+            this.IsMoving = false;
+            this.IsJumping = false;
+            this.IsControllable = false;
         }
     }
 }

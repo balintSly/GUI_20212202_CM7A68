@@ -22,10 +22,10 @@ namespace GUI_20212202_CM7A68.Controller
             switch (key)
             {
                 case Key.Up:
-                    if (logic.Robot2IsJumping == false && robot2IsInAir==false)
+                    if (logic.Robots[1].IsJumping == false && robot2IsInAir == false && logic.Robots[1].IsControllable)
                     {
                         robot2IsInAir = true; //letiltja, hogy ne lehessen double jumpolni lényegében
-                        logic.Robot2IsJumping = true;
+                        logic.Robots[1].IsJumping = true;
                         for (int i = 0; i < 20; i++)
                         {
                             await Task.Delay(1);
@@ -36,17 +36,20 @@ namespace GUI_20212202_CM7A68.Controller
                             await Task.Delay(1);
                             logic.RobotDescend(logic.Robots[1]);
                         }
-                        robot2IsInAir=false;
+                        robot2IsInAir = false;
                     }
                     break;
                 case Key.Down:
-                    logic.MoveRobot(Directions.down, logic.Robots[1]);
+                    if (logic.Robots[1].IsControllable)
+                    {
+                        logic.MoveRobot(Directions.down, logic.Robots[1]);
+                    }
                     break;
                 case Key.Left:
-                    if (logic.Robot2IsMoving == false)
+                    if (logic.Robots[1].IsMoving == false && logic.Robots[1].IsControllable)
                     {
-                        logic.Robot2IsMoving = true;
-                        while (logic.Robot2IsMoving)
+                        logic.Robots[1].IsMoving = true;
+                        while (logic.Robots[1].IsMoving)
                         {
                             await Task.Delay(1);
                             logic.MoveRobot(Directions.left, logic.Robots[1]);
@@ -54,10 +57,10 @@ namespace GUI_20212202_CM7A68.Controller
                     }
                     break;
                 case Key.Right:
-                    if (logic.Robot2IsMoving == false)
+                    if (logic.Robots[1].IsMoving == false && logic.Robots[1].IsControllable)
                     {
-                        logic.Robot2IsMoving = true;
-                        while (logic.Robot2IsMoving)
+                        logic.Robots[1].IsMoving = true;
+                        while (logic.Robots[1].IsMoving)
                         {
                             await Task.Delay(1);
                             logic.MoveRobot(Directions.right, logic.Robots[1]);
@@ -65,14 +68,18 @@ namespace GUI_20212202_CM7A68.Controller
                     }
                     break;
                 case Key.RightShift:
-                    logic.MoveRobot(Directions.bomb, logic.Robots[1]);
+                    if (logic.Robots[1].IsControllable)
+                    {
+                        logic.MoveRobot(Directions.bomb, logic.Robots[1]);
+                    }
+
                     break;
 
                 case Key.W:
-                    if (logic.Robot1IsJumping==false && robot1IsInAir==false)
+                    if (logic.Robots[0].IsJumping == false && robot1IsInAir == false && logic.Robots[0].IsControllable)
                     {
-                        robot1IsInAir=true;
-                        logic.Robot1IsJumping = true;
+                        robot1IsInAir = true;
+                        logic.Robots[0].IsJumping = true;
                         for (int i = 0; i < 20; i++)
                         {
                             await Task.Delay(1);
@@ -85,16 +92,19 @@ namespace GUI_20212202_CM7A68.Controller
                         }
                         robot1IsInAir = false;
                     }
-                    
+
                     break;
                 case Key.S:
-                    logic.MoveRobot(Directions.down, logic.Robots[0]);
+                    if (logic.Robots[0].IsControllable)
+                    {
+                        logic.MoveRobot(Directions.down, logic.Robots[0]);
+                    }
                     break;
                 case Key.A:
-                    if (logic.Robot1IsMoving == false)
+                    if (logic.Robots[0].IsMoving == false && logic.Robots[0].IsControllable)
                     {
-                        logic.Robot1IsMoving = true;
-                        while (logic.Robot1IsMoving)
+                        logic.Robots[0].IsMoving = true;
+                        while (logic.Robots[0].IsMoving)
                         {
                             await Task.Delay(1);
                             logic.MoveRobot(Directions.left, logic.Robots[0]);
@@ -103,10 +113,10 @@ namespace GUI_20212202_CM7A68.Controller
 
                     break;
                 case Key.D:
-                    if (logic.Robot1IsMoving == false)
+                    if (logic.Robots[0].IsMoving == false && logic.Robots[0].IsControllable)
                     {
-                        logic.Robot1IsMoving = true;
-                        while (logic.Robot1IsMoving)
+                        logic.Robots[0].IsMoving = true;
+                        while (logic.Robots[0].IsMoving)
                         {
                             await Task.Delay(1);
                             logic.MoveRobot(Directions.right, logic.Robots[0]);
@@ -114,9 +124,12 @@ namespace GUI_20212202_CM7A68.Controller
                     }
                     break;
                 case Key.Space:
-                    logic.MoveRobot(Directions.bomb, logic.Robots[0]);
+                    if (logic.Robots[0].IsControllable)
+                    {
+                        logic.MoveRobot(Directions.bomb, logic.Robots[0]);
+                    }
                     break;
-                case Key.Escape: 
+                case Key.Escape:
                     logic.GamePaused = true;
                     break;
                 default:
@@ -126,21 +139,21 @@ namespace GUI_20212202_CM7A68.Controller
         }
         public void KeyReleased(Key key)
         {
-            if (key == Key.Down || key == Key.Left || key == Key.Right)
+            if ((key == Key.Down || key == Key.Left || key == Key.Right) && logic.Robots[1].IsControllable)
             {
-                logic.Robot2IsMoving = false;
+                logic.Robots[1].IsMoving = false;
             }
-            else if (key == Key.S || key == Key.D || key == Key.A)
+            else if (key == Key.S || key == Key.D || key == Key.A && logic.Robots[0].IsControllable)
             {
-                logic.Robot1IsMoving = false;
+                logic.Robots[0].IsMoving = false;
             }
-            if (key == Key.W)
+            if (key == Key.W && logic.Robots[0].IsControllable)
             {
-                logic.Robot1IsJumping = false;
+                logic.Robots[0].IsJumping = false;
             }
-            if (key == Key.Up)
+            if (key == Key.Up && logic.Robots[0].IsControllable)
             {
-                logic.Robot2IsJumping = false;
+                logic.Robots[1].IsJumping = false;
             }
         }
     }

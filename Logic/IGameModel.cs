@@ -10,8 +10,6 @@ namespace GUI_20212202_CM7A68.Logic
         List<Robot> Robots { get; }
         public bool GameStarted { get; set; }
         void SetupSize(Size area); //átveszi a képernyőméretet
-        bool Robot1IsMoving { get; set; } //ezen keresztül tudja a renderer, hogy mozog a robot
-        bool Robot2IsMoving { get; set; }
         string Player1Name { get; set; }
         string Player2Name { get; set; }
         string PlayerOneColor { get; set; }

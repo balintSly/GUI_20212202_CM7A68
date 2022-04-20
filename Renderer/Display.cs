@@ -68,7 +68,7 @@ namespace GUI_20212202_CM7A68.Renderer
                     {
                         robot1skin = "robotpic_jump_";
                     }
-                    else if (!model.Robot1IsMoving)
+                    else if (!model.Robots[0].IsMoving)
                     {
                         robot1skin = "robotpic_stand_";
                     }
@@ -93,7 +93,7 @@ namespace GUI_20212202_CM7A68.Renderer
                     {
                         robot2skin = "robotpic_jump_";
                     }
-                    else if (!model.Robot2IsMoving)
+                    else if (!model.Robots[1].IsMoving)
                     {
                         robot2skin = "robotpic_stand_";
                     }

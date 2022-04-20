@@ -17,10 +17,6 @@ namespace GUI_20212202_CM7A68.Logic
     {
         Size area;
         public List<Robot> Robots { get; set; }
-        public bool Robot1IsMoving { get; set; }
-        public bool Robot2IsMoving { get; set; }
-        public bool Robot1IsJumping { get; set; }
-        public bool Robot2IsJumping { get; set; }
         public string Player1Name { get; set; }
         public string Player2Name { get; set; }
         public string PlayerOneColor { get; set; }
@@ -186,7 +182,7 @@ namespace GUI_20212202_CM7A68.Logic
         Random r = new Random();
         private async void AIBehavior(Robot robot)
         {
-            bool robot2IsInAir = false;
+            bool robotIsInAir = false;
             while (!GameOver)
             {
                 if (!GamePaused && GameStarted)
@@ -194,9 +190,9 @@ namespace GUI_20212202_CM7A68.Logic
                     switch (r.Next(0, 6))
                     {
                         case 0:
-                            if (Robot2IsJumping == false && robot2IsInAir == false)
+                            if (robot.IsJumping == false && robotIsInAir == false)
                             {
-                                Robot2IsJumping = true;
+                                robot.IsJumping = true;
                                 for (int i = 0; i < 20; i++)
                                 {
                                     await Task.Delay(1);
@@ -207,17 +203,17 @@ namespace GUI_20212202_CM7A68.Logic
                                     await Task.Delay(1);
                                     RobotDescend(robot);
                                 }
-                                robot2IsInAir = false;
+                                robotIsInAir = false;
                             }
                             break;
                         case 1:
                             MoveRobot(Directions.down, robot);
                             break;
                         case 2:
-                            if (Robot2IsMoving == false)
+                            if (robot.IsMoving == false && robot.Center.X>area.Width*0.2)
                             {
-                                Robot2IsMoving = true;
-                                while (Robot2IsMoving)
+                                robot.IsMoving = true;
+                                while (robot.IsMoving)
                                 {
                                     await Task.Delay(1);
                                     MoveRobot(Directions.left, robot);
@@ -225,10 +221,10 @@ namespace GUI_20212202_CM7A68.Logic
                             }
                             break;
                         case 3:
-                            if (Robot2IsMoving == false)
+                            if (robot.IsMoving == false && robot.Center.X<area.Width*0.8)
                             {
-                                Robot2IsMoving = true;
-                                while (Robot2IsMoving)
+                                robot.IsMoving = true;
+                                while (robot.IsMoving)
                                 {
                                     await Task.Delay(1);
                                     MoveRobot(Directions.right, robot);
@@ -239,7 +235,7 @@ namespace GUI_20212202_CM7A68.Logic
                             MoveRobot(Directions.bomb, robot);
                             break;
                         default:
-                            Robot2IsMoving = false;
+                            robot.IsMoving = false;
                             break;
                     }
                 }
