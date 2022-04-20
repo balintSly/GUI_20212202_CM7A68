@@ -21,12 +21,14 @@ namespace GUI_20212202_CM7A68.Logic
         public string Player2Name { get; set; }
         public string PlayerOneColor { get; set; }
         public string PlayerTwoColor { get; set; }
+        public int PlayerOneWins { get; set; }
+        public int PlayerTwoWins { get; set; }
+        public bool PlayerOneIsAI { get; set; }
+        public bool PlayerTwoIsAI { get; set; }
         public TimeSpan RoundTime { get; set; }
         public string SelectedMapPath { get; set; }
         public bool GamePaused { get; set; } //esc lenyomásra menü fel, visszaszámlálás leáll
         public List<Explosion>  Explosions { get; set; }
-        public int PlayerOneWins { get; set; }
-        public int PlayerTwoWins { get; set; }
         public bool GameOver { get; set; }
         public bool GameStarted { get; set; }
 

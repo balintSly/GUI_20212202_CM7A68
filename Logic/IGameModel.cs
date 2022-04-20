@@ -15,7 +15,8 @@ namespace GUI_20212202_CM7A68.Logic
         string PlayerOneColor { get; set; }
         string PlayerTwoColor { get; set; }
         string SelectedMapPath { get; set; }
-
+        bool PlayerOneIsAI { get; set; }
+        bool PlayerTwoIsAI { get; set; }        
         List<Bomb> Bombs { get; set; }
         List<Explosion> Explosions { get; set; }
         void NewRedFallingBomb(Point robotPos);

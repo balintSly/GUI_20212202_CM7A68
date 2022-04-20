@@ -33,6 +33,8 @@ namespace GUI_20212202_CM7A68.MenuWindows.ViewModels
         public string PlayerTwoName { get; set; }
         public string SelectedMapRoute { get; set; }
 
+        public bool PlayerOneIsAI { get; set; }
+        public bool PlayerTwoIsAI { get; set; }
 
         private string selectedPlayerOneSkinRoute;
         public string SelectedPlayerOneSkinRoute
@@ -103,6 +105,8 @@ namespace GUI_20212202_CM7A68.MenuWindows.ViewModels
                     logic.SelectedMapPath = SelectedMapRoute;
                     logic.PlayerOneColor = SelectedPlayerOneSkinRoute.Split('_')[4];
                     logic.PlayerTwoColor = SelectedPlayerTwoSkinRoute.Split('_')[4];
+                    logic.PlayerOneIsAI = PlayerOneIsAI;
+                    logic.PlayerTwoIsAI = PlayerTwoIsAI;
                 }
                 );
             ;
