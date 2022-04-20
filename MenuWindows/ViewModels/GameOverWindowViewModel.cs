@@ -21,7 +21,7 @@ namespace GUI_20212202_CM7A68.MenuWindows.ViewModels
         public void SetupModel(IGameModel model)
         {
             this.model = model;
-            this.WinnerName = model.PlayerOneWins > model.PlayerTwoWins ? model.Player1Name : model.Player2Name;
+            this.WinnerName = model.Players[0].WonRounds > model.Players[1].WonRounds ? model.Players[0].Name : model.Players[1].Name;
         }
         private string winnerName;
 
@@ -35,9 +35,18 @@ namespace GUI_20212202_CM7A68.MenuWindows.ViewModels
         {
             this.LeaderboardHandler = handler;
             this.SaveGame = new RelayCommand(() =>
-          this.LeaderboardHandler.SaveGame(
-              new Player(model.Player1Name, model.PlayerOneWins > model.PlayerTwoWins ? 1 : 0, model.PlayerOneWins),
-              new Player(model.Player2Name, model.PlayerTwoWins > model.PlayerOneWins ? 1 : 0, model.PlayerTwoWins)));
+            {
+
+                if (model.Players[0].WonRounds > model.Players[1].WonRounds)
+                {
+                    model.Players[0].WonMatches++;
+                }
+                else
+                {
+                    model.Players[1].WonMatches++;
+                }
+                this.LeaderboardHandler.SaveGame(model.Players[0], model.Players[1]);
+            });
         }
         public GameOverWindowViewModel() : this(Ioc.Default.GetService<ILeaderboardHandler>())
         {

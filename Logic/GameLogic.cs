@@ -17,14 +17,7 @@ namespace GUI_20212202_CM7A68.Logic
     {
         Size area;
         public List<Robot> Robots { get; set; }
-        public string Player1Name { get; set; }
-        public string Player2Name { get; set; }
-        public string PlayerOneColor { get; set; }
-        public string PlayerTwoColor { get; set; }
-        public int PlayerOneWins { get; set; }
-        public int PlayerTwoWins { get; set; }
-        public bool PlayerOneIsAI { get; set; }
-        public bool PlayerTwoIsAI { get; set; }
+        public List<Player> Players { get; set; }
         public TimeSpan RoundTime { get; set; }
         public string SelectedMapPath { get; set; }
         public bool GamePaused { get; set; } //esc lenyomásra menü fel, visszaszámlálás leáll
@@ -41,15 +34,21 @@ namespace GUI_20212202_CM7A68.Logic
             this.Robots= new List<Robot>();
             this.Robots.Add(new Robot(new Point(area.Width / 10, (int)(area.Height * 0.8))));
             this.Robots.Add(new Robot(new Point((int)(area.Width * 0.9), (int)(area.Height * 0.8))));
-            Robots[0].IsControllable = !PlayerOneIsAI;
-            Robots[1].IsControllable = !PlayerTwoIsAI;
+            if (Players==null)
+            {
+                Players = new List<Player>();
+            }
+            if (Players.Count>0)
+            {
+                Robots[0].IsControllable = Players[0].IsPlayer;
+                Robots[1].IsControllable = Players[1].IsPlayer;
+                CreateBots();
+            }
             this.RoundTime = TimeSpan.FromMinutes(1.5);
             this.GamePaused = false;
             Bombs = new List<Bomb>();
             Explosions = new List<Explosion>();
-            CreateBots();
-
-        }//visszaszámláló 3:00-ra, robotok újrapéldányosítva, GamePaused=false
+        }//visszaszámláló beállít, robotok újrapéldányosítva, GamePaused=false
         public List<Bomb> Bombs { get; set; }
         public void SetupSize(Size area)
         {
@@ -93,15 +92,15 @@ namespace GUI_20212202_CM7A68.Logic
             }
             if (Robots[1].Health==0)
             {
-                PlayerOneWins++;
+                Players[0].WonRounds++;
                 InitLogic();
             }
             else if(Robots[0].Health==0)
             {
-                PlayerTwoWins++;
+                Players[1].WonRounds++;
                 InitLogic();
             }
-            if (PlayerOneWins+PlayerTwoWins==3)
+            if (Players.Sum(x=>x.WonRounds)==3)
             {
                 GameOver = true;
             }

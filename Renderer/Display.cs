@@ -114,8 +114,8 @@ namespace GUI_20212202_CM7A68.Renderer
                             piccount %= 9;
                         }
                     }
-                    robot1skin += model.PlayerOneColor;
-                    robot2skin+=model.PlayerTwoColor;
+                    robot1skin += model.Players[0].SelectedColor;
+                    robot2skin+=model.Players[1].SelectedColor;
                     #endregion
                     #region RobotKirajzolás
                     if (model.Robots[0].Center.X < model.Robots[1].Center.X)//merre nézzenek a robotok, kirajzolásuk
@@ -187,16 +187,16 @@ namespace GUI_20212202_CM7A68.Renderer
                         FontStretches.Normal), area.Height * 0.05, Brushes.Red), new Point(area.Width * 0.465, area.Height * 0.05));
 
                     //állás
-                    drawingContext.DrawText(new FormattedText($"{model.PlayerOneWins}:{model.PlayerTwoWins}", System.Globalization.CultureInfo.CurrentCulture,
+                    drawingContext.DrawText(new FormattedText($"{model.Players[0].WonRounds}:{model.Players[1].WonRounds}", System.Globalization.CultureInfo.CurrentCulture,
                         FlowDirection.LeftToRight, new Typeface(new FontFamily("Consolas"), FontStyles.Normal, FontWeights.Bold,
                         FontStretches.Normal), area.Height * 0.05, Brushes.Red), new Point(area.Width * 0.48, area.Height * 0.12));
 
                     //nevek
-                    drawingContext.DrawText(new FormattedText(model.Player1Name, System.Globalization.CultureInfo.CurrentCulture,
+                    drawingContext.DrawText(new FormattedText(model.Players[0].Name, System.Globalization.CultureInfo.CurrentCulture,
                         FlowDirection.LeftToRight, new Typeface(new FontFamily("Consolas"), FontStyles.Normal, FontWeights.Bold,
                         FontStretches.Normal), area.Height * 0.05, Brushes.Red), new Point(area.Width * 0.02, area.Height * 0.13));
 
-                    drawingContext.DrawText(new FormattedText(model.Player2Name, System.Globalization.CultureInfo.CurrentCulture,
+                    drawingContext.DrawText(new FormattedText(model.Players[1].Name, System.Globalization.CultureInfo.CurrentCulture,
                         FlowDirection.LeftToRight, new Typeface(new FontFamily("Consolas"), FontStyles.Normal, FontWeights.Bold,
                         FontStretches.Normal), area.Height * 0.05, Brushes.Red), new Point(area.Width * 0.85, area.Height * 0.13));
 

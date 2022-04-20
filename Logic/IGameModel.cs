@@ -8,15 +8,10 @@ namespace GUI_20212202_CM7A68.Logic
     public interface IGameModel
     {
         List<Robot> Robots { get; }
+        List<Player> Players { get; set; }
         public bool GameStarted { get; set; }
         void SetupSize(Size area); //átveszi a képernyőméretet
-        string Player1Name { get; set; }
-        string Player2Name { get; set; }
-        string PlayerOneColor { get; set; }
-        string PlayerTwoColor { get; set; }
         string SelectedMapPath { get; set; }
-        bool PlayerOneIsAI { get; set; }
-        bool PlayerTwoIsAI { get; set; }        
         List<Bomb> Bombs { get; set; }
         List<Explosion> Explosions { get; set; }
         void NewRedFallingBomb(Point robotPos);
@@ -26,8 +21,6 @@ namespace GUI_20212202_CM7A68.Logic
         public TimeSpan RoundTime { get; set; }
         bool GamePaused { get; set; }
         void InitLogic();
-        public int PlayerOneWins { get; set; }
-        public int PlayerTwoWins { get; set; }
         public bool GameOver { get; set; }
     }
 }

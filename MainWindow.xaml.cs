@@ -60,8 +60,8 @@ namespace GUI_20212202_CM7A68
                     var mainmenu = new MainMenuWindow(this.logic);
                     if (mainmenu.ShowDialog() == true)
                     {
-                        logic.PlayerOneWins = 0;
-                        logic.PlayerTwoWins = 0;
+                        logic.Players[0].WonRounds = 0;
+                        logic.Players[1].WonRounds = 0;
                         logic.InitLogic();
                     }
                     else
@@ -82,8 +82,8 @@ namespace GUI_20212202_CM7A68
                     var mainmenu = new MainMenuWindow(this.logic);
                     if (mainmenu.ShowDialog() == true)
                     {
-                        logic.PlayerOneWins = 0;
-                        logic.PlayerTwoWins = 0;
+                        logic.Players[0].WonRounds = 0;
+                        logic.Players[1].WonRounds = 0;
                         logic.InitLogic();
                     }
                     else
@@ -93,8 +93,8 @@ namespace GUI_20212202_CM7A68
                 }
                 else
                 {
-                    logic.PlayerOneWins = 0;
-                    logic.PlayerTwoWins = 0;
+                    logic.Players[0].WonRounds = 0;
+                    logic.Players[1].WonRounds = 0;
                     logic.InitLogic();
                 }
                 logic.GameOver = false;

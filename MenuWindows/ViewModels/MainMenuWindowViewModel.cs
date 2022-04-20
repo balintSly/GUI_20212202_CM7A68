@@ -145,13 +145,10 @@ namespace GUI_20212202_CM7A68.MenuWindows.ViewModels
             this.StartGameCommand = new RelayCommand(
                 () =>
                 {
-                    logic.Player1Name = PlayerOneName;
-                    logic.Player2Name = PlayerTwoName;
                     logic.SelectedMapPath = SelectedMapRoute;
-                    logic.PlayerOneColor = SelectedPlayerOneSkinRoute.Split('_')[4];
-                    logic.PlayerTwoColor = SelectedPlayerTwoSkinRoute.Split('_')[4];
-                    logic.PlayerOneIsAI = PlayerOneIsAI;
-                    logic.PlayerTwoIsAI = PlayerTwoIsAI;
+                    logic.Players = new List<Player>();
+                    logic.Players.Add(new Player(PlayerOneName, 0, 0) {SelectedColor= SelectedPlayerOneSkinRoute.Split('_')[4], IsPlayer=!PlayerOneIsAI });
+                    logic.Players.Add(new Player(PlayerTwoName, 0, 0) {SelectedColor= SelectedPlayerTwoSkinRoute.Split('_')[4], IsPlayer=!PlayerTwoIsAI });
                     logic.InitLogic();
                 }
                 );
