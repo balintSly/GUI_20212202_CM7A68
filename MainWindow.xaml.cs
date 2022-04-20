@@ -103,7 +103,7 @@ namespace GUI_20212202_CM7A68
             {
                 logic.TimeStep();
                 display.TimeFromGameStart += TimeSpan.FromSeconds(17);// egy időztő van, kb. összeadjuk a delayeket, és durván másodpercenként kivonunk 1 secet az alap 3 percből
-                if (display.TimeFromGameStart.TotalSeconds % 680 == 0 && display.GameStarted && !logic.GamePaused)
+                if (display.TimeFromGameStart.TotalSeconds % 680 == 0 && logic.GameStarted && !logic.GamePaused)
                 {
                     logic.RoundTime -= TimeSpan.FromSeconds(1); //csökkentjük a köridőt 1 seccel
                 }

@@ -32,6 +32,7 @@ namespace GUI_20212202_CM7A68.Logic
         public int PlayerOneWins { get; set; }
         public int PlayerTwoWins { get; set; }
         public bool GameOver { get; set; }
+        public bool GameStarted { get; set; }
 
         int robotspeedX; //mozgás sebessége
         int robotspeedY; //ugrás sebessége
@@ -139,7 +140,7 @@ namespace GUI_20212202_CM7A68.Logic
                     }
                     else
                     {
-                        NewGreenThrowingBomb(Robots[1].Center, Robots[0].Center.X > Robots[1].Center.X ? 1 : 1);
+                        NewRedThrowingBomb(Robots[1].Center, Robots[0].Center.X > Robots[1].Center.X ? 1 : -1);
                     }
                    
                     break;
@@ -188,55 +189,59 @@ namespace GUI_20212202_CM7A68.Logic
             bool robot2IsInAir = false;
             while (!GameOver)
             {
-                switch (r.Next(0, 6))
+                if (!GamePaused && GameStarted)
                 {
-                    case 0:
-                        if (Robot2IsJumping == false && robot2IsInAir == false)
-                        {
-                            Robot2IsJumping = true;
-                            for (int i = 0; i < 20; i++)
+                    switch (r.Next(0, 6))
+                    {
+                        case 0:
+                            if (Robot2IsJumping == false && robot2IsInAir == false)
                             {
-                                await Task.Delay(1);
-                                MoveRobot(Directions.up, robot);
+                                Robot2IsJumping = true;
+                                for (int i = 0; i < 20; i++)
+                                {
+                                    await Task.Delay(1);
+                                    MoveRobot(Directions.up, robot);
+                                }
+                                for (int i = 0; i < 20; i++)
+                                {
+                                    await Task.Delay(1);
+                                    RobotDescend(robot);
+                                }
+                                robot2IsInAir = false;
                             }
-                            for (int i = 0; i < 20; i++)
+                            break;
+                        case 1:
+                            MoveRobot(Directions.down, robot);
+                            break;
+                        case 2:
+                            if (Robot2IsMoving == false)
                             {
-                                await Task.Delay(1);
-                                RobotDescend(robot);
+                                Robot2IsMoving = true;
+                                while (Robot2IsMoving)
+                                {
+                                    await Task.Delay(1);
+                                    MoveRobot(Directions.left, robot);
+                                }
                             }
-                            robot2IsInAir = false;
-                        }
-                        break;
-                    case 1:
-                        MoveRobot(Directions.down, robot);
-                        break;
-                    case 2:
-                        if (Robot2IsMoving == false)
-                        {
-                            Robot2IsMoving = true;
-                            while (Robot2IsMoving)
+                            break;
+                        case 3:
+                            if (Robot2IsMoving == false)
                             {
-                                await Task.Delay(1);
-                                MoveRobot(Directions.left, robot);
+                                Robot2IsMoving = true;
+                                while (Robot2IsMoving)
+                                {
+                                    await Task.Delay(1);
+                                    MoveRobot(Directions.right, robot);
+                                }
                             }
-                        }
-                        break;
-                    case 3:
-                        if (Robot2IsMoving == false)
-                        {
-                            Robot2IsMoving = true;
-                            while (Robot2IsMoving)
-                            {
-                                await Task.Delay(1);
-                                MoveRobot(Directions.right, robot);
-                            }
-                        }
-                        break;
-                    case 4:
-                        MoveRobot(Directions.bomb, robot);
-                        break;
-                    default:Robot2IsMoving = false;
-                        break;
+                            break;
+                        case 4:
+                            MoveRobot(Directions.bomb, robot);
+                            break;
+                        default:
+                            Robot2IsMoving = false;
+                            break;
+                    }
                 }
                 Thread.Sleep(1000);
             }

@@ -18,7 +18,7 @@ namespace GUI_20212202_CM7A68.Renderer
         Size area;
         IGameModel model;
         public TimeSpan TimeFromGameStart { get; set; }
-        public bool GameStarted { get; set; }
+        
         public bool Quit { get; set; }
         public bool MenuLoaded { get { return TimeFromGameStart.TotalSeconds > 1000; } }
         public void SetupSize(Size area)
@@ -57,7 +57,7 @@ namespace GUI_20212202_CM7A68.Renderer
 
                     }
                     //map kirajzolás
-                    GameStarted = true;
+                    model.GameStarted = true;
                     drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(model.SelectedMapPath, UriKind.RelativeOrAbsolute))),
                         null, new Rect(0, 0, area.Width, area.Height));
 
