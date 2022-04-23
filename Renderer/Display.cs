@@ -20,7 +20,8 @@ namespace GUI_20212202_CM7A68.Renderer
         public TimeSpan TimeFromGameStart { get; set; }
         
         public bool Quit { get; set; }
-        public bool MenuLoaded { get { return TimeFromGameStart.TotalSeconds > 1000; } }
+        public bool MenuLoaded { get; set; }
+        public bool FirstRender { get; set; }
         public void SetupSize(Size area)
         {
             this.area = area;
@@ -44,18 +45,17 @@ namespace GUI_20212202_CM7A68.Renderer
 
                 if (!MenuLoaded)
                 {
-                    drawingContext.DrawRectangle(Brushes.Black, null, new Rect(0, 0, area.Width, area.Height)); //loading screen
-                    drawingContext.DrawText(new FormattedText("Todo loading", System.Globalization.CultureInfo.CurrentCulture,
-                       FlowDirection.LeftToRight, new Typeface(new FontFamily("Consolas"), FontStyles.Normal, FontWeights.Bold,
-                       FontStretches.Normal), area.Height * 0.05, Brushes.Red), new Point(area.Width * 0.4, area.Height / 2));
+                    if (FirstRender)
+                    {
+                        new Task(() => {Thread.Sleep(7000); MenuLoaded = true; },TaskCreationOptions.LongRunning).Start();
+                        FirstRender = false;
+                    }
+                    drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "Backgrounds", "Controls", "mkbombatkontrols.jpg"),UriKind.RelativeOrAbsolute))), null, new Rect(0, 0, area.Width, area.Height)); //loading screen
+                    
                 }
                 #endregion
                 else
                 {
-                    if (true)
-                    {
-
-                    }
                     //map kirajzolás
                     model.GameStarted = true;
                     drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(model.SelectedMapPath, UriKind.RelativeOrAbsolute))),

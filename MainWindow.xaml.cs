@@ -48,6 +48,7 @@ namespace GUI_20212202_CM7A68
             gametimer.Interval = TimeSpan.FromMilliseconds(17);
             gametimer.Tick += Gametimer_Tick;
             gametimer.Start();
+            display.FirstRender = true;
             logic.SetupSize(new Size((int)mainGrid.ActualWidth, (int)mainGrid.ActualHeight));
         }
         private void Gametimer_Tick(object? sender, EventArgs e)
@@ -63,6 +64,7 @@ namespace GUI_20212202_CM7A68
                         logic.Players[0].WonRounds = 0;
                         logic.Players[1].WonRounds = 0;
                         logic.InitLogic();
+                        display.FirstRender = true;
                     }
                     else
                     {
@@ -85,6 +87,7 @@ namespace GUI_20212202_CM7A68
                         logic.Players[0].WonRounds = 0;
                         logic.Players[1].WonRounds = 0;
                         logic.InitLogic();
+                        display.FirstRender = true;
                     }
                     else
                     {
@@ -96,6 +99,7 @@ namespace GUI_20212202_CM7A68
                     logic.Players[0].WonRounds = 0;
                     logic.Players[1].WonRounds = 0;
                     logic.InitLogic();
+                    display.FirstRender = true;
                 }
                 logic.GameOver = false;
             }
