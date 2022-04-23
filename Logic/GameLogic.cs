@@ -21,24 +21,26 @@ namespace GUI_20212202_CM7A68.Logic
         public TimeSpan RoundTime { get; set; }
         public string SelectedMapPath { get; set; }
         public bool GamePaused { get; set; } //esc lenyomásra menü fel, visszaszámlálás leáll
-        public List<Explosion>  Explosions { get; set; }
+        public List<Explosion> Explosions { get; set; }
         public bool GameOver { get; set; }
         public bool GameStarted { get; set; }
+        object bombLock = new object();
+        Random r = new Random();
 
         int robotspeedX; //mozgás sebessége
         int robotspeedY; //ugrás sebessége
         public bool RobotsSpawned { get; set; } //true, ha már létrehoztuk a robotokat
-       
+
         public void InitLogic()
         {
-            this.Robots= new List<Robot>();
+            this.Robots = new List<Robot>();
             this.Robots.Add(new Robot(new Point(area.Width / 10, (int)(area.Height * 0.8))));
             this.Robots.Add(new Robot(new Point((int)(area.Width * 0.9), (int)(area.Height * 0.8))));
-            if (Players==null)
+            if (Players == null)
             {
                 Players = new List<Player>();
             }
-            if (Players.Count>0)
+            if (Players.Count > 0)
             {
                 Robots[0].IsControllable = Players[0].IsPlayer;
                 Robots[1].IsControllable = Players[1].IsPlayer;
@@ -52,7 +54,7 @@ namespace GUI_20212202_CM7A68.Logic
         public List<Bomb> Bombs { get; set; }
         public void SetupSize(Size area)
         {
-           
+
             this.area = area;
             if (!RobotsSpawned)
             {
@@ -69,18 +71,18 @@ namespace GUI_20212202_CM7A68.Logic
             //TODO: minden mozgatást, állapotváltozást, ütközést itt állítani, ez 20ms-ként le fog futni
             for (int i = 0; i < Bombs.Count; i++)
             {
-                Bombs[i].Move((int)(area.Height*0.85));
+                Bombs[i].Move((int)(area.Height * 0.85));
                 Bombs[i].Heal -= 1;
                 if (Bombs[i].Heal <= 0)
                 {
-                    Explosions.Add(new Explosion(       
+                    Explosions.Add(new Explosion(
                             area,
                             Bombs[i].Center,
                             10,
                             1,
-                            3
+                            5
                         ));
-                    Bombs.RemoveAt(i);                
+                    Bombs.RemoveAt(i);
                 }
             }
             for (int i = 0; i < Explosions.Count; i++)
@@ -90,17 +92,17 @@ namespace GUI_20212202_CM7A68.Logic
                     Explosions.RemoveAt(i);
                 }
             }
-            if (Robots[1].Health==0)
+            if (Robots[1].Health == 0)
             {
                 Players[0].WonRounds++;
                 InitLogic();
             }
-            else if(Robots[0].Health==0)
+            else if (Robots[0].Health == 0)
             {
                 Players[1].WonRounds++;
                 InitLogic();
             }
-            if (Players.Sum(x=>x.WonRounds)==3)
+            if (Players.Sum(x => x.WonRounds) == 3)
             {
                 GameOver = true;
             }
@@ -112,7 +114,7 @@ namespace GUI_20212202_CM7A68.Logic
             switch (direction)
             {
                 case Directions.up:
-                    if (oldpos.Y - 2 * robotspeedY > 0) 
+                    if (oldpos.Y - 2 * robotspeedY > 0)
                     {
                         robot.Center = new Point(oldpos.X, oldpos.Y - robotspeedY);
                     }
@@ -141,7 +143,7 @@ namespace GUI_20212202_CM7A68.Logic
                     {
                         NewRedThrowingBomb(Robots[1].Center, Robots[0].Center.X > Robots[1].Center.X ? 1 : -1);
                     }
-                   
+
                     break;
                 default:
                     break;
@@ -150,7 +152,7 @@ namespace GUI_20212202_CM7A68.Logic
         public void RobotDescend(Robot robot) //segédmetódus az ugráshoz
         {
             var oldpos = robot.Center;
-            if (oldpos.Y + robotspeedY <=area.Height*0.8)
+            if (oldpos.Y + robotspeedY <= area.Height * 0.8)
             {
                 robot.Center = new Point(oldpos.X, oldpos.Y + robotspeedY);
             }
@@ -158,31 +160,32 @@ namespace GUI_20212202_CM7A68.Logic
         //piros && zöld zuhanó bomba létrehozása
         public void NewRedFallingBomb(Point robotPos)
         {
-            Bombs.Add(new FallingBomb(new Point((int)robotPos.X, (int)robotPos.Y - area.Height * 0.05), area, ConsoleColor.Red));
-            
+            lock (bombLock)
+                Bombs.Add(new FallingBomb(new Point((int)robotPos.X, (int)robotPos.Y - area.Height * 0.05), area, ConsoleColor.Red));
+
         }
         public void NewGreenFallingBomb(Point robotPos)
         {
-            Bombs.Add(new FallingBomb(new Point((int)robotPos.X, (int)robotPos.Y - area.Height * 0.05), area, ConsoleColor.Green));
+            lock (bombLock)
+                Bombs.Add(new FallingBomb(new Point((int)robotPos.X, (int)robotPos.Y - area.Height * 0.05), area, ConsoleColor.Green));
 
         }
-
-       
         //piros && zöld dobálós bomba létrehozása
         public void NewRedThrowingBomb(System.Windows.Point robotPos, int direction)
         {
-            Bombs.Add(new ThrowingBomb(new Point((int)robotPos.X, (int)robotPos.Y),area, direction, ConsoleColor.Red));
+            lock (bombLock)
+                Bombs.Add(new ThrowingBomb(new Point((int)robotPos.X, (int)robotPos.Y), area, direction, ConsoleColor.Red));
         }
         public void NewGreenThrowingBomb(System.Windows.Point robotPos, int direction)
         {
-            Bombs.Add(new ThrowingBomb(new Point((int)robotPos.X, (int)robotPos.Y), area, direction, ConsoleColor.Green));
+            lock (bombLock)
+                Bombs.Add(new ThrowingBomb(new Point((int)robotPos.X, (int)robotPos.Y), area, direction, ConsoleColor.Green));
         }
         private void CreateBots()
         {
-            var ts = Robots.Where(x=>!x.IsControllable).Select(x=> new Task(() => AIBehavior(x), TaskCreationOptions.LongRunning)).ToList();
+            var ts = Robots.Where(x => !x.IsControllable).Select(x => new Task(() => AIBehavior(x), TaskCreationOptions.LongRunning)).ToList();
             ts.ForEach(x => x.Start());
         }
-        Random r = new Random();
         private async void AIBehavior(Robot robot)
         {
             bool robotIsInAir = false;
@@ -213,7 +216,7 @@ namespace GUI_20212202_CM7A68.Logic
                             MoveRobot(Directions.down, robot);
                             break;
                         case 2:
-                            if (robot.IsMoving == false && robot.Center.X>area.Width*0.2)
+                            if (robot.IsMoving == false && robot.Center.X > area.Width * 0.2)
                             {
                                 robot.IsMoving = true;
                                 while (robot.IsMoving)
@@ -226,14 +229,14 @@ namespace GUI_20212202_CM7A68.Logic
                             }
                             break;
                         case 3:
-                            if (robot.IsMoving == false && robot.Center.X<area.Width*0.8)
+                            if (robot.IsMoving == false && robot.Center.X < area.Width * 0.8)
                             {
                                 robot.IsMoving = true;
                                 while (robot.IsMoving)
                                 {
                                     await Task.Delay(1);
                                     MoveRobot(Directions.right, robot);
-                                    if (robot.Center.X>area.Width*0.95)
+                                    if (robot.Center.X > area.Width * 0.95)
                                         robot.IsMoving = false;
                                 }
                             }
@@ -246,9 +249,9 @@ namespace GUI_20212202_CM7A68.Logic
                             break;
                     }
                 }
-                Thread.Sleep(r.Next(500,1000));
+                Thread.Sleep(r.Next(500, 1000));
             }
-           
+
         }
     }
 }
