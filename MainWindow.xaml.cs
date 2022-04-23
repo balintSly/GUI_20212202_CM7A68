@@ -49,6 +49,7 @@ namespace GUI_20212202_CM7A68
             gametimer.Tick += Gametimer_Tick;
             gametimer.Start();
             display.FirstRender = true;
+            display.MenuLoaded = false;
             logic.SetupSize(new Size((int)mainGrid.ActualWidth, (int)mainGrid.ActualHeight));
         }
         private void Gametimer_Tick(object? sender, EventArgs e)
@@ -65,6 +66,7 @@ namespace GUI_20212202_CM7A68
                         logic.Players[1].WonRounds = 0;
                         logic.InitLogic();
                         display.FirstRender = true;
+                        display.MenuLoaded = false;
                     }
                     else
                     {
@@ -88,6 +90,7 @@ namespace GUI_20212202_CM7A68
                         logic.Players[1].WonRounds = 0;
                         logic.InitLogic();
                         display.FirstRender = true;
+                        display.MenuLoaded = false;
                     }
                     else
                     {
@@ -100,6 +103,7 @@ namespace GUI_20212202_CM7A68
                     logic.Players[1].WonRounds = 0;
                     logic.InitLogic();
                     display.FirstRender = true;
+                    display.MenuLoaded = false;
                 }
                 logic.GameOver = false;
             }
@@ -107,7 +111,7 @@ namespace GUI_20212202_CM7A68
             {
                 logic.TimeStep();
                 display.TimeFromGameStart += TimeSpan.FromSeconds(17);// egy időztő van, kb. összeadjuk a delayeket, és durván másodpercenként kivonunk 1 secet az alap 3 percből
-                if (display.TimeFromGameStart.TotalSeconds % 680 == 0 && logic.GameStarted && !logic.GamePaused)
+                if (display.TimeFromGameStart.TotalSeconds % 680 == 0 && logic.GameStarted && !logic.GamePaused && display.MenuLoaded)
                 {
                     logic.RoundTime -= TimeSpan.FromSeconds(1); //csökkentjük a köridőt 1 seccel
                 }
