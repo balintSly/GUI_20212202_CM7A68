@@ -12,6 +12,7 @@ namespace GUI_20212202_CM7A68.Models
     //TODO: refactor bomb animations to separate class
     public class Explosion      
     {
+        static Random r=new Random();
         public Point Center { get; set; }
         public int Damage { get; set; }     
         public int Height { get; set; }
@@ -102,12 +103,19 @@ namespace GUI_20212202_CM7A68.Models
             Rect robot2Rect = new Rect(Robot2.Center.X - area.Width / 12, Robot2.Center.Y - area.Height / 6, area.Width / 6, area.Height / 3);
             if (!robot1HitFlag && (verticalHitBox.IntersectsWith(robot1Rect) || horizontalHitBox.IntersectsWith(robot1Rect)))
             {
-                Robot1.Health -= Damage;
+                if (r.Next(0,10)<3)
+                    Robot1.Shield -= Damage;
+                else
+                    Robot1.Health -= Damage;
+
                 robot1HitFlag = true;
             }
             if (!robot2HitFlag && (verticalHitBox.IntersectsWith(robot2Rect) || horizontalHitBox.IntersectsWith(robot2Rect)))
             {
-                Robot2.Health -= Damage;
+                if (r.Next(0,10)<3)
+                    Robot2.Shield -= Damage;
+                else
+                    Robot2.Health -= Damage;
                 robot2HitFlag = true;
             }
 

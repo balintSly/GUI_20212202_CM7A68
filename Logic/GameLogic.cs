@@ -47,7 +47,7 @@ namespace GUI_20212202_CM7A68.Logic
                 CreateBots();
                 Robots.ForEach(x => new Task(() => ReloadBombs(x), TaskCreationOptions.LongRunning).Start());
             }
-            this.RoundTime = TimeSpan.FromMinutes(0.3);
+            this.RoundTime = TimeSpan.FromMinutes(1.5);
             this.GamePaused = false;
             Bombs = new List<Bomb>();
             Explosions = new List<Explosion>();
