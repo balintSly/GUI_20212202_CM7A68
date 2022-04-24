@@ -156,6 +156,18 @@ namespace GUI_20212202_CM7A68.Renderer
                     string armor1 = $"Armor_{model.Robots[0].Shield}_pecent.png";
                     drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "HUD", "Armor", armor1),
                       UriKind.RelativeOrAbsolute))), null, new Rect(area.Width * 0.048, area.Height * 0.07, area.Width * 0.4, area.Height * 0.05));
+                    //robot1bombái
+                    string robot1bombbar = $"Helath_{model.Robots[0].BombLoading}_pecent.png";
+                    drawingContext.PushTransform(new RotateTransform(-90, area.Width * 0.001, area.Height * 0.5));
+                    drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "HUD", "Health", robot1bombbar),
+                       UriKind.RelativeOrAbsolute))), null, new Rect(area.Width * 0.002, area.Height * 0.5, area.Width * 0.1, area.Height * 0.01));
+                    drawingContext.Pop();
+                    drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "Bomb", "bomb1.png"),
+                       UriKind.RelativeOrAbsolute))), null, new Rect(area.Width * 0.023- area.Width * 0.05/2, area.Height * 0.275- area.Width * 0.05/2, area.Width * 0.05, area.Width * 0.05));
+                    drawingContext.DrawText(new FormattedText($"{model.Robots[0].BombNumber}", System.Globalization.CultureInfo.CurrentCulture,
+                        FlowDirection.LeftToRight, new Typeface(new FontFamily("Consolas"), FontStyles.Normal, FontWeights.Bold,
+                        FontStretches.Normal), area.Height * 0.05, Brushes.Red), new Point(area.Width * 0.029 - area.Width * 0.05 / 2, area.Height * 0.3 - area.Width * 0.05 / 2));
+
 
                     //robot2
                     string hp2 = $"Helath_{model.Robots[1].Health}_pecent.png";
@@ -169,6 +181,19 @@ namespace GUI_20212202_CM7A68.Renderer
                     drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "HUD", "Armor", armor1),
                       UriKind.RelativeOrAbsolute))), null, new Rect(area.Width * 0.608, area.Height * 0.07, area.Width * 0.4, area.Height * 0.05));
                     drawingContext.Pop();
+                    //robot2bombái
+                    string robot2bombbar = $"Helath_{model.Robots[1].BombLoading}_pecent.png";
+                    drawingContext.PushTransform(new RotateTransform(-90, area.Width * 0.993, area.Height * 0.5));
+                    drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "HUD", "Health", robot2bombbar),
+                       UriKind.RelativeOrAbsolute))), null, new Rect(area.Width * 0.993, area.Height * 0.5, area.Width * 0.1, area.Height * 0.01));
+                    drawingContext.Pop();
+                    drawingContext.PushTransform(new ScaleTransform(-1, 1, area.Width * 0.9999, area.Height * 0.275 - area.Width * 0.05 / 2));
+                    drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "Bomb", "bomb1.png"),
+                       UriKind.RelativeOrAbsolute))), null, new Rect(area.Width * 0.9999, area.Height * 0.275 - area.Width * 0.05 / 2, area.Width * 0.05, area.Width * 0.05));
+                    drawingContext.Pop();
+                    drawingContext.DrawText(new FormattedText($"{model.Robots[1].BombNumber}", System.Globalization.CultureInfo.CurrentCulture,
+                        FlowDirection.LeftToRight, new Typeface(new FontFamily("Consolas"), FontStyles.Normal, FontWeights.Bold,
+                        FontStretches.Normal), area.Height * 0.05, Brushes.Red), new Point(area.Width * 0.999 - area.Width * 0.05 / 2, area.Height * 0.3 - area.Width * 0.05 / 2));
 
                     //ikonok
                     drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "HUD", "Icons", "health_icon.png"),

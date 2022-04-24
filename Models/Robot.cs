@@ -12,27 +12,30 @@ namespace GUI_20212202_CM7A68.Models
     {
         public bool IsControllable { get; set; }
         private int health;
+
         public bool IsMoving { get; set; }
         public bool IsJumping { get; set; }
-
+        public int BombNumber { get; set; }
+        public int BombLoading { get; set; }
+        public bool IsReloading { get; set; }
         public int Health
         {
             get { return health; }
-            set 
+            set
             {
-                if (value>0 && value<=100)
+                if (value > 0 && value <= 100)
                 {
                     health = value;
                 }
-                else if (value>100)
+                else if (value > 100)
                 {
                     health = 100;
                 }
                 else
                 {
-                    health=0;
+                    health = 0;
                 }
-               
+
             }
         }
 
@@ -46,6 +49,9 @@ namespace GUI_20212202_CM7A68.Models
             this.IsMoving = false;
             this.IsJumping = false;
             this.IsControllable = false;
+            this.BombNumber = 2;
+            this.BombLoading = 0;
+            this.IsReloading = false;
         }
     }
 }

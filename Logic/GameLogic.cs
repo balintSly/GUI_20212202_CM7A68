@@ -45,6 +45,7 @@ namespace GUI_20212202_CM7A68.Logic
                 Robots[0].IsControllable = Players[0].IsPlayer;
                 Robots[1].IsControllable = Players[1].IsPlayer;
                 CreateBots();
+                Robots.ForEach(x => new Task(() => ReloadBombs(x), TaskCreationOptions.LongRunning));
             }
             this.RoundTime = TimeSpan.FromMinutes(1.5);
             this.GamePaused = false;
@@ -135,15 +136,20 @@ namespace GUI_20212202_CM7A68.Logic
                     }
                     break;
                 case Directions.bomb:
-                    if (robot == Robots[0])
+                    if (robot.BombNumber>0)
                     {
-                        NewGreenThrowingBomb(Robots[0].Center, Robots[0].Center.X > Robots[1].Center.X ? -1 : 1);
-                    }
-                    else
-                    {
-                        NewRedThrowingBomb(Robots[1].Center, Robots[0].Center.X > Robots[1].Center.X ? 1 : -1);
-                    }
-
+                        if (robot == Robots[0])
+                        {
+                            NewGreenThrowingBomb(Robots[0].Center, Robots[0].Center.X > Robots[1].Center.X ? -1 : 1);
+                            robot.BombNumber--;
+                        }
+                        else
+                        {
+                            NewRedThrowingBomb(Robots[1].Center, Robots[0].Center.X > Robots[1].Center.X ? 1 : -1);
+                            robot.BombNumber--;
+                        }
+                        new Task(() => ReloadBombs(robot), TaskCreationOptions.LongRunning).Start();
+                    }                 
                     break;
                 default:
                     break;
@@ -252,6 +258,28 @@ namespace GUI_20212202_CM7A68.Logic
                 Thread.Sleep(r.Next(500, 1000));
             }
 
+        }
+        private void ReloadBombs(Robot robot)
+        {
+            if (!robot.IsReloading)
+            {
+                robot.IsReloading=true;
+                while (robot.BombNumber < 5)
+                {
+                    while (robot.BombLoading < 100)
+                    {
+                        Thread.Sleep(100);
+                        if (!GamePaused)
+                        {
+                            robot.BombLoading += 5;
+                        }                        
+                    }
+                    robot.BombLoading = 0;
+                    robot.BombNumber++;
+                }
+                robot.IsReloading = false;
+            }
+            
         }
     }
 }
