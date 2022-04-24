@@ -18,7 +18,7 @@ namespace GUI_20212202_CM7A68.Renderer
         Size area;
         IGameModel model;
         public TimeSpan TimeFromGameStart { get; set; }
-        
+
         public bool Quit { get; set; }
         public bool MenuLoaded { get; set; }
         public bool FirstRender { get; set; }
@@ -47,11 +47,11 @@ namespace GUI_20212202_CM7A68.Renderer
                 {
                     if (FirstRender)
                     {
-                        new Task(() => {Thread.Sleep(7000); MenuLoaded = true; },TaskCreationOptions.LongRunning).Start();
+                        new Task(() => { Thread.Sleep(7000); MenuLoaded = true; }, TaskCreationOptions.LongRunning).Start();
                         FirstRender = false;
                     }
-                    drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "Backgrounds", "Controls", "mkbombatkontrols.jpg"),UriKind.RelativeOrAbsolute))), null, new Rect(0, 0, area.Width, area.Height)); //loading screen
-                    
+                    drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "Backgrounds", "Controls", "mkbombatkontrols.jpg"), UriKind.RelativeOrAbsolute))), null, new Rect(0, 0, area.Width, area.Height)); //loading screen
+
                 }
                 #endregion
                 else
@@ -115,7 +115,7 @@ namespace GUI_20212202_CM7A68.Renderer
                         }
                     }
                     robot1skin += model.Players[0].SelectedColor;
-                    robot2skin+=model.Players[1].SelectedColor;
+                    robot2skin += model.Players[1].SelectedColor;
                     #endregion
                     #region RobotKirajzolás
                     if (model.Robots[0].Center.X < model.Robots[1].Center.X)//merre nézzenek a robotok, kirajzolásuk
@@ -141,7 +141,7 @@ namespace GUI_20212202_CM7A68.Renderer
                     #endregion
                     #region HUD kirajzolás
                     //áttetsző fekete háttér
-                    
+
                     //drawingContext.DrawRectangle(new SolidColorBrush(Color.FromArgb(200, 0, 0, 0)), null, new Rect(0,0, area.Width, area.Height * 0.122));
                     drawingContext.DrawEllipse(new SolidColorBrush(Color.FromArgb(200, 0, 0, 0)), null, new Point(area.Width * 0.02, area.Height * 0.121), area.Width * 0.2, area.Height * 0.1);
                     drawingContext.DrawEllipse(new SolidColorBrush(Color.FromArgb(200, 0, 0, 0)), null, new Point(area.Width * 0.98, area.Height * 0.121), area.Width * 0.2, area.Height * 0.1);
@@ -163,7 +163,7 @@ namespace GUI_20212202_CM7A68.Renderer
                        UriKind.RelativeOrAbsolute))), null, new Rect(area.Width * 0.002, area.Height * 0.5, area.Width * 0.1, area.Height * 0.01));
                     drawingContext.Pop();
                     drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "Bomb", "bomb1.png"),
-                       UriKind.RelativeOrAbsolute))), null, new Rect(area.Width * 0.023- area.Width * 0.05/2, area.Height * 0.275- area.Width * 0.05/2, area.Width * 0.05, area.Width * 0.05));
+                       UriKind.RelativeOrAbsolute))), null, new Rect(area.Width * 0.023 - area.Width * 0.05 / 2, area.Height * 0.275 - area.Width * 0.05 / 2, area.Width * 0.05, area.Width * 0.05));
                     drawingContext.DrawText(new FormattedText($"{model.Robots[0].BombNumber}", System.Globalization.CultureInfo.CurrentCulture,
                         FlowDirection.LeftToRight, new Typeface(new FontFamily("Consolas"), FontStyles.Normal, FontWeights.Bold,
                         FontStretches.Normal), area.Height * 0.05, Brushes.Red), new Point(area.Width * 0.029 - area.Width * 0.05 / 2, area.Height * 0.3 - area.Width * 0.05 / 2));
@@ -207,9 +207,22 @@ namespace GUI_20212202_CM7A68.Renderer
                         UriKind.RelativeOrAbsolute))), null, new Rect(area.Width * 0.95, area.Height * 0.065, area.Width * 0.05, area.Height * 0.065));
 
                     //óra
-                    drawingContext.DrawText(new FormattedText(model.RoundTime.ToString(@"mm\:ss"), System.Globalization.CultureInfo.CurrentCulture,
-                        FlowDirection.LeftToRight, new Typeface(new FontFamily("Consolas"), FontStyles.Normal, FontWeights.Bold,
-                        FontStretches.Normal), area.Height * 0.05, Brushes.Red), new Point(area.Width * 0.465, area.Height * 0.05));
+                    if (model.RoundTime.TotalSeconds <= 10)
+                    {
+                        if (TimeFromGameStart.TotalSeconds % 2 == 0)
+                        {
+                            drawingContext.DrawText(new FormattedText(model.RoundTime.ToString(@"mm\:ss"), System.Globalization.CultureInfo.CurrentCulture,
+                            FlowDirection.LeftToRight, new Typeface(new FontFamily("Consolas"), FontStyles.Normal, FontWeights.Bold,
+                            FontStretches.Normal), area.Height * 0.05, Brushes.Red), new Point(area.Width * 0.465, area.Height * 0.05));
+                        }
+                    }
+                    else
+                    {
+                            drawingContext.DrawText(new FormattedText(model.RoundTime.ToString(@"mm\:ss"), System.Globalization.CultureInfo.CurrentCulture,
+                            FlowDirection.LeftToRight, new Typeface(new FontFamily("Consolas"), FontStyles.Normal, FontWeights.Bold,
+                            FontStretches.Normal), area.Height * 0.05, Brushes.Red), new Point(area.Width * 0.465, area.Height * 0.05));
+                    }
+
 
                     //állás
                     drawingContext.DrawText(new FormattedText($"{model.Players[0].WonRounds}:{model.Players[1].WonRounds}", System.Globalization.CultureInfo.CurrentCulture,
@@ -291,9 +304,9 @@ namespace GUI_20212202_CM7A68.Renderer
                 }
 
             }
-           
 
-        } 
+
+        }
         private string BombHp(Bomb b)
         {
             if (b.Heal <= 100 && b.Heal > 95)
@@ -382,7 +395,7 @@ namespace GUI_20212202_CM7A68.Renderer
             }
 
         }//(ezt a metódust le se nyissátok xd)
-        public void DrawExplosion(DrawingContext drawingContext, Explosion explosion)           
+        public void DrawExplosion(DrawingContext drawingContext, Explosion explosion)
         {
             double cursorX;
             double cursorY;

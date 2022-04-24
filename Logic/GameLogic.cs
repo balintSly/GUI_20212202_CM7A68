@@ -47,7 +47,7 @@ namespace GUI_20212202_CM7A68.Logic
                 CreateBots();
                 Robots.ForEach(x => new Task(() => ReloadBombs(x), TaskCreationOptions.LongRunning).Start());
             }
-            this.RoundTime = TimeSpan.FromMinutes(1.5);
+            this.RoundTime = TimeSpan.FromMinutes(0.3);
             this.GamePaused = false;
             Bombs = new List<Bomb>();
             Explosions = new List<Explosion>();
@@ -220,7 +220,7 @@ namespace GUI_20212202_CM7A68.Logic
                                     robotIsInAir = false;
                                     robot.IsJumping = false;
                                 }, TaskCreationOptions.LongRunning).Start();
-                                if (robot.IsMoving==false && robot.Center.X < area.Width * 0.3)
+                                if (robot.IsMoving == false && robot.Center.X < area.Width * 0.3)
                                 {
                                     robot.IsMoving = true;
                                     while (robot.IsMoving)
@@ -307,6 +307,20 @@ namespace GUI_20212202_CM7A68.Logic
                 robot.IsReloading = false;
             }
 
+        }
+        public void StartHurt()
+        {
+            new Task(() =>
+            {
+                while (Robots.Where(x => x.Health > 0).Count() > 1 && RoundTime.TotalSeconds<=10)
+                {
+                    foreach (var item in Robots)
+                    {
+                        item.Health -= 5;
+                    }
+                    Thread.Sleep(1000);
+                }                
+            }, TaskCreationOptions.LongRunning).Start();
         }
     }
 }
