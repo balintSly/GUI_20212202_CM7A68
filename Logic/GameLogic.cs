@@ -45,7 +45,7 @@ namespace GUI_20212202_CM7A68.Logic
                 Robots[0].IsControllable = Players[0].IsPlayer;
                 Robots[1].IsControllable = Players[1].IsPlayer;
                 CreateBots();
-                Robots.ForEach(x => new Task(() => ReloadBombs(x), TaskCreationOptions.LongRunning));
+                Robots.ForEach(x => new Task(() => ReloadBombs(x), TaskCreationOptions.LongRunning).Start());
             }
             this.RoundTime = TimeSpan.FromMinutes(1.5);
             this.GamePaused = false;
@@ -136,7 +136,7 @@ namespace GUI_20212202_CM7A68.Logic
                     }
                     break;
                 case Directions.bomb:
-                    if (robot.BombNumber>0)
+                    if (robot.BombNumber > 0)
                     {
                         if (robot == Robots[0])
                         {
@@ -149,7 +149,7 @@ namespace GUI_20212202_CM7A68.Logic
                             robot.BombNumber--;
                         }
                         new Task(() => ReloadBombs(robot), TaskCreationOptions.LongRunning).Start();
-                    }                 
+                    }
                     break;
                 default:
                     break;
@@ -204,18 +204,45 @@ namespace GUI_20212202_CM7A68.Logic
                         case 0:
                             if (robot.IsJumping == false && robotIsInAir == false)
                             {
-                                robot.IsJumping = true;
-                                for (int i = 0; i < 20; i++)
+                                new Task(() =>
                                 {
-                                    await Task.Delay(1);
-                                    MoveRobot(Directions.up, robot);
-                                }
-                                for (int i = 0; i < 20; i++)
+                                    robot.IsJumping = true;
+                                    for (int i = 0; i < 20; i++)
+                                    {
+                                        Thread.Sleep(10);
+                                        MoveRobot(Directions.up, robot);
+                                    }
+                                    for (int i = 0; i < 20; i++)
+                                    {
+                                        Thread.Sleep(10);
+                                        RobotDescend(robot);
+                                    }
+                                    robotIsInAir = false;
+                                    robot.IsJumping = false;
+                                }, TaskCreationOptions.LongRunning).Start();
+                                if (robot.IsMoving==false && robot.Center.X < area.Width * 0.3)
                                 {
-                                    await Task.Delay(1);
-                                    RobotDescend(robot);
+                                    robot.IsMoving = true;
+                                    while (robot.IsMoving)
+                                    {
+                                        await Task.Delay(1);
+                                        MoveRobot(Directions.right, robot);
+                                        if (robot.Center.X > area.Width * 0.95)
+                                            robot.IsMoving = false;
+                                    }
                                 }
-                                robotIsInAir = false;
+                                else if (robot.IsMoving == false && robot.Center.X > area.Width * 0.7)
+                                {
+                                    robot.IsMoving = true;
+                                    while (robot.IsMoving)
+                                    {
+                                        await Task.Delay(1);
+                                        MoveRobot(Directions.left, robot);
+                                        if (robot.Center.X < area.Width * 0.05)
+                                            robot.IsMoving = false;
+                                    }
+                                }
+
                             }
                             break;
                         case 1:
@@ -263,23 +290,23 @@ namespace GUI_20212202_CM7A68.Logic
         {
             if (!robot.IsReloading)
             {
-                robot.IsReloading=true;
+                robot.IsReloading = true;
                 while (robot.BombNumber < 5)
                 {
                     while (robot.BombLoading < 100)
                     {
                         Thread.Sleep(100);
-                        if (!GamePaused)
+                        if (!GamePaused && GameStarted)
                         {
                             robot.BombLoading += 5;
-                        }                        
+                        }
                     }
                     robot.BombLoading = 0;
                     robot.BombNumber++;
                 }
                 robot.IsReloading = false;
             }
-            
+
         }
     }
 }

@@ -20,7 +20,7 @@ namespace GUI_20212202_CM7A68.Services
             else
             {
                 var players = JsonConvert.DeserializeObject<List<Player>>(File.ReadAllText("leaderboard.json"));
-                if (!players.Contains(playerOne) && playerOne.Name != "BOT_LEFT")
+                if (!players.Contains(playerOne) && playerOne.Name != "BOT_LEFT" && playerOne.Name != "BOTLEFT")
                 {
                     players.Add(playerOne);
                 }
@@ -30,7 +30,7 @@ namespace GUI_20212202_CM7A68.Services
                     old.WonMatches += playerOne.WonMatches;
                     old.WonRounds += playerOne.WonRounds;
                 }
-                if (!players.Contains(playerTwo) && playerTwo.Name != "BOT_RIGHT")
+                if (!players.Contains(playerTwo) && playerTwo.Name != "BOT_RIGHT" && playerTwo.Name != "BOTRIGHT")
                 {
                     players.Add(playerTwo);
                 }
