@@ -13,10 +13,22 @@ namespace GUI_20212202_CM7A68.Models
         public bool IsControllable { get; set; }
         private int health;
         private int shield;
-        static Random r=new Random();
+        static Random r = new Random();
+        private int bombNumber;
+
         public bool IsMoving { get; set; }
         public bool IsJumping { get; set; }
-        public int BombNumber { get; set; }
+        public int BombNumber
+        {
+            get => bombNumber;
+            set
+            {
+                if (value > 5)
+                {
+                    bombNumber = 5;
+                }
+            }
+        }
         public int BombLoading { get; set; }
         public bool IsReloading { get; set; }
         public int Health
@@ -24,7 +36,7 @@ namespace GUI_20212202_CM7A68.Models
             get { return health; }
             set
             {
-                if (this.Shield>0 && r.Next(0,10)<3) //armort sebezzük
+                if (this.Shield > 0 && r.Next(0, 10) < 3) //armort sebezzük
                 {
                     this.Shield -= (health - value);
                 }
@@ -46,10 +58,10 @@ namespace GUI_20212202_CM7A68.Models
             }
         }
 
-        public int Shield 
+        public int Shield
         {
-            get => shield; 
-            set 
+            get => shield;
+            set
             {
                 if (value > 0 && value <= 100)
                 {
@@ -63,7 +75,7 @@ namespace GUI_20212202_CM7A68.Models
                 {
                     shield = 0;
                 }
-            } 
+            }
         }
         public Point Center { get; set; }
         public Robot(Point spawnpoint)
