@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -56,6 +57,10 @@ namespace GUI_20212202_CM7A68
         {
             if (logic.GamePaused)
             {
+                lock (logic.LockObject)
+                {
+                    Monitor.Pulse(logic.LockObject);
+                }
                 var pausemenu = new PauseWindow(this.logic);
                 if (pausemenu.ShowDialog() == false)
                 {
@@ -64,6 +69,11 @@ namespace GUI_20212202_CM7A68
                     {
                         logic.Players[0].WonRounds = 0;
                         logic.Players[1].WonRounds = 0;
+                        logic.GameStarted = false;
+                        lock (logic.LockObject)
+                        {
+                            Monitor.Pulse(logic.LockObject);
+                        }
                         logic.InitLogic();
                         display.FirstRender = true;
                         display.MenuLoaded = false;
@@ -76,6 +86,10 @@ namespace GUI_20212202_CM7A68
                 else
                 {
                     logic.GamePaused = false;
+                    lock (logic.LockObject)
+                    {
+                        Monitor.Pulse(logic.LockObject);
+                    }
                 }
             }
             else if (logic.GameOver)
@@ -88,6 +102,11 @@ namespace GUI_20212202_CM7A68
                     {
                         logic.Players[0].WonRounds = 0;
                         logic.Players[1].WonRounds = 0;
+                        logic.GameStarted = false;
+                        lock (logic.LockObject)
+                        {
+                            Monitor.Pulse(logic.LockObject);
+                        }
                         logic.InitLogic();
                         display.FirstRender = true;
                         display.MenuLoaded = false;
@@ -101,6 +120,11 @@ namespace GUI_20212202_CM7A68
                 {
                     logic.Players[0].WonRounds = 0;
                     logic.Players[1].WonRounds = 0;
+                    logic.GameStarted = false;
+                    lock (logic.LockObject)
+                    {
+                        Monitor.Pulse(logic.LockObject);
+                    }
                     logic.InitLogic();
                     display.FirstRender = true;
                     display.MenuLoaded = false;

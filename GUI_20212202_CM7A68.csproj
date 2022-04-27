@@ -188,6 +188,11 @@
     <None Remove="Renderer\Images\Rounds\round1piccropped.png" />
     <None Remove="Renderer\Images\Rounds\round2piccropped.png" />
     <None Remove="Renderer\Images\Rounds\round3piccropped.png" />
+    <None Remove="Renderer\Music\jr-the journey kon.wav" />
+    <None Remove="Renderer\Music\Loaded - Fatality [HQ].wav" />
+    <None Remove="Renderer\Music\mktthememetal.wav" />
+    <None Remove="Renderer\Music\The Immortals - Mortal Kombatw.wav" />
+    <None Remove="Renderer\Music\Traci Lords - Control %28Juno Reactor Instrumental%29.wav" />
     <None Remove="Renderer\Sounds\mk_finalround.wav" />
     <None Remove="Renderer\Sounds\mk_round1.wav" />
     <None Remove="Renderer\Sounds\mk_round2.wav" />
@@ -732,6 +737,21 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Renderer\Images\Rounds\round3piccropped.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Music\jr-the journey kon.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Music\Loaded - Fatality [HQ].wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Music\mktthememetal.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Music\The Immortals - Mortal Kombatw.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Music\Traci Lords - Control (Juno Reactor Instrumental).wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Renderer\Sounds\mk_finalround.wav">

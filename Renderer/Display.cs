@@ -39,6 +39,44 @@ namespace GUI_20212202_CM7A68.Renderer
         bool showround = false;
         bool showfight = false;
         bool roundDisplayStarted = false;
+        public MediaPlayer MusicPlayer { get; set; }
+        Queue<string> musicPaths = new Queue<string>();
+        static Random r = new Random();
+        private void StartMusic()
+        {
+            new Task(() =>
+            {
+                MusicPlayer = new MediaPlayer();
+                var musicpath = musicPaths.Dequeue();
+                MusicPlayer.Open(new Uri(musicpath, UriKind.RelativeOrAbsolute));
+                MusicPlayer.Play();
+                while (model.GameStarted)
+                {
+                    lock (model.LockObject)
+                    {
+                        Monitor.Wait(model.LockObject);
+                    }
+                    MusicPlayer.Pause();
+                    if (model.GameStarted)
+                    {
+                        lock (model.LockObject)
+                        {
+                            Monitor.Wait(model.LockObject);
+                        }
+                        MusicPlayer.Play();
+                    }
+                    else
+                    {
+                        MusicPlayer.Stop();
+                    }
+                   
+                    
+                }
+                MusicPlayer.Stop();
+                
+            }, TaskCreationOptions.LongRunning).Start();
+            
+        }
         protected override void OnRender(DrawingContext drawingContext)
         {
             if (area.Width > 0 && area.Height > 0)
@@ -52,13 +90,15 @@ namespace GUI_20212202_CM7A68.Renderer
                     {
                         new Task(() =>
                         {
-                            Thread.Sleep(4000); 
+                            Thread.Sleep(4000);
                             MenuLoaded = true;
                         }, TaskCreationOptions.LongRunning).Start();
                         FirstRender = false;
+                        Directory.GetFiles(Path.Combine("Renderer", "Music"), "*.wav").OrderBy(x => r.Next(0, 100)).ToList().ForEach(x => musicPaths.Enqueue(x));
+                        ;
                     }
                     drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "Backgrounds", "Controls", "mkbombatkontrols.jpg"), UriKind.RelativeOrAbsolute))), null, new Rect(0, 0, area.Width, area.Height)); //loading screen
-                }               
+                }
                 #endregion
                 else
                 {
@@ -83,7 +123,7 @@ namespace GUI_20212202_CM7A68.Renderer
                             {
                                 SoundPlayer s = new SoundPlayer(System.IO.Path.Combine("Renderer", "Sounds", "mk_finalround.wav"));
                                 s.Play();
-                            }                           
+                            }
                             Thread.Sleep(1250);
                             showround = false;
                             showfight = true;
@@ -91,6 +131,8 @@ namespace GUI_20212202_CM7A68.Renderer
                             showfight = false;
                             model.GameStarted = true;
                             roundDisplayStarted = false;
+                            StartMusic();
+
                         }, TaskCreationOptions.LongRunning).Start();
                     }
                     #endregion

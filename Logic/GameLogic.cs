@@ -97,15 +97,31 @@ namespace GUI_20212202_CM7A68.Logic
             if (Robots[1].Health == 0)
             {
                 Players[0].WonRounds++;
+                lock (this.LockObject)
+                {
+                    GameStarted = false;
+                    Monitor.Pulse(this.LockObject);
+                    Monitor.Pulse(this.LockObject);
+                }
                 InitLogic();
             }
             else if (Robots[0].Health == 0)
             {
                 Players[1].WonRounds++;
+                lock (this.LockObject)
+                {
+                    GameStarted = false;
+                    Monitor.Pulse(this.LockObject);
+                }
                 InitLogic();
             }
             if (Players.Sum(x => x.WonRounds) == 3)
             {
+                lock (this.LockObject)
+                {
+                    GameStarted = false;
+                    Monitor.Pulse(this.LockObject);
+                }
                 GameOver = true;
             }
         }
@@ -322,6 +338,11 @@ namespace GUI_20212202_CM7A68.Logic
                     Thread.Sleep(1000);
                 }                
             }, TaskCreationOptions.LongRunning).Start();
+        }
+        public object LockObject { get; set; }
+        public GameLogic()
+        {
+            this.LockObject = new object();
         }
     }
 }

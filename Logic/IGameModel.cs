@@ -22,5 +22,6 @@ namespace GUI_20212202_CM7A68.Logic
         bool GamePaused { get; set; }
         void InitLogic();
         public bool GameOver { get; set; }
+        object LockObject { get; set; }
     }
 }
