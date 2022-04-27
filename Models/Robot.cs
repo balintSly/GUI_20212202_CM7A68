@@ -27,6 +27,10 @@ namespace GUI_20212202_CM7A68.Models
                 {
                     bombNumber = 5;
                 }
+                else
+                {
+                    bombNumber = value;
+                }
             }
         }
         public int BombLoading { get; set; }
