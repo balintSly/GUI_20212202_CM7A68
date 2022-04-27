@@ -10,6 +10,7 @@ namespace GUI_20212202_CM7A68.Logic
         void MoveRobot(Directions direction, Robot robot);
         void RobotDescend(Robot robot);
         bool GamePaused { get; set; }
+        bool GameStarted { get; set; }
 
     }
 }

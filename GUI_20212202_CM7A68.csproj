@@ -184,6 +184,13 @@
     <None Remove="Renderer\Images\Robots\robotpic_step_pink.png" />
     <None Remove="Renderer\Images\Robots\robotpic_step_turk.png" />
     <None Remove="Renderer\Images\Robots\robotpic_step_yellow.png" />
+    <None Remove="Renderer\Images\Rounds\fightpiccropped.png" />
+    <None Remove="Renderer\Images\Rounds\round1piccropped.png" />
+    <None Remove="Renderer\Images\Rounds\round2piccropped.png" />
+    <None Remove="Renderer\Images\Rounds\round3piccropped.png" />
+    <None Remove="Renderer\Sounds\mk_finalround.wav" />
+    <None Remove="Renderer\Sounds\mk_round1.wav" />
+    <None Remove="Renderer\Sounds\mk_round2.wav" />
   </ItemGroup>
 
   <ItemGroup>
@@ -713,6 +720,27 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Renderer\Images\Robots\robotpic_step_yellow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Rounds\fightpiccropped.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Rounds\round1piccropped.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Rounds\round2piccropped.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Rounds\round3piccropped.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Sounds\mk_finalround.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Sounds\mk_round1.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Sounds\mk_round2.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

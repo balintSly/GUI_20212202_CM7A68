@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -35,7 +36,9 @@ namespace GUI_20212202_CM7A68.Renderer
         int piccount = 0;
         string robot1skin = "robotpic_stand2_";
         string robot2skin = "robotpic_stand2_";
-
+        bool showround = false;
+        bool showfight = false;
+        bool roundDisplayStarted = false;
         protected override void OnRender(DrawingContext drawingContext)
         {
             if (area.Width > 0 && area.Height > 0)
@@ -47,17 +50,51 @@ namespace GUI_20212202_CM7A68.Renderer
                 {
                     if (FirstRender)
                     {
-                        new Task(() => { Thread.Sleep(7000); MenuLoaded = true; }, TaskCreationOptions.LongRunning).Start();
+                        new Task(() =>
+                        {
+                            Thread.Sleep(4000); 
+                            MenuLoaded = true;
+                        }, TaskCreationOptions.LongRunning).Start();
                         FirstRender = false;
                     }
                     drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "Backgrounds", "Controls", "mkbombatkontrols.jpg"), UriKind.RelativeOrAbsolute))), null, new Rect(0, 0, area.Width, area.Height)); //loading screen
-
-                }
+                }               
                 #endregion
                 else
                 {
+                    #region StartRound
+                    if (!model.GameStarted && !roundDisplayStarted)
+                    {
+                        roundDisplayStarted = true;
+                        new Task(() =>
+                        {
+                            showround = true;
+                            if (model.Players.Sum(x => x.WonRounds) == 0)//round 1
+                            {
+                                SoundPlayer s = new SoundPlayer(System.IO.Path.Combine("Renderer", "Sounds", "mk_round1.wav"));
+                                s.Play();
+                            }
+                            else if (model.Players.Sum(x => x.WonRounds) == 1)//round2
+                            {
+                                SoundPlayer s = new SoundPlayer(System.IO.Path.Combine("Renderer", "Sounds", "mk_round2.wav"));
+                                s.Play();
+                            }
+                            else if (model.Players.Sum(x => x.WonRounds) == 2)//final
+                            {
+                                SoundPlayer s = new SoundPlayer(System.IO.Path.Combine("Renderer", "Sounds", "mk_finalround.wav"));
+                                s.Play();
+                            }                           
+                            Thread.Sleep(1250);
+                            showround = false;
+                            showfight = true;
+                            Thread.Sleep(800);
+                            showfight = false;
+                            model.GameStarted = true;
+                            roundDisplayStarted = false;
+                        }, TaskCreationOptions.LongRunning).Start();
+                    }
+                    #endregion
                     //map kirajzolás
-                    model.GameStarted = true;
                     drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(model.SelectedMapPath, UriKind.RelativeOrAbsolute))),
                         null, new Rect(0, 0, area.Width, area.Height));
 
@@ -218,9 +255,9 @@ namespace GUI_20212202_CM7A68.Renderer
                     }
                     else
                     {
-                            drawingContext.DrawText(new FormattedText(model.RoundTime.ToString(@"mm\:ss"), System.Globalization.CultureInfo.CurrentCulture,
-                            FlowDirection.LeftToRight, new Typeface(new FontFamily("Consolas"), FontStyles.Normal, FontWeights.Bold,
-                            FontStretches.Normal), area.Height * 0.05, Brushes.Red), new Point(area.Width * 0.465, area.Height * 0.05));
+                        drawingContext.DrawText(new FormattedText(model.RoundTime.ToString(@"mm\:ss"), System.Globalization.CultureInfo.CurrentCulture,
+                        FlowDirection.LeftToRight, new Typeface(new FontFamily("Consolas"), FontStyles.Normal, FontWeights.Bold,
+                        FontStretches.Normal), area.Height * 0.05, Brushes.Red), new Point(area.Width * 0.465, area.Height * 0.05));
                     }
 
 
@@ -299,6 +336,32 @@ namespace GUI_20212202_CM7A68.Renderer
                     {
                         drawingContext.DrawRectangle(new SolidColorBrush(Color.FromArgb(200, 0, 0, 0)),
                        null, new Rect(0, 0, area.Width, area.Height));
+                    }
+                    #endregion
+                    #region Round Kirajzolás
+                    if (showround)
+                    {
+                        var path = "";
+                        if (model.Players.Sum(x => x.WonRounds) == 0)//round 1
+                        {
+                            path = Path.Combine("Renderer", "Images", "Rounds", "round1piccropped.png");
+                        }
+                        else if (model.Players.Sum(x => x.WonRounds) == 1)//round2
+                        {
+                            path = Path.Combine("Renderer", "Images", "Rounds", "round2piccropped.png");
+                        }
+                        else if (model.Players.Sum(x => x.WonRounds) == 2)//final
+                        {
+                            path = Path.Combine("Renderer", "Images", "Rounds", "round3piccropped.png");
+                        }
+                        drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(path, UriKind.RelativeOrAbsolute))),
+                      null, new Rect(area.Width / 2 - area.Width / 6, area.Height / 2 - area.Height / 6, area.Width / 3, area.Height / 3));
+                    }
+                    else if (showfight)
+                    {
+                        var path = Path.Combine("Renderer", "Images", "Rounds", "fightpiccropped.png");
+                        drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(path, UriKind.RelativeOrAbsolute))),
+                     null, new Rect(area.Width / 2 - area.Width / 6, area.Height / 2 - area.Height / 6, area.Width / 3, area.Height / 3));
                     }
                     #endregion
                 }

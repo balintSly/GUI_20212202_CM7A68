@@ -49,6 +49,7 @@ namespace GUI_20212202_CM7A68.Logic
             }
             this.RoundTime = TimeSpan.FromMinutes(1.5);
             this.GamePaused = false;
+            this.GameStarted = false;
             Bombs = new List<Bomb>();
             Explosions = new List<Explosion>();
         }//visszaszámláló beállít, robotok újrapéldányosítva, GamePaused=false
