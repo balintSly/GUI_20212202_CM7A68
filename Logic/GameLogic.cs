@@ -240,23 +240,25 @@ namespace GUI_20212202_CM7A68.Logic
                                 if (robot.IsMoving == false && robot.Center.X < area.Width * 0.3)
                                 {
                                     robot.IsMoving = true;
-                                    while (robot.IsMoving)
+                                    while (robot.IsMoving && GameStarted)
                                     {
                                         await Task.Delay(1);
                                         MoveRobot(Directions.right, robot);
                                         if (robot.Center.X > area.Width * 0.95)
                                             robot.IsMoving = false;
+                                        robot.IsMoving = r.Next(0, 100) < 90;
                                     }
                                 }
                                 else if (robot.IsMoving == false && robot.Center.X > area.Width * 0.7)
                                 {
                                     robot.IsMoving = true;
-                                    while (robot.IsMoving)
+                                    while (robot.IsMoving && GameStarted)
                                     {
                                         await Task.Delay(1);
                                         MoveRobot(Directions.left, robot);
                                         if (robot.Center.X < area.Width * 0.05)
                                             robot.IsMoving = false;
+                                        robot.IsMoving = r.Next(0, 100) < 90;
                                     }
                                 }
 
@@ -269,13 +271,13 @@ namespace GUI_20212202_CM7A68.Logic
                             if (robot.IsMoving == false && robot.Center.X > area.Width * 0.2)
                             {
                                 robot.IsMoving = true;
-                                while (robot.IsMoving)
+                                while (robot.IsMoving && GameStarted)
                                 {
                                     await Task.Delay(1);
                                     MoveRobot(Directions.left, robot);
                                     if (robot.Center.X < area.Width * 0.05)
                                         robot.IsMoving = false;
-                                    robot.IsMoving = r.Next(0, 100) > 90;
+                                    robot.IsMoving = r.Next(0, 100) < 90;
                                 }
                             }
                             break;
@@ -283,13 +285,13 @@ namespace GUI_20212202_CM7A68.Logic
                             if (robot.IsMoving == false && robot.Center.X < area.Width * 0.8)
                             {
                                 robot.IsMoving = true;
-                                while (robot.IsMoving)
+                                while (robot.IsMoving && GameStarted)
                                 {
                                     await Task.Delay(1);
                                     MoveRobot(Directions.right, robot);
                                     if (robot.Center.X > area.Width * 0.95)
                                         robot.IsMoving = false;
-                                    robot.IsMoving = r.Next(0, 100) > 90;
+                                    robot.IsMoving = r.Next(0, 100) < 90;
                                 }
                             }
                             break;
