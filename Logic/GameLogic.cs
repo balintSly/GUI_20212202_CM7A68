@@ -25,7 +25,7 @@ namespace GUI_20212202_CM7A68.Logic
         public bool GameOver { get; set; }
         public bool GameStarted { get; set; }
         object bombLock = new object();
-        Random r = new Random();
+        public Random r { get; set; }
 
         int robotspeedX; //mozgás sebessége
         int robotspeedY; //ugrás sebessége
@@ -49,6 +49,7 @@ namespace GUI_20212202_CM7A68.Logic
             }
             this.RoundTime = TimeSpan.FromMinutes(1.5);
             this.GamePaused = false;
+            this.GameStarted = false;
             Bombs = new List<Bomb>();
             Explosions = new List<Explosion>();
         }//visszaszámláló beállít, robotok újrapéldányosítva, GamePaused=false
@@ -76,6 +77,7 @@ namespace GUI_20212202_CM7A68.Logic
                 Bombs[i].Heal -= 1;
                 if (Bombs[i].Heal <= 0)
                 {
+                    
                     Explosions.Add(new Explosion(
                             area,
                             Bombs[i].Center,
@@ -96,16 +98,31 @@ namespace GUI_20212202_CM7A68.Logic
             if (Robots[1].Health == 0)
             {
                 Players[0].WonRounds++;
+                lock (this.LockObject)
+                {
+                    GameStarted = false;
+                    Monitor.Pulse(this.LockObject);
+                }
                 InitLogic();
             }
             else if (Robots[0].Health == 0)
             {
                 Players[1].WonRounds++;
+                lock (this.LockObject)
+                {
+                    GameStarted = false;
+                    Monitor.Pulse(this.LockObject);
+                }
                 InitLogic();
             }
             if (Players.Sum(x => x.WonRounds) == 3)
             {
-                GameOver = true;
+                lock (this.LockObject)
+                {
+                    GameOver = true;
+                    GameStarted = false;
+                    Monitor.Pulse(this.LockObject);
+                }               
             }
         }
 
@@ -199,7 +216,7 @@ namespace GUI_20212202_CM7A68.Logic
             {
                 if (!GamePaused && GameStarted)
                 {
-                    switch (r.Next(0, 8))
+                    switch (r.Next(0, 6))
                     {
                         case 0:
                             if (robot.IsJumping == false && robotIsInAir == false)
@@ -223,23 +240,25 @@ namespace GUI_20212202_CM7A68.Logic
                                 if (robot.IsMoving == false && robot.Center.X < area.Width * 0.3)
                                 {
                                     robot.IsMoving = true;
-                                    while (robot.IsMoving)
+                                    while (robot.IsMoving && GameStarted)
                                     {
                                         await Task.Delay(1);
                                         MoveRobot(Directions.right, robot);
                                         if (robot.Center.X > area.Width * 0.95)
                                             robot.IsMoving = false;
+                                        robot.IsMoving = r.Next(0, 100) < 90;
                                     }
                                 }
                                 else if (robot.IsMoving == false && robot.Center.X > area.Width * 0.7)
                                 {
                                     robot.IsMoving = true;
-                                    while (robot.IsMoving)
+                                    while (robot.IsMoving && GameStarted)
                                     {
                                         await Task.Delay(1);
                                         MoveRobot(Directions.left, robot);
                                         if (robot.Center.X < area.Width * 0.05)
                                             robot.IsMoving = false;
+                                        robot.IsMoving = r.Next(0, 100) < 90;
                                     }
                                 }
 
@@ -252,12 +271,13 @@ namespace GUI_20212202_CM7A68.Logic
                             if (robot.IsMoving == false && robot.Center.X > area.Width * 0.2)
                             {
                                 robot.IsMoving = true;
-                                while (robot.IsMoving)
+                                while (robot.IsMoving && GameStarted)
                                 {
                                     await Task.Delay(1);
                                     MoveRobot(Directions.left, robot);
                                     if (robot.Center.X < area.Width * 0.05)
                                         robot.IsMoving = false;
+                                    robot.IsMoving = r.Next(0, 100) < 90;
                                 }
                             }
                             break;
@@ -265,12 +285,13 @@ namespace GUI_20212202_CM7A68.Logic
                             if (robot.IsMoving == false && robot.Center.X < area.Width * 0.8)
                             {
                                 robot.IsMoving = true;
-                                while (robot.IsMoving)
+                                while (robot.IsMoving && GameStarted)
                                 {
                                     await Task.Delay(1);
                                     MoveRobot(Directions.right, robot);
                                     if (robot.Center.X > area.Width * 0.95)
                                         robot.IsMoving = false;
+                                    robot.IsMoving = r.Next(0, 100) < 90;
                                 }
                             }
                             break;
@@ -321,6 +342,12 @@ namespace GUI_20212202_CM7A68.Logic
                     Thread.Sleep(1000);
                 }                
             }, TaskCreationOptions.LongRunning).Start();
+        }
+        public object LockObject { get; set; }
+        public GameLogic()
+        {
+            this.LockObject = new object();
+            this.r = new Random();
         }
     }
 }
