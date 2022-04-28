@@ -49,6 +49,7 @@ namespace GUI_20212202_CM7A68.Renderer
                 MusicPlayer = new MediaPlayer();
                 var musicpath = musicPaths.Dequeue();
                 MusicPlayer.Open(new Uri(musicpath, UriKind.RelativeOrAbsolute));
+                MusicPlayer.Volume = 60;
                 MusicPlayer.Play();
                 while (model.GameStarted)
                 {

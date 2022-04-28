@@ -54,14 +54,12 @@ namespace GUI_20212202_CM7A68.Logic
             this.GameStarted = false;
             Bombs = new List<Bomb>();
             Explosions = new List<Explosion>();
+            Items = new List<Item>();
+            TickCounter = 0;
         }//visszaszámláló beállít, robotok újrapéldányosítva, GamePaused=false
         public List<Bomb> Bombs { get; set; }
         public void SetupSize(Size area)
-        {
-            TickCounter = 0;
-            Bombs = new List<Bomb>();
-            Items = new List<Item>();
-            Explosions = new List<Explosion>();
+        {            
             this.area = area;
             if (!RobotsSpawned)
             {
@@ -73,9 +71,6 @@ namespace GUI_20212202_CM7A68.Logic
             robotspeedX = (int)area.Width / 50;
             robotspeedY = (int)area.Height / 50;
         }
-
-        static Random r = new Random();
-
         public void ItemTimeStep()
         {
             //több item esetén frissíteni kell
@@ -95,11 +90,11 @@ namespace GUI_20212202_CM7A68.Logic
         public void TimeStep()
         {
             //TODO: minden mozgatást, állapotváltozást, ütközést itt állítani, ez 20ms-ként le fog futni
-            if (RoundTime < new TimeSpan(0, 3, 0) && !GamePaused)
+            if (GameStarted && !GamePaused)
             {
                 TickCounter++;
             }
-            if (TickCounter==500000)
+            if (TickCounter==250)
             {
                 ItemTimeStep();
                 TickCounter = 0;
@@ -107,7 +102,7 @@ namespace GUI_20212202_CM7A68.Logic
             for (int i = 0; i < Items.Count; i++)
             {
                 Items[i].Move((int)(area.Height * 0.85));
-                if(Items[i].CheckHitbox(Robot1, Robot2))
+                if(Items[i].CheckHitbox(Robots[0], Robots[1]))
                 {
                     Items.RemoveAt(i);
                 }
