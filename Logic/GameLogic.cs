@@ -18,8 +18,10 @@ namespace GUI_20212202_CM7A68.Logic
         Size area;
         public List<Robot> Robots { get; set; }
         public List<Player> Players { get; set; }
+        public List<Item> Items { get; set; }
         public TimeSpan RoundTime { get; set; }
         public string SelectedMapPath { get; set; }
+        private int TickCounter { get; set; }
         public bool GamePaused { get; set; } //esc lenyomásra menü fel, visszaszámlálás leáll
         public List<Explosion> Explosions { get; set; }
         public bool GameOver { get; set; }
@@ -56,7 +58,10 @@ namespace GUI_20212202_CM7A68.Logic
         public List<Bomb> Bombs { get; set; }
         public void SetupSize(Size area)
         {
-
+            TickCounter = 0;
+            Bombs = new List<Bomb>();
+            Items = new List<Item>();
+            Explosions = new List<Explosion>();
             this.area = area;
             if (!RobotsSpawned)
             {
@@ -68,9 +73,46 @@ namespace GUI_20212202_CM7A68.Logic
             robotspeedX = (int)area.Width / 50;
             robotspeedY = (int)area.Height / 50;
         }
+
+        static Random r = new Random();
+
+        public void ItemTimeStep()
+        {
+            //több item esetén frissíteni kell
+            int rnd = r.Next(0, 2);
+            switch (rnd)
+            {
+                case 0:
+                    Items.Add(new HealBoost(area));
+                    break;
+                case 1:
+                    Items.Add(new ArmorBoost(area));
+                    break;
+                default:
+                    break;
+            }
+        }
         public void TimeStep()
         {
             //TODO: minden mozgatást, állapotváltozást, ütközést itt állítani, ez 20ms-ként le fog futni
+            if (RoundTime < new TimeSpan(0, 3, 0) && !GamePaused)
+            {
+                TickCounter++;
+            }
+            if (TickCounter==500000)
+            {
+                ItemTimeStep();
+                TickCounter = 0;
+            }
+            for (int i = 0; i < Items.Count; i++)
+            {
+                Items[i].Move((int)(area.Height * 0.85));
+                if(Items[i].CheckHitbox(Robot1, Robot2))
+                {
+                    Items.RemoveAt(i);
+                }
+            }
+            
             for (int i = 0; i < Bombs.Count; i++)
             {
                 Bombs[i].Move((int)(area.Height * 0.85));

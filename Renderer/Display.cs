@@ -29,6 +29,7 @@ namespace GUI_20212202_CM7A68.Renderer
             model.SetupSize(new Size((int)area.Width, (int)area.Height));
             InvalidateVisual();
         }
+
         public void SetupModel(IGameModel model)
         {
             this.model = model;
@@ -358,6 +359,22 @@ namespace GUI_20212202_CM7A68.Renderer
                         UriKind.RelativeOrAbsolute))), null, new Rect(bomb.Center.X - area.Width / 32, bomb.Center.Y + area.Height / 16, area.Width / 18, area.Height / 35));
 
 
+                    }
+                    #endregion
+                    #region items
+                    foreach (var item in model.Items)
+                    {
+                        //több item esetén bővíteni kell
+                        if (item is HealBoost)
+                        {
+                            drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "Items", "HealBooster", "health_icon.png"),
+                            UriKind.RelativeOrAbsolute))), null, item.Hitbox);
+                        }
+                        else if (item is ArmorBoost)
+                        {
+                            drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "Items", "ArmorBooster", "armor_icon.png"),
+                            UriKind.RelativeOrAbsolute))), null, item.Hitbox);
+                        }
                     }
                     #endregion
                     #region RobbanásKirajzolás

@@ -53,6 +53,7 @@ namespace GUI_20212202_CM7A68
             display.MenuLoaded = false;
             logic.SetupSize(new Size((int)mainGrid.ActualWidth, (int)mainGrid.ActualHeight));
         }
+
         private void Gametimer_Tick(object? sender, EventArgs e)
         {
             if (logic.GamePaused)

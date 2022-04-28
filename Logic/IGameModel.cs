@@ -18,6 +18,11 @@ namespace GUI_20212202_CM7A68.Logic
         void InitLogic();
         void SetupSize(Size area); //átveszi a képernyőméretet
         string SelectedMapPath { get; set; }
+
+        List<Bomb> Bombs { get; set; }
+        List<Explosion> Explosions { get; set; }
+        List<Item> Items { get; set; }
+        public void ItemTimeStep();
         void NewRedFallingBomb(Point robotPos);
         void NewGreenFallingBomb(Point robotPos);
         void NewRedThrowingBomb(Point robotPos, int direction);
