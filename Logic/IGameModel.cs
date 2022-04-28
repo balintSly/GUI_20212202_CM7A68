@@ -23,5 +23,6 @@ namespace GUI_20212202_CM7A68.Logic
         void InitLogic();
         public bool GameOver { get; set; }
         object LockObject { get; set; }
+        Random r { get; set; }
     }
 }

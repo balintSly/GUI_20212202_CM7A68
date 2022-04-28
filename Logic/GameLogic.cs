@@ -25,7 +25,7 @@ namespace GUI_20212202_CM7A68.Logic
         public bool GameOver { get; set; }
         public bool GameStarted { get; set; }
         object bombLock = new object();
-        Random r = new Random();
+        public Random r { get; set; }
 
         int robotspeedX; //mozgás sebessége
         int robotspeedY; //ugrás sebessége
@@ -77,6 +77,7 @@ namespace GUI_20212202_CM7A68.Logic
                 Bombs[i].Heal -= 1;
                 if (Bombs[i].Heal <= 0)
                 {
+                    
                     Explosions.Add(new Explosion(
                             area,
                             Bombs[i].Center,
@@ -101,7 +102,6 @@ namespace GUI_20212202_CM7A68.Logic
                 {
                     GameStarted = false;
                     Monitor.Pulse(this.LockObject);
-                    Monitor.Pulse(this.LockObject);
                 }
                 InitLogic();
             }
@@ -119,10 +119,10 @@ namespace GUI_20212202_CM7A68.Logic
             {
                 lock (this.LockObject)
                 {
+                    GameOver = true;
                     GameStarted = false;
                     Monitor.Pulse(this.LockObject);
-                }
-                GameOver = true;
+                }               
             }
         }
 
@@ -216,7 +216,7 @@ namespace GUI_20212202_CM7A68.Logic
             {
                 if (!GamePaused && GameStarted)
                 {
-                    switch (r.Next(0, 8))
+                    switch (r.Next(0, 6))
                     {
                         case 0:
                             if (robot.IsJumping == false && robotIsInAir == false)
@@ -275,6 +275,7 @@ namespace GUI_20212202_CM7A68.Logic
                                     MoveRobot(Directions.left, robot);
                                     if (robot.Center.X < area.Width * 0.05)
                                         robot.IsMoving = false;
+                                    robot.IsMoving = r.Next(0, 100) > 90;
                                 }
                             }
                             break;
@@ -288,6 +289,7 @@ namespace GUI_20212202_CM7A68.Logic
                                     MoveRobot(Directions.right, robot);
                                     if (robot.Center.X > area.Width * 0.95)
                                         robot.IsMoving = false;
+                                    robot.IsMoving = r.Next(0, 100) > 90;
                                 }
                             }
                             break;
@@ -343,6 +345,7 @@ namespace GUI_20212202_CM7A68.Logic
         public GameLogic()
         {
             this.LockObject = new object();
+            this.r = new Random();
         }
     }
 }

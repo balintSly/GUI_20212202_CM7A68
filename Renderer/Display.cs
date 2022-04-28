@@ -41,7 +41,6 @@ namespace GUI_20212202_CM7A68.Renderer
         bool roundDisplayStarted = false;
         public MediaPlayer MusicPlayer { get; set; }
         Queue<string> musicPaths = new Queue<string>();
-        static Random r = new Random();
         private void StartMusic()
         {
             new Task(() =>
@@ -69,13 +68,11 @@ namespace GUI_20212202_CM7A68.Renderer
                     {
                         MusicPlayer.Stop();
                     }
-                   
-                    
                 }
                 MusicPlayer.Stop();
-                
+
             }, TaskCreationOptions.LongRunning).Start();
-            
+
         }
         protected override void OnRender(DrawingContext drawingContext)
         {
@@ -94,7 +91,7 @@ namespace GUI_20212202_CM7A68.Renderer
                             MenuLoaded = true;
                         }, TaskCreationOptions.LongRunning).Start();
                         FirstRender = false;
-                        Directory.GetFiles(Path.Combine("Renderer", "Music"), "*.wav").OrderBy(x => r.Next(0, 100)).ToList().ForEach(x => musicPaths.Enqueue(x));
+                        Directory.GetFiles(Path.Combine("Renderer", "Music"), "*.wav").OrderBy(x => model.r.Next(0, 100)).ToList().ForEach(x => musicPaths.Enqueue(x));
                         ;
                     }
                     drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "Backgrounds", "Controls", "mkbombatkontrols.jpg"), UriKind.RelativeOrAbsolute))), null, new Rect(0, 0, area.Width, area.Height)); //loading screen
@@ -103,7 +100,7 @@ namespace GUI_20212202_CM7A68.Renderer
                 else
                 {
                     #region StartRound
-                    if (!model.GameStarted && !roundDisplayStarted)
+                    if (!model.GameStarted && !roundDisplayStarted && !model.GameOver)
                     {
                         roundDisplayStarted = true;
                         new Task(() =>
