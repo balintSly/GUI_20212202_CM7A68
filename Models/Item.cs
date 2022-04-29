@@ -7,11 +7,13 @@ using System.Windows;
 
 namespace GUI_20212202_CM7A68.Models
 {
+    public enum ItemType {HpBoost, ArmorBoost }
     public abstract class Item
     {
         public Point Center { get; set; }
         public int Value { get; set; }
         public Size Area { get; set; }
+        public ItemType Type { get; set; }
         public abstract void Change(Robot robot);
         public Vector Speed { get; set; }
         static Random r = new Random();
@@ -91,6 +93,7 @@ namespace GUI_20212202_CM7A68.Models
         public HealBoost(Size area) : base(area)
         {
             this.Value = 10;
+            this.Type = ItemType.HpBoost;
         }
         public override void Change(Robot robot)
         {
@@ -111,6 +114,7 @@ namespace GUI_20212202_CM7A68.Models
         public ArmorBoost(Size area) : base(area)
         {
             this.Value = 10;
+            this.Type= ItemType.ArmorBoost;
         }
         public override void Change(Robot robot)
         {

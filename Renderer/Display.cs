@@ -1,11 +1,9 @@
 ﻿using GUI_20212202_CM7A68.Logic;
-using GUI_20212202_CM7A68.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Media;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -353,7 +351,7 @@ namespace GUI_20212202_CM7A68.Renderer
                             UriKind.RelativeOrAbsolute))), null, new Rect(bomb.Center.X - area.Width / 10, bomb.Center.Y - area.Height / 10, area.Width / 5, area.Height / 5));
                         }
 
-                        string bomb_hp = BombHp(bomb);
+                        string bomb_hp = $"Helath_{(bomb.Heal%5>2 ? bomb.Heal-bomb.Heal%5+5 : bomb.Heal-bomb.Heal%5)}_pecent.png";
 
 
                         drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "BombHp", "Heath", bomb_hp),
@@ -366,12 +364,12 @@ namespace GUI_20212202_CM7A68.Renderer
                     foreach (var item in model.Items)
                     {
                         //több item esetén bővíteni kell
-                        if (item is HealBoost)
+                        if (item.Type==0)
                         {
                             drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "Items", "HealBooster", "health_icon.png"),
                             UriKind.RelativeOrAbsolute))), null, item.Hitbox);
                         }
-                        else if (item is ArmorBoost)
+                        else if ((int)item.Type==1)
                         {
                             drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(Path.Combine("Renderer", "Images", "Items", "ArmorBooster", "armor_icon.png"),
                             UriKind.RelativeOrAbsolute))), null, item.Hitbox);
@@ -381,7 +379,140 @@ namespace GUI_20212202_CM7A68.Renderer
                     #region RobbanásKirajzolás
                     foreach (var explosion in model.Explosions)
                     {
-                        DrawExplosion(drawingContext, explosion);
+                        double cursorX;
+                        double cursorY;
+                        #region vertical_drawing
+                        if (explosion.Height > 0)
+                        {
+                            cursorX = explosion.Center.X - explosion.PartSize.Width / 2;    //set cursor to the bottom left corner of the center part
+                            cursorY = explosion.Center.Y - explosion.PartSize.Height / 2;   //
+                            for (int i = 0; i < (explosion.Height * 2) + 2; i++)            //+2 to help place top and bottom parts
+                            {
+                                if (i < explosion.Height)                   //Upwards
+                                {
+                                    drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(explosion.VertContAnim[explosion.FrameCount], UriKind.RelativeOrAbsolute))),
+                                        null,
+                                        new Rect(
+                                        cursorX,
+                                        cursorY - explosion.PartSize.Height * i,
+                                        explosion.PartSize.Width,
+                                        explosion.PartSize.Height)
+                                        );
+                                }
+                                else if (i == explosion.Height)             //Top part
+                                {
+                                    drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(explosion.TopAnim[explosion.FrameCount], UriKind.RelativeOrAbsolute))),
+                                        null,
+                                        new Rect(
+                                        cursorX,
+                                        cursorY - explosion.PartSize.Height * i,
+                                        explosion.PartSize.Width,
+                                        explosion.PartSize.Height)
+                                        );
+                                    cursorX = explosion.Center.X - explosion.PartSize.Width / 2;    //set cursor to the bottom left corner of the center part
+                                    cursorY = explosion.Center.Y - explosion.PartSize.Height / 2;
+                                }
+                                else if (i < (explosion.Height * 2) + 1)                                        //Downwards
+                                {
+
+                                    drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(explosion.VertContAnim[explosion.FrameCount], UriKind.RelativeOrAbsolute))),
+                                       null,
+                                       new Rect(
+                                       cursorX,
+                                       cursorY + explosion.PartSize.Height * ((i - 1) % explosion.Height),
+                                       explosion.PartSize.Width,
+                                       explosion.PartSize.Height)
+                                       );
+                                }
+                                else
+                                {
+                                    drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(explosion.BottomAnim[explosion.FrameCount], UriKind.RelativeOrAbsolute))),
+                                        null,
+                                        new Rect(
+                                        cursorX,
+                                        cursorY + explosion.PartSize.Height * (explosion.Height),
+                                        explosion.PartSize.Width,
+                                        explosion.PartSize.Height)
+                                        );
+                                }
+                            }
+                        }
+                        #endregion
+
+                        #region horizontal_drawing
+                        if (explosion.Width > 0)
+                        {
+                            cursorX = explosion.Center.X - explosion.PartSize.Width / 2;
+                            cursorY = explosion.Center.Y - explosion.PartSize.Height / 2;
+                            for (int i = 0; i < (explosion.Width * 2) + 2; i++)            //+2 to help place top and bottom parts
+                            {
+                                if (i < explosion.Width)                   //LeftContinuation
+                                {
+                                    drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(explosion.SideContAnim[explosion.FrameCount], UriKind.RelativeOrAbsolute))),
+                                        null,
+                                        new Rect(
+                                        cursorX - explosion.PartSize.Width * i,
+                                        cursorY,
+                                        explosion.PartSize.Width,
+                                        explosion.PartSize.Height)
+                                        );
+                                }
+                                else if (i == explosion.Width)             //Leftmost
+                                {
+                                    drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(explosion.LeftAnim[explosion.FrameCount], UriKind.RelativeOrAbsolute))),
+                                        null,
+                                        new Rect(
+                                        cursorX - explosion.PartSize.Width * i,
+                                        cursorY,
+                                        explosion.PartSize.Width,
+                                        explosion.PartSize.Height)
+                                        );
+                                    cursorX = explosion.Center.X - explosion.PartSize.Width / 2;
+                                    cursorY = explosion.Center.Y - explosion.PartSize.Height / 2;
+                                }
+                                else if (i < (explosion.Width * 2) + 1)                                        //RightContinuation
+                                {
+
+                                    drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(explosion.SideContAnim[explosion.FrameCount], UriKind.RelativeOrAbsolute))),
+                                       null,
+                                       new Rect(
+                                       cursorX + explosion.PartSize.Width * ((i - 1) % explosion.Width),
+                                       cursorY,
+                                       explosion.PartSize.Width,
+                                       explosion.PartSize.Height)
+                                       );
+                                }
+                                else                                                                           //RightMost
+                                {
+                                    drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(explosion.RightAnim[explosion.FrameCount], UriKind.RelativeOrAbsolute))),
+                                        null,
+                                        new Rect(
+                                        cursorX + explosion.PartSize.Width * (explosion.Width),
+                                        cursorY,
+                                        explosion.PartSize.Width,
+                                        explosion.PartSize.Height)
+                                        );
+                                }
+                            }
+                        }
+                        #endregion
+
+                        //Center piece
+                        drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(explosion.CenterAnim[explosion.FrameCount], UriKind.RelativeOrAbsolute))),
+                            null,
+                            new Rect(
+                                explosion.Center.X - explosion.PartSize.Width / 2,
+                                explosion.Center.Y - explosion.PartSize.Height / 2,
+                                explosion.PartSize.Width,
+                                explosion.PartSize.Height));
+
+
+                        ++explosion.FrameCount;
+                        if (explosion.FrameCount == explosion.CenterAnim.Count)
+                        {
+                            explosion.LastFrameFlag = true;
+                            explosion.FrameCount = 0;                                   //fixes ArgumentOutOfRangeException
+                        }
                         explosion.CheckHitBox(model.Robots[0], model.Robots[1], model.Bombs);
                     }
                     if (model.GamePaused)
@@ -425,233 +556,6 @@ namespace GUI_20212202_CM7A68.Renderer
 
             }
 
-
-        }
-        private string BombHp(Bomb b)
-        {
-            if (b.Heal <= 100 && b.Heal > 95)
-            {
-                return $"Helath_100_pecent.png";
-            }
-            else if (b.Heal <= 95 && b.Heal > 90)
-            {
-                return $"Helath_95_pecent.png";
-            }
-            else if (b.Heal <= 90 && b.Heal > 85)
-            {
-                return $"Helath_90_pecent.png";
-            }
-            else if (b.Heal <= 85 && b.Heal > 80)
-            {
-                return $"Helath_85_pecent.png";
-            }
-            else if (b.Heal <= 80 && b.Heal > 75)
-            {
-                return $"Helath_80_pecent.png";
-            }
-            else if (b.Heal <= 75 && b.Heal > 70)
-            {
-                return $"Helath_75_pecent.png";
-            }
-            else if (b.Heal <= 70 && b.Heal > 65)
-            {
-                return $"Helath_70_pecent.png";
-            }
-            else if (b.Heal <= 65 && b.Heal > 60)
-            {
-                return $"Helath_65_pecent.png";
-            }
-            else if (b.Heal <= 60 && b.Heal > 55)
-            {
-                return $"Helath_60_pecent.png";
-            }
-            else if (b.Heal <= 55 && b.Heal > 50)
-            {
-                return $"Helath_55_pecent.png";
-            }
-            else if (b.Heal <= 50 && b.Heal > 45)
-            {
-                return $"Helath_50_pecent.png";
-            }
-            else if (b.Heal <= 45 && b.Heal > 40)
-            {
-                return $"Helath_45_pecent.png";
-            }
-            else if (b.Heal <= 40 && b.Heal > 35)
-            {
-                return $"Helath_40_pecent.png";
-            }
-            else if (b.Heal <= 35 && b.Heal > 30)
-            {
-                return $"Helath_35_pecent.png";
-            }
-            else if (b.Heal <= 30 && b.Heal > 25)
-            {
-                return $"Helath_30_pecent.png";
-            }
-            else if (b.Heal <= 25 && b.Heal > 20)
-            {
-                return $"Helath_25_pecent.png";
-            }
-            else if (b.Heal <= 20 && b.Heal > 15)
-            {
-                return $"Helath_20_pecent.png";
-            }
-            else if (b.Heal <= 15 && b.Heal > 10)
-            {
-                return $"Helath_15_pecent.png";
-            }
-            else if (b.Heal <= 10 && b.Heal > 5)
-            {
-                return $"Helath_10_pecent.png";
-            }
-            else if (b.Heal <= 5 && b.Heal > 0)
-            {
-                return $"Helath_5_pecent.png";
-            }
-            else
-            {
-                return $"Helath_0_pecent.png";
-            }
-
-        }//(ezt a metódust le se nyissátok xd)
-        public void DrawExplosion(DrawingContext drawingContext, Explosion explosion)
-        {
-            double cursorX;
-            double cursorY;
-
-            #region vertical_drawing
-            if (explosion.Height > 0)
-            {
-                cursorX = explosion.Center.X - explosion.PartSize.Width / 2;    //set cursor to the bottom left corner of the center part
-                cursorY = explosion.Center.Y - explosion.PartSize.Height / 2;   //
-                for (int i = 0; i < (explosion.Height * 2) + 2; i++)            //+2 to help place top and bottom parts
-                {
-                    if (i < explosion.Height)                   //Upwards
-                    {
-                        drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(explosion.VertContAnim[explosion.FrameCount], UriKind.RelativeOrAbsolute))),
-                            null,
-                            new Rect(
-                            cursorX,
-                            cursorY - explosion.PartSize.Height * i,
-                            explosion.PartSize.Width,
-                            explosion.PartSize.Height)
-                            );
-                    }
-                    else if (i == explosion.Height)             //Top part
-                    {
-                        drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(explosion.TopAnim[explosion.FrameCount], UriKind.RelativeOrAbsolute))),
-                            null,
-                            new Rect(
-                            cursorX,
-                            cursorY - explosion.PartSize.Height * i,
-                            explosion.PartSize.Width,
-                            explosion.PartSize.Height)
-                            );
-                        cursorX = explosion.Center.X - explosion.PartSize.Width / 2;    //set cursor to the bottom left corner of the center part
-                        cursorY = explosion.Center.Y - explosion.PartSize.Height / 2;
-                    }
-                    else if (i < (explosion.Height * 2) + 1)                                        //Downwards
-                    {
-
-                        drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(explosion.VertContAnim[explosion.FrameCount], UriKind.RelativeOrAbsolute))),
-                           null,
-                           new Rect(
-                           cursorX,
-                           cursorY + explosion.PartSize.Height * ((i - 1) % explosion.Height),
-                           explosion.PartSize.Width,
-                           explosion.PartSize.Height)
-                           );
-                    }
-                    else
-                    {
-                        drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(explosion.BottomAnim[explosion.FrameCount], UriKind.RelativeOrAbsolute))),
-                            null,
-                            new Rect(
-                            cursorX,
-                            cursorY + explosion.PartSize.Height * (explosion.Height),
-                            explosion.PartSize.Width,
-                            explosion.PartSize.Height)
-                            );
-                    }
-                }
-            }
-            #endregion
-
-            #region horizontal_drawing
-            if (explosion.Width > 0)
-            {
-                cursorX = explosion.Center.X - explosion.PartSize.Width / 2;
-                cursorY = explosion.Center.Y - explosion.PartSize.Height / 2;
-                for (int i = 0; i < (explosion.Width * 2) + 2; i++)            //+2 to help place top and bottom parts
-                {
-                    if (i < explosion.Width)                   //LeftContinuation
-                    {
-                        drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(explosion.SideContAnim[explosion.FrameCount], UriKind.RelativeOrAbsolute))),
-                            null,
-                            new Rect(
-                            cursorX - explosion.PartSize.Width * i,
-                            cursorY,
-                            explosion.PartSize.Width,
-                            explosion.PartSize.Height)
-                            );
-                    }
-                    else if (i == explosion.Width)             //Leftmost
-                    {
-                        drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(explosion.LeftAnim[explosion.FrameCount], UriKind.RelativeOrAbsolute))),
-                            null,
-                            new Rect(
-                            cursorX - explosion.PartSize.Width * i,
-                            cursorY,
-                            explosion.PartSize.Width,
-                            explosion.PartSize.Height)
-                            );
-                        cursorX = explosion.Center.X - explosion.PartSize.Width / 2;
-                        cursorY = explosion.Center.Y - explosion.PartSize.Height / 2;
-                    }
-                    else if (i < (explosion.Width * 2) + 1)                                        //RightContinuation
-                    {
-
-                        drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(explosion.SideContAnim[explosion.FrameCount], UriKind.RelativeOrAbsolute))),
-                           null,
-                           new Rect(
-                           cursorX + explosion.PartSize.Width * ((i - 1) % explosion.Width),
-                           cursorY,
-                           explosion.PartSize.Width,
-                           explosion.PartSize.Height)
-                           );
-                    }
-                    else                                                                           //RightMost
-                    {
-                        drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(explosion.RightAnim[explosion.FrameCount], UriKind.RelativeOrAbsolute))),
-                            null,
-                            new Rect(
-                            cursorX + explosion.PartSize.Width * (explosion.Width),
-                            cursorY,
-                            explosion.PartSize.Width,
-                            explosion.PartSize.Height)
-                            );
-                    }
-                }
-            }
-            #endregion
-
-            //Center piece
-            drawingContext.DrawRectangle(new ImageBrush(new BitmapImage(new Uri(explosion.CenterAnim[explosion.FrameCount], UriKind.RelativeOrAbsolute))),
-                null,
-                new Rect(
-                    explosion.Center.X - explosion.PartSize.Width / 2,
-                    explosion.Center.Y - explosion.PartSize.Height / 2,
-                    explosion.PartSize.Width,
-                    explosion.PartSize.Height));
-
-
-            ++explosion.FrameCount;
-            if (explosion.FrameCount == explosion.CenterAnim.Count)
-            {
-                explosion.LastFrameFlag = true;
-                explosion.FrameCount = 0;                                   //fixes ArgumentOutOfRangeException
-            }
 
         }
     }
