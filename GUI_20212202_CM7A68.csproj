@@ -7,4 +7,777 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="MenuWindows\Images\mortalbombatmainmenubackg.jpg" />
+    <None Remove="MenuWindows\Sounds\SAmenuClick.wav" />
+    <None Remove="MenuWindows\Sounds\SAmenuSelect.wav" />
+    <None Remove="MenuWindows\Sounds\SAselectionChanged.wav" />
+    <None Remove="MenuWindows\Sounds\typewritersound.wav" />
+    <None Remove="Renderer\Images\Backgrounds\BomberManEffect.png" />
+    <None Remove="Renderer\Images\Backgrounds\Controls\mkbombatkontrols.jpg" />
+    <None Remove="Renderer\Images\Backgrounds\mkmap1.jpg" />
+    <None Remove="Renderer\Images\GreenBombs\LargeBombStaticFrame1.png" />
+    <None Remove="Renderer\Images\GreenBombs\LargeBombStaticFrame2.png" />
+    <None Remove="Renderer\Images\GreenBombs\LargeBombStaticFrame3.png" />
+    <None Remove="Renderer\Images\GreenBombs\LargeBombStaticFrame4.png" />
+    <None Remove="Renderer\Images\Items\ArmorBooster\armor_icon.png" />
+    <None Remove="Renderer\Images\Items\HealBooster\health_icon.png" />
+    <None Remove="Renderer\Images\RedBombs\LargeBombStaticFrame1.png" />
+    <None Remove="Renderer\Images\RedBombs\LargeBombStaticFrame2.png" />
+    <None Remove="Renderer\Images\RedBombs\LargeBombStaticFrame3.png" />
+    <None Remove="Renderer\Images\RedBombs\LargeBombStaticFrame4.png" />
+    <None Remove="Renderer\Images\Backgrounds\mkmap2.jpg" />
+    <None Remove="Renderer\Images\Backgrounds\mkmap4.jpg" />
+    <None Remove="Renderer\Images\Backgrounds\mkmap5.jpg" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\bottom0.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\bottom1.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\bottom2.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\bottom3.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\bottom4.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\bottom5.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\bottom6.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\center0.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\center1.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\center2.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\center3.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\center4.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\center5.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\center6.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\left0.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\left1.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\left2.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\left3.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\left4.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\left5.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\left6.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\right0.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\right1.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\right2.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\right3.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\right4.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\right5.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\right6.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\sidecont0.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\sidecont1.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\sidecont2.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\sidecont3.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\sidecont4.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\sidecont5.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\sidecont6.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\top0.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\top1.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\top2.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\top3.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\top4.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\top5.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\top6.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\vertcont0.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\vertcont1.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\vertcont2.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\vertcont3.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\vertcont4.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\vertcont5.png" />
+    <None Remove="Renderer\Images\Explosions\Bomberman\vertcont6.png" />
+    <None Remove="Renderer\Images\HUD\Armor\Armor_0_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Armor\Armor_100_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Armor\Armor_10_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Armor\Armor_15_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Armor\Armor_20_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Armor\Armor_25_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Armor\Armor_30_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Armor\Armor_35_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Armor\Armor_40_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Armor\Armor_45_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Armor\Armor_50_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Armor\Armor_55_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Armor\Armor_5_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Armor\Armor_60_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Armor\Armor_65_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Armor\Armor_70_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Armor\Armor_75_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Armor\Armor_80_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Armor\Armor_85_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Armor\Armor_90_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Armor\Armor_95_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Health\Helath_0_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Health\Helath_100_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Health\Helath_10_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Health\Helath_15_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Health\Helath_20_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Health\Helath_25_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Health\Helath_30_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Health\Helath_35_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Health\Helath_40_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Health\Helath_45_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Health\Helath_50_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Health\Helath_55_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Health\Helath_5_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Health\Helath_60_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Health\Helath_65_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Health\Helath_70_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Health\Helath_75_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Health\Helath_80_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Health\Helath_85_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Health\Helath_90_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Health\Helath_95_pecent.png" />
+    <None Remove="Renderer\Images\HUD\Icons\armor_icon.png" />
+    <None Remove="Renderer\Images\HUD\Icons\health_icon.png" />
+    <None Remove="Renderer\Images\BombHp\Heath\Helath_0_pecent.png" />
+    <None Remove="Renderer\Images\BombHp\Heath\Helath_100_pecent.png" />
+    <None Remove="Renderer\Images\BombHp\Heath\Helath_10_pecent.png" />
+    <None Remove="Renderer\Images\BombHp\Heath\Helath_15_pecent.png" />
+    <None Remove="Renderer\Images\BombHp\Heath\Helath_20_pecent.png" />
+    <None Remove="Renderer\Images\BombHp\Heath\Helath_25_pecent.png" />
+    <None Remove="Renderer\Images\BombHp\Heath\Helath_30_pecent.png" />
+    <None Remove="Renderer\Images\BombHp\Heath\Helath_35_pecent.png" />
+    <None Remove="Renderer\Images\BombHp\Heath\Helath_40_pecent.png" />
+    <None Remove="Renderer\Images\BombHp\Heath\Helath_45_pecent.png" />
+    <None Remove="Renderer\Images\BombHp\Heath\Helath_50_pecent.png" />
+    <None Remove="Renderer\Images\BombHp\Heath\Helath_55_pecent.png" />
+    <None Remove="Renderer\Images\BombHp\Heath\Helath_5_pecent.png" />
+    <None Remove="Renderer\Images\BombHp\Heath\Helath_60_pecent.png" />
+    <None Remove="Renderer\Images\BombHp\Heath\Helath_65_pecent.png" />
+    <None Remove="Renderer\Images\BombHp\Heath\Helath_70_pecent.png" />
+    <None Remove="Renderer\Images\BombHp\Heath\Helath_75_pecent.png" />
+    <None Remove="Renderer\Images\BombHp\Heath\Helath_80_pecent.png" />
+    <None Remove="Renderer\Images\BombHp\Heath\Helath_85_pecent.png" />
+    <None Remove="Renderer\Images\BombHp\Heath\Helath_90_pecent.png" />
+    <None Remove="Renderer\Images\BombHp\Heath\Helath_95_pecent.png" />
+    <None Remove="Renderer\Images\Bomb\bomb1.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_crouch_blue.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_crouch_brblue.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_crouch_brown.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_crouch_green.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_crouch_pink.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_crouch_turk.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_crouch_yellow.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_jump_blue.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_jump_brblue.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_jump_brown.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_jump_green.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_jump_pink.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_jump_turk.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_jump_yellow.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_stand2_blue.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_stand2_brblue.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_stand2_brown.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_stand2_green.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_stand2_pink.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_stand2_turk.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_stand2_yellow.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_stand_blue.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_stand_brblue.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_stand_brown.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_stand_green.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_stand_pink.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_stand_turk.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_stand_yellow.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_step2_blue.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_step2_brblue.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_step2_brown.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_step2_green.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_step2_pink.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_step2_turk.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_step2_yellow.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_step_blue.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_step_brblue.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_step_brown.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_step_green.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_step_pink.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_step_turk.png" />
+    <None Remove="Renderer\Images\Robots\robotpic_step_yellow.png" />
+    <None Remove="Renderer\Images\Rounds\fightpiccropped.png" />
+    <None Remove="Renderer\Images\Rounds\round1piccropped.png" />
+    <None Remove="Renderer\Images\Rounds\round2piccropped.png" />
+    <None Remove="Renderer\Images\Rounds\round3piccropped.png" />
+    <None Remove="Renderer\Music\jr-the journey kon.wav" />
+    <None Remove="Renderer\Music\Loaded - Fatality [HQ].wav" />
+    <None Remove="Renderer\Music\mktthememetal.wav" />
+    <None Remove="Renderer\Music\The Immortals - Mortal Kombatw.wav" />
+    <None Remove="Renderer\Music\Traci Lords - Control %28Juno Reactor Instrumental%29.wav" />
+    <None Remove="Renderer\Sounds\mk_finalround.wav" />
+    <None Remove="Renderer\Sounds\mk_round1.wav" />
+    <None Remove="Renderer\Sounds\mk_round2.wav" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="MenuWindows\Images\mortalbombatmainmenubackg.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MenuWindows\Sounds\SAmenuClick.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MenuWindows\Sounds\SAmenuSelect.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MenuWindows\Sounds\SAselectionChanged.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MenuWindows\Sounds\typewritersound.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Backgrounds\Controls\mkbombatkontrols.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Backgrounds\mkmap1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\GreenBombs\LargeBombStaticFrame1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\GreenBombs\LargeBombStaticFrame2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\GreenBombs\LargeBombStaticFrame3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\GreenBombs\LargeBombStaticFrame4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Items\ArmorBooster\armor_icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Items\HealBooster\health_icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\RedBombs\LargeBombStaticFrame1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\RedBombs\LargeBombStaticFrame2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\RedBombs\LargeBombStaticFrame3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\RedBombs\LargeBombStaticFrame4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Backgrounds\mkmap2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Backgrounds\mkmap4.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Backgrounds\mkmap5.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\bottom0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\bottom1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\bottom2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\bottom3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\bottom4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\bottom5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\bottom6.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\center0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\center1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\center2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\center3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\center4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\center5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\center6.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\left0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\left1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\left2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\left3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\left4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\left5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\left6.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\right0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\right1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\right2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\right3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\right4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\right5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\right6.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\sidecont0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\sidecont1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\sidecont2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\sidecont3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\sidecont4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\sidecont5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\sidecont6.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\top0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\top1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\top2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\top3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\top4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\top5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\top6.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\vertcont0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\vertcont1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\vertcont2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\vertcont3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\vertcont4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\vertcont5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Explosions\Bomberman\vertcont6.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Armor\Armor_0_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Armor\Armor_100_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Armor\Armor_10_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Armor\Armor_15_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Armor\Armor_20_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Armor\Armor_25_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Armor\Armor_30_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Armor\Armor_35_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Armor\Armor_40_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Armor\Armor_45_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Armor\Armor_50_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Armor\Armor_55_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Armor\Armor_5_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Armor\Armor_60_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Armor\Armor_65_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Armor\Armor_70_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Armor\Armor_75_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Armor\Armor_80_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Armor\Armor_85_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Armor\Armor_90_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Armor\Armor_95_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Health\Helath_0_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Health\Helath_100_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Health\Helath_10_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Health\Helath_15_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Health\Helath_20_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Health\Helath_25_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Health\Helath_30_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Health\Helath_35_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Health\Helath_40_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Health\Helath_45_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Health\Helath_50_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Health\Helath_55_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Health\Helath_5_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Health\Helath_60_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Health\Helath_65_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Health\Helath_70_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Health\Helath_75_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Health\Helath_80_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Health\Helath_85_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Health\Helath_90_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Health\Helath_95_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Icons\armor_icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\HUD\Icons\health_icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\BombHp\Heath\Helath_0_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\BombHp\Heath\Helath_100_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\BombHp\Heath\Helath_10_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\BombHp\Heath\Helath_15_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\BombHp\Heath\Helath_20_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\BombHp\Heath\Helath_25_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\BombHp\Heath\Helath_30_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\BombHp\Heath\Helath_35_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\BombHp\Heath\Helath_40_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\BombHp\Heath\Helath_45_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\BombHp\Heath\Helath_50_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\BombHp\Heath\Helath_55_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\BombHp\Heath\Helath_5_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\BombHp\Heath\Helath_60_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\BombHp\Heath\Helath_65_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\BombHp\Heath\Helath_70_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\BombHp\Heath\Helath_75_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\BombHp\Heath\Helath_80_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\BombHp\Heath\Helath_85_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\BombHp\Heath\Helath_90_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\BombHp\Heath\Helath_95_pecent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Bomb\bomb1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Backgrounds\mkmap1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_crouch_blue.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_crouch_brblue.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_crouch_brown.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_crouch_green.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_crouch_pink.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_crouch_turk.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_crouch_yellow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_jump_blue.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_jump_brblue.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_jump_brown.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_jump_green.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_jump_pink.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_jump_turk.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_jump_yellow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_stand2_blue.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_stand2_brblue.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_stand2_brown.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_stand2_green.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_stand2_pink.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_stand2_turk.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_stand2_yellow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_stand_blue.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_stand_brblue.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_stand_brown.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_stand_green.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_stand_pink.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_stand_turk.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_stand_yellow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_step2_blue.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_step2_brblue.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_step2_brown.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_step2_green.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_step2_pink.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_step2_turk.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_step2_yellow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_step_blue.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_step_brblue.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_step_brown.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_step_green.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_step_pink.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_step_turk.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Robots\robotpic_step_yellow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Rounds\fightpiccropped.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Rounds\round1piccropped.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Rounds\round2piccropped.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Images\Rounds\round3piccropped.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Music\jr-the journey kon.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Music\Loaded - Fatality [HQ].wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Music\mktthememetal.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Music\The Immortals - Mortal Kombatw.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Music\Traci Lords - Control (Juno Reactor Instrumental).wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Sounds\mk_finalround.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Sounds\mk_round1.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Renderer\Sounds\mk_round2.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="SharpDX" Version="4.2.0" />
+  </ItemGroup>
+
 </Project>
